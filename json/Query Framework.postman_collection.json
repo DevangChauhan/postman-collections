@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "11491b45-7bba-4f59-9363-8ee3738bb56d",
+		"name": "Query Framework",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save new query POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "dGVzdHVzZXI6dGVzdHBhc3N3b3Jk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"epcisQuery\": {\n        \"GE_eventTime\": \"2019-09-01T02:33:31.116Z\",\n        \"LT_eventTime\": \"2020-09-01T02:33:31.116Z\"\n    },\n    \"name\": \"customQuery\",\n    \"query\": \"SimpleEventQuery\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/queries",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"queries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "see persisted Query GET",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "dGVzdHVzZXI6dGVzdHBhc3N3b3Jk",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/queries?QueryName=customQuery",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"queries"
+					],
+					"query": [
+						{
+							"key": "QueryName",
+							"value": "customQuery"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "events default params persisted Query GET",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "dGVzdHVzZXI6dGVzdHBhc3N3b3Jk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/queries/customQuery/events",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"queries",
+						"customQuery",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "events overridden params persisted query GET",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "dGVzdHVzZXI6dGVzdHBhc3N3b3Jk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/queries/customQuery/events?GE_eventTime=2020-03-01T02:33:31.116Z&LT_eventTime=2020-06-01T02:33:31.116Z",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"queries",
+						"customQuery",
+						"events"
+					],
+					"query": [
+						{
+							"key": "GE_eventTime",
+							"value": "2020-03-01T02:33:31.116Z"
+						},
+						{
+							"key": "LT_eventTime",
+							"value": "2020-06-01T02:33:31.116Z"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
