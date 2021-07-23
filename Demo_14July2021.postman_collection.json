@@ -1,0 +1,598 @@
+{
+	"info": {
+		"_postman_id": "19b017ed-b15d-4cc7-a6b9-638a703f80ca",
+		"name": "Demo_14July2021",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "capture",
+			"item": [
+				{
+					"name": "captureSensorElements",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"@context\": [\n    \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n    {\n      \"example\": \"http://ns.example.com/epcis/\"\n    }\n  ],\n  \"id\": \"_:document1\",\n  \"isA\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2021-07-11T11:30:47.0Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"isA\": \"AggregationEvent\",\n        \"action\": \"ADD\",\n        \"bizStep\": \"urn:epcglobal:cbv:bizstep:packing\",\n        \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n        \"parentID\": \"urn:epc:id:sscc:4012345.0111111111\",\n        \"childQuantityList\": [\n          {\n            \"epcClass\": \"urn:epc:class:lgtin:4012345.011111.1234\",\n            \"quantity\": 52,\n            \"uom\": \"KGM\"\n          }\n        ],\n        \"eventTime\": \"2021-07-07T15:30:00.000+01:00\",\n        \"eventTimeZoneOffset\": \"+01:00\",\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:4012345.00005.0\"\n        },\n        \"sensorElementList\": [\n          {\n            \"sensorMetadata\": {\n              \"time\": \"2021-07-07T14:00:00.000+01:00\",\n              \"deviceID\": \"urn:epc:id:giai:4000001.111\",\n              \"deviceMetadata\": \"https://id.gs1.org/8004/4000001111\",\n              \"rawData\": \"https://example.org/8004/401234599999\",\n              \"dataProcessingMethod\": \"https://example.com/253/4012345000054987\",\n              \"bizRules\": \"https://example.org/253/4012345000054987\"\n            },\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Humidity\",\n                \"value\": 12.1,\n                \"uom\": \"A93\"\n              },\n              {\n                \"type\": \"gs1:MT-Molar_concentration\",\n                \"chemicalSubstance\": \"urn:epcglobal:cbv:inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N\",\n                \"value\": 0.18,\n                \"uom\": \"C35\"\n              },\n              {\n                \"type\": \"gs1:MT-Molar_concentration\",\n                \"microorganism\": \"https://www.ncbi.nlm.nih.gov/taxonomy/1126011\",\n                \"value\": 0.05,\n                \"uom\": \"C35\"\n              }\n            ]\n          },\n          {\n            \"sensorMetadata\": {\n              \"startTime\": \"2021-04-01T15:00:00.000+01:00\",\n              \"endTime\": \"2021-04-02T14:59:59.999+01:00\",\n              \"example:someFurtherMetadata\": \"someText\"\n            },\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"minValue\": 12.4,\n                \"maxValue\": 13.8,\n                \"meanValue\": 13.2,\n                \"sDev\": 0.41,\n                \"uom\": \"CEL\",\n                \"percRank\": 50,\n                \"percValue\": 12.7,\n                \"example:cv\": \"123\"\n              }\n            ],\n            \"example:furtherSensorData\": [\n              {\n                \"example:measure1\": \"123.5\"\n              },\n              {\n                \"example:measure2\": \"0.987\"\n              }\n            ]\n          },\n          {\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"uom\": \"CEL\",\n                \"value\": 26.1,\n                \"time\": \"2021-07-07T14:00:00.000+01:00\",\n                \"deviceID\": \"urn:epc:id:giai:4000001.111\",\n                \"deviceMetadata\": \"https://id.gs1.org/8004/4000001111\",\n                \"rawData\": \"https://example.org/8004/401234599999\",\n                \"dataProcessingMethod\": \"https://example.com/253/4012345000054987\",\n                \"bizRules\": \"https://example.org/253/4012345000054987\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"isA\": \"ObjectEvent\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:4012345.011111.9876\"\n        ],\n        \"eventTime\": \"2021-07-07T16:00:00.000+01:00\",\n        \"eventTimeZoneOffset\": \"+01:00\",\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:4012345.00005.0\"\n        },\n        \"sensorElementList\": [\n          {\n            \"sensorMetadata\": {\n              \"time\": \"2021-07-07T14:00:00.000+01:00\"\n            },\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"value\": 26.0,\n                \"uom\": \"CEL\",\n                \"deviceID\": \"urn:epc:id:giai:4000001.111\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"isA\": \"ObjectEvent\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:4012345.011111.9876\"\n        ],\n        \"eventTime\": \"2021-07-07T15:00:00.000+01:00\",\n        \"eventTimeZoneOffset\": \"+01:00\",\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:4012345.00005.0\"\n        },\n        \"quantityList\": [\n          {\n            \"epcClass\": \"urn:epc:class:lgtin:234567890.1123.9999\",\n            \"quantity\": 150,\n            \"uom\": \"KGM\"\n          }\n        ],\n        \"sensorElementList\": [\n          {\n            \"sensorMetadata\": {\n              \"startTime\": \"2021-07-06T15:00:00.000+01:00\",\n              \"endTime\": \"2021-07-07T14:59:59.999+01:00\",\n              \"example:someFurtherMetadata\": \"someText\"\n            },\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"minValue\": 12.4,\n                \"maxValue\": 13.8,\n                \"meanValue\": 13.2,\n                \"sDev\": 0.41,\n                \"uom\": \"CEL\",\n                \"percRank\": 50,\n                \"percValue\": 12.7,\n                \"example:cv\": \"123\"\n              }\n            ],\n            \"example:furtherSensorData\": [\n              {\n                \"example:measure1\": \"123.5\"\n              },\n              {\n                \"example:measure2\": \"0.987\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"isA\": \"ObjectEvent\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:4012345.011111.9876\"\n        ],\n        \"eventTime\": \"2021-07-02T15:00:00.000+01:00\",\n        \"eventTimeZoneOffset\": \"+01:00\",\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:4012345.00005.0\"\n        },\n        \"sensorElementList\": [\n          {\n            \"sensorMetadata\": {\n              \"deviceID\": \"urn:epc:id:giai:4000001.111\",\n              \"deviceMetadata\": \"https://id.gs1.org/8004/4000001111\"\n            },\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"time\": \"2019-04-02T14:05:00.000+01:00\",\n                \"value\": 26.0,\n                \"uom\": \"CEL\"\n              },\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"time\": \"2019-04-02T14:15:00.000+01:00\",\n                \"value\": 26.1,\n                \"uom\": \"CEL\"\n              },\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"time\": \"2019-04-02T14:25:00.000+01:00\",\n                \"value\": 26.2,\n                \"uom\": \"CEL\"\n              },\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"time\": \"2019-04-02T14:35:00.000+01:00\",\n                \"value\": 26.3,\n                \"uom\": \"CEL\"\n              },\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"time\": \"2019-04-02T14:45:00.000+01:00\",\n                \"value\": 26.4,\n                \"uom\": \"CEL\"\n              },\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"time\": \"2019-04-02T14:55:00.000+01:00\",\n                \"value\": 26.5,\n                \"uom\": \"CEL\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"isA\": \"ObjectEvent\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n        \"epcList\": [],\n        \"eventTime\": \"2021-04-02T15:00:00.000+01:00\",\n        \"eventTimeZoneOffset\": \"+01:00\",\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:4012345.00005.0\"\n        },\n        \"quantityList\": [\n          {\n            \"epcClass\": \"urn:epc:class:lgtin:234567890.1123.9999\",\n            \"quantity\": 150,\n            \"uom\": \"KGM\"\n          }\n        ],\n        \"sensorElementList\": [\n          {\n            \"sensorMetadata\": {\n              \"time\": \"2021-04-02T14:55:00.000+01:00\"\n            },\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"value\": 26.0,\n                \"uom\": \"CEL\",\n                \"deviceID\": \"urn:epc:id:giai:4000001.111\",\n                \"deviceMetadata\": \"https://id.gs1.org/8004/4000001111\",\n                \"rawData\": \"https://example.org/8004/401234599999\"\n              },\n              {\n                \"type\": \"gs1:MT-Humidity\",\n                \"value\": 12.1,\n                \"uom\": \"A93\",\n                \"deviceID\": \"urn:epc:id:giai:4000001.222\",\n                \"deviceMetadata\": \"https://id.gs1.org/8004/4000001222\",\n                \"rawData\": \"https://example.org/8004/401234599999\"\n              },\n              {\n                \"type\": \"gs1:MT-Speed\",\n                \"value\": 160,\n                \"uom\": \"KMH\",\n                \"deviceID\": \"urn:epc:id:giai:4000001.333\",\n                \"deviceMetadata\": \"https://id.gs1.org/8004/4000001333\",\n                \"rawData\": \"https://example.org/8004/401234599999\"\n              },\n              {\n                \"type\": \"gs1:MT-Illuminance\",\n                \"value\": 800,\n                \"uom\": \"LUX\",\n                \"deviceID\": \"urn:epc:id:giai:4000001.444\",\n                \"deviceMetadata\": \"https://id.gs1.org/8004/4000001444\",\n                \"rawData\": \"https://example.org/8004/401234599999\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"isA\": \"ObjectEvent\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n        \"epcList\": [],\n        \"eventTime\": \"2021-04-02T15:00:00.000+01:00\",\n        \"eventTimeZoneOffset\": \"+01:00\",\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:4012345.00005.0\"\n        },\n        \"sensorElementList\": [\n          {\n            \"sensorMetadata\": {\n              \"startTime\": \"2021-04-01T15:00:00.000+01:00\",\n              \"endTime\": \"2021-04-02T14:59:59.999+01:00\"\n            },\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"minValue\": 12.4,\n                \"maxValue\": 13.8,\n                \"uom\": \"CEL\"\n              },\n              {\n                \"type\": \"gs1:MT-Humidity\",\n                \"minValue\": 69.2,\n                \"maxValue\": 72.5,\n                \"uom\": \"A93\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"isA\": \"ObjectEvent\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n        \"eventTime\": \"2021-04-02T15:00:00.000+01:00\",\n        \"eventTimeZoneOffset\": \"+01:00\",\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:4012345.00005.0\"\n        },\n        \"sensorElementList\": [\n          {\n            \"sensorMetadata\": {\n              \"time\": \"2021-04-02T14:05:00.000+01:00\",\n              \"deviceID\": \"urn:epc:id:giai:4000001.111\",\n              \"deviceMetadata\": \"https://id.gs1.org/8004/4000001111\",\n              \"rawData\": \"https://example.org/8004/401234599999\"\n            },\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"value\": 26.0,\n                \"uom\": \"CEL\"\n              },\n              {\n                \"type\": \"gs1:MT-Humidity\",\n                \"value\": 12.1,\n                \"uom\": \"A93\"\n              },\n              {\n                \"type\": \"gs1:MT-Speed\",\n                \"value\": 160.0,\n                \"uom\": \"KMH\"\n              },\n              {\n                \"type\": \"gs1:MT-Illuminance\",\n                \"value\": 800.0,\n                \"uom\": \"LUX\"\n              }\n            ]\n          },\n          {\n            \"sensorMetadata\": {\n              \"time\": \"2021-04-02T14:35:00.000+01:00\",\n              \"deviceID\": \"urn:epc:id:giai:4000001.111\",\n              \"deviceMetadata\": \"https://id.gs1.org/8004/4000001111\",\n              \"rawData\": \"https://example.org/8004/401234599999\"\n            },\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"value\": 26.1,\n                \"uom\": \"CEL\"\n              },\n              {\n                \"type\": \"gs1:MT-Humidity\",\n                \"value\": 12.2,\n                \"uom\": \"A93\"\n              },\n              {\n                \"type\": \"gs1:MT-Speed\",\n                \"value\": 161.0,\n                \"uom\": \"KMH\"\n              },\n              {\n                \"type\": \"gs1:MT-Illuminance\",\n                \"value\": 801.0,\n                \"uom\": \"LUX\"\n              }\n            ]\n          },\n          {\n            \"sensorMetadata\": {\n              \"time\": \"2021-04-02T14:55:00.000+01:00\",\n              \"deviceID\": \"urn:epc:id:giai:4000001.111\",\n              \"deviceMetadata\": \"https://id.gs1.org/8004/4000001111\",\n              \"rawData\": \"https://example.org/8004/401234599999\"\n            },\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"value\": 26.2,\n                \"uom\": \"CEL\"\n              },\n              {\n                \"type\": \"gs1:MT-Humidity\",\n                \"value\": 12.2,\n                \"uom\": \"A93\"\n              },\n              {\n                \"type\": \"gs1:MT-Speed\",\n                \"value\": 162.0,\n                \"uom\": \"KMH\"\n              },\n              {\n                \"type\": \"gs1:MT-Illuminance\",\n                \"value\": 802.0,\n                \"uom\": \"LUX\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"isA\": \"ObjectEvent\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:4012345.011111.9876\"\n        ],\n        \"eventTime\": \"2021-04-02T15:00:00.000+01:00\",\n        \"eventTimeZoneOffset\": \"+01:00\",\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:4012345.00005.0\"\n        },\n        \"sensorElementList\": [\n          {\n            \"sensorMetadata\": {\n              \"time\": \"2021-04-02T14:05:00.000+01:00\",\n              \"deviceID\": \"urn:epc:id:giai:4000001.111\",\n              \"deviceMetadata\": \"https://id.gs1.org/8004/4000001111\",\n              \"rawData\": \"https://example.org/8004/401234599999\"\n            },\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"value\": 26.0,\n                \"uom\": \"CEL\"\n              },\n              {\n                \"type\": \"gs1:MT-Humidity\",\n                \"value\": 12.1,\n                \"uom\": \"A93\"\n              },\n              {\n                \"type\": \"gs1:MT-Speed\",\n                \"value\": 160.0,\n                \"uom\": \"KMH\"\n              },\n              {\n                \"type\": \"gs1:MT-Illuminance\",\n                \"value\": 800.0,\n                \"uom\": \"LUX\"\n              }\n            ]\n          },\n          {\n            \"sensorMetadata\": {\n              \"time\": \"2021-04-02T14:35:00.000+01:00\",\n              \"deviceID\": \"urn:epc:id:giai:4000001.111\",\n              \"deviceMetadata\": \"https://id.gs1.org/8004/4000001111\",\n              \"rawData\": \"https://example.org/8004/401234599999\"\n            },\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"value\": 26.1,\n                \"uom\": \"CEL\"\n              },\n              {\n                \"type\": \"gs1:MT-Humidity\",\n                \"value\": 12.2,\n                \"uom\": \"A93\"\n              },\n              {\n                \"type\": \"gs1:MT-Speed\",\n                \"value\": 161.0,\n                \"uom\": \"KMH\"\n              },\n              {\n                \"type\": \"gs1:MT-Illuminance\",\n                \"value\": 801.0,\n                \"uom\": \"LUX\"\n              }\n            ]\n          },\n          {\n            \"sensorMetadata\": {\n              \"time\": \"2021-04-02T14:55:00.000+01:00\",\n              \"deviceID\": \"urn:epc:id:giai:4000001.111\",\n              \"deviceMetadata\": \"https://id.gs1.org/8004/4000001111\",\n              \"rawData\": \"https://example.org/8004/401234599999\"\n            },\n            \"sensorReport\": [\n              {\n                \"type\": \"gs1:MT-Temperature\",\n                \"value\": 26.2,\n                \"uom\": \"CEL\"\n              },\n              {\n                \"type\": \"gs1:MT-Humidity\",\n                \"value\": 12.2,\n                \"uom\": \"A93\"\n              },\n              {\n                \"type\": \"gs1:MT-Speed\",\n                \"value\": 162.0,\n                \"uom\": \"KMH\"\n              },\n              {\n                \"type\": \"gs1:MT-Illuminance\",\n                \"value\": 802.0,\n                \"uom\": \"LUX\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n                \"isA\": \"TransformationEvent\",\n                \"eventTime\": \"2021-01-31T14:58:56.591Z\",\n                \"eventTimeZoneOffset\": \"+02:00\",\n                \"inputEPCList\": [\n                    \"urn:epc:id:sgtin:4012345.011122.25\",\n                    \"urn:epc:id:sgtin:4000001.065432.99886655\"\n                ],\n                \"inputQuantityList\": [\n                    {\n                        \"epcClass\": \"urn:epc:class:lgtin:4012345.011111.4444\",\n                        \"quantity\": 10,\n                        \"uom\": \"KGM\"\n                    },\n                    {\n                        \"epcClass\": \"urn:epc:class:lgtin:0614141.077777.987\",\n                        \"quantity\": 30\n                    },\n                    {\n                        \"epcClass\": \"urn:epc:idpat:sgtin:4012345.066666.*\",\n                        \"quantity\": 220\n                    }\n                ],\n                \"outputEPCList\": [\n                    \"urn:epc:id:sgtin:4012345.077889.25\",\n                    \"urn:epc:id:sgtin:4012345.077889.26\",\n                    \"urn:epc:id:sgtin:4012345.077889.27\",\n                    \"urn:epc:id:sgtin:4012345.077889.28\"\n                ],\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:commissioning\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:4012345.00001.0\"\n                },\n                \"example:myField\": \"Example of a vendor/user extension\"\n            }\n    ]\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/capture",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"capture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "captureErrorDeclaration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"example\": \"http://ns.example.com/epcis/\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2005-07-11T11:30:47.0Z\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"eventID\": \"ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0\",\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:shipping\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2017\",\n                    \"urn:epc:id:sgtin:0614141.107346.2018\"\n                ],\n                \"eventTime\": \"2005-04-03T20:33:31.116000-06:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"errorDeclaration\": {\n                    \"declarationTime\": \"2021-02-01T22:46:31.117000+00:00\",\n                    \"reason\": \"urn:epcglobal:cbv:er:incorrect-data\",\n                    \"correctiveEventIDs\": [\n                        \"ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0\",\n                        \"urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6\"\n                    ]\n                },\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.07346.1234\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ]\n            },\n            {\n                \"eventID\": \"ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0\",\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:receiving\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2018\"\n                ],\n                \"eventTime\": \"2005-04-04T20:33:31.116-06:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0012345.11111.400\"\n                },\n                \"bizLocation\": {\n                    \"id\": \"urn:epc:id:sgln:0012345.11111.0\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    },\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:desadv\",\n                        \"bizTransaction\": \"urn:epcglobal:cbv:bt:0614141073467:1152\"\n                    }\n                ],\n                \"example:myField\": \"Example of a vendor/user extension\"\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/capture",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"capture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "captureErroneousEvent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"example\": \"http://ns.example.com/epcis/\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2021-07-11T11:30:47.0Z\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"eventID\": \"ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0\",\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:shipping\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2017\",\n                    \"urn:epc:id:sgtin:0614141.107346.2018\"\n                ],\n                \"eventTime\": \"2021-04-03T20:33:31.116000-06:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.07346.1234\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/capture",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"capture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "captureEventInXML",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<epcis:EPCISDocument\n    xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n    xmlns:example=\"http://ns.example.com/epcis\"\n    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n    creationDate=\"2005-07-11T11:30:47.0Z\"\n    schemaVersion=\"1.2\">\n  <EPCISBody>\n    <EventList>\n      <ObjectEvent>\n        <eventTime>2005-04-03T20:33:31.116-06:00</eventTime>\n        <eventTimeZoneOffset>-06:00</eventTimeZoneOffset>\n        <epcList>\n          <epc>urn:epc:id:sgtin:0614141.107346.2017</epc>\n          <epc>urn:epc:id:sgtin:0614141.107346.2018</epc>\n        </epcList>\n        <action>OBSERVE</action>\n        <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>\n        <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>\n        <readPoint>\n           <id>urn:epc:id:sgln:0614141.07346.1234</id>\n        </readPoint>\n       \n      </ObjectEvent>\n      <ObjectEvent>\n        <eventTime>2005-04-04T20:33:31.116-06:00</eventTime>\n        <eventTimeZoneOffset>-06:00</eventTimeZoneOffset>\n        <epcList>\n          <epc>urn:epc:id:sgtin:0614141.107346.2018</epc>\n        </epcList>\n        <action>OBSERVE</action>\n        <bizStep>urn:epcglobal:cbv:bizstep:receiving</bizStep>\n        <disposition>urn:epcglobal:cbv:disp:in_progress</disposition>\n        <readPoint>\n           <id>urn:epc:id:sgln:0012345.11111.400</id>\n        </readPoint>\n        <bizLocation>\n           <id>urn:epc:id:sgln:0012345.11111.0</id>\n        </bizLocation>\n        \n        <example:myField>Example of a vendor/user extension</example:myField>\n      </ObjectEvent>\n    </EventList>\n  </EPCISBody>\n</epcis:EPCISDocument>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/capture",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"capture"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "query",
+			"item": [
+				{
+					"name": "capture",
+					"item": [
+						{
+							"name": "captureFSKLabEvents",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2021-03-03T11:30:47.0Z\",\n    \"format\": \"application/ld+json\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:collecting\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2017\",\n                    \"urn:epc:id:sgtin:0614141.107346.2018\"\n                ],\n                \"eventTime\": \"2021-07-06T14:53:11.38767+02:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.07346.1234\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ],\n                \"fsk:model\": {\n                    \"fsk:dataBackground\": {\n                        \"fsk:assay\": [\n                            {\n                                \"fsk:detectionLimit\": \"30-300\",\n                                \"fsk:description\": \"spectroscopic analytical procedure used to measure the concentration of protein in a solution. It is subjective, i.e., dependent on the amino acid composition of the measured protein\",\n                                \"fsk:name\": \"Bradford protein assay\",\n                                \"fsk:quantificationLimit\": \"5000 - 8000\",\n                                \"fsk:contaminationRange\": \"500-4000\"\n                            },\n                            {\n                                \"fsk:description\": \"ELISA is a popular format of \\\"wet-lab\\\" type analytic biochemistry assay that uses a solid-phase enzyme immunoassay (EIA) to detect the presence of a substance, usually an antigen, in a liquid sample or wet sample.\",\n                                \"fsk:name\": \"ELISA\",\n                                \"fsk:contaminationRange\": \"200-800\"\n                            },\n                            {\n                                \"fsk:description\": \"standard method used to determine virus concentration in terms of infectious dose. Viral plaque assays determine the number of plaque forming units (pfu) in a virus sample, which is one measure of virus quantity.\",\n                                \"fsk:name\": \"Plaque-Assay\",\n                                \"fsk:contaminationRange\": \"0,5 - 400\"\n                            }\n                        ],\n                        \"fsk:study\": {\n                            \"fsk:protocolURI\": \"https://url-for-study-protocol-location.bfr.bund.de\",\n                            \"fsk:protocolParametersName\": \"Parameter 1\",\n                            \"fsk:protocolType\": \"Extraction Protocol\",\n                            \"fsk:description\": \"This Study will show, wether the FSK Lab will correctly read and run a generic and fully annotated model\",\n                            \"fsk:assayTechnologyType\": \"QPCR\",\n                            \"fsk:protocolComponentsType\": \"hardware\",\n                            \"fsk:title\": \"Assessment of integrity of metadata in FKS Lab and associated services\",\n                            \"fsk:assayMeasurementType\": \"It works or it doesn't\",\n                            \"fsk:protocolDescription\": \"The protocol is definitly not made up\",\n                            \"fsk:accreditationProcedureForTheAssayTechnology\": \"Internally validated\",\n                            \"fsk:assayTechnologyPlatform\": \"Orbital Platform\",\n                            \"fsk:protocolVersion\": \"version 1.0\",\n                            \"fsk:identifier\": \"Study_Generic_Sheet_1\",\n                            \"fsk:protocolName\": \"Extraction Protocol Of FSK\",\n                            \"fsk:designType\": \"Trial and Error\",\n                            \"fsk:protocolComponentsName\": \"windows pc\"\n                        },\n                        \"fsk:laboratory\": [\n                            {\n                                \"fsk:accreditation\": [\n                                    \"accredited\"\n                                ],\n                                \"fsk:name\": \"National High Magnetic Field Laboratory\",\n                                \"fsk:country\": \"United States\"\n                            },\n                            {\n                                \"fsk:accreditation\": [\n                                    \"accredited\"\n                                ],\n                                \"fsk:name\": \"Everest Medical Laboratory\",\n                                \"fsk:country\": \"India\"\n                            },\n                            {\n                                \"fsk:accreditation\": [\n                                    \"accredited\"\n                                ],\n                                \"fsk:name\": \"RimeTimeLab\",\n                                \"fsk:country\": \"Germany\"\n                            }\n                        ]\n                    },\n                    \"fsk:modelType\": \"PredictiveModel\",\n                    \"fsk:modelMath\": {\n                        \"fsk:parameter\": [\n                            {\n                                \"fsk:id\": \"Dose_matrix\",\n                                \"fsk:unit\": \"kGy/h\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"matrix with GEC NoV for each serving (rows=servings; columns = number of different employee-teams that prepare food)\",\n                                \"fsk:error\": \"0.5\",\n                                \"fsk:variabilitySubject\": \"days\",\n                                \"fsk:maxValue\": \"10000.0\",\n                                \"fsk:source\": \"Article\",\n                                \"fsk:subject\": \"Animal\",\n                                \"fsk:name\": \"Dose_matrix\",\n                                \"fsk:unitCategory\": \"Energy Content Rate\",\n                                \"fsk:dataType\": \"FILE\",\n                                \"fsk:distribution\": \"Bernoulli 1\",\n                                \"fsk:value\": \"as.matrix(read.table(file =\\\"Dose_matrix.csv\\\",sep=\\\",\\\", header = TRUE, row.names=1))\",\n                                \"fsk:minValue\": \"1.0\"\n                            },\n                            {\n                                \"fsk:id\": \"nInf\",\n                                \"fsk:unit\": \"PFU/25g\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"number of infected individuals, mean over stores (2000 servings per store)\",\n                                \"fsk:error\": \"0.4\",\n                                \"fsk:variabilitySubject\": \"hours\",\n                                \"fsk:maxValue\": \"20000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Batch of animals\",\n                                \"fsk:name\": \"nInf\",\n                                \"fsk:unitCategory\": \"Number Content (count/mass)\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Log-Logistic 2\",\n                                \"fsk:minValue\": \"0.1\"\n                            },\n                            {\n                                \"fsk:id\": \"nIll\",\n                                \"fsk:unit\": \"mg\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"number of ill individuals, mean over stores (2000 servings per store)\",\n                                \"fsk:error\": \"0.3\",\n                                \"fsk:variabilitySubject\": \"size\",\n                                \"fsk:maxValue\": \"30000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Batch of products\",\n                                \"fsk:name\": \"nIll\",\n                                \"fsk:unitCategory\": \"Mass\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Half Cauchy 1\",\n                                \"fsk:minValue\": \"0.3\"\n                            },\n                            {\n                                \"fsk:id\": \"meanPos\",\n                                \"fsk:unit\": \"month\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"mean number of NoV particles over positive servings\",\n                                \"fsk:error\": \"0.2\",\n                                \"fsk:variabilitySubject\": \"height\",\n                                \"fsk:maxValue\": \"40000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Other\",\n                                \"fsk:name\": \"meanPos\",\n                                \"fsk:unitCategory\": \"Time\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Generalized Poisson 3\",\n                                \"fsk:minValue\": \"0.5\"\n                            },\n                            {\n                                \"fsk:id\": \"prev18\",\n                                \"fsk:unit\": \"g/daily portion\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"proportion of servings with >18 NoV\",\n                                \"fsk:error\": \"0.1\",\n                                \"fsk:variabilitySubject\": \"weight\",\n                                \"fsk:maxValue\": \"50000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Other\",\n                                \"fsk:name\": \"prev18\",\n                                \"fsk:unitCategory\": \"Mass\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Binomial 1\",\n                                \"fsk:minValue\": \"0.2\"\n                            },\n                            {\n                                \"fsk:id\": \"prev100\",\n                                \"fsk:unit\": \"objects/g\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"proportion of servings with >100 NoV\",\n                                \"fsk:error\": \"0.01\",\n                                \"fsk:variabilitySubject\": \"color\",\n                                \"fsk:maxValue\": \"60000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Feces\",\n                                \"fsk:name\": \"prev100\",\n                                \"fsk:unitCategory\": \"Number Content (count/mass)\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Discrete distribution\",\n                                \"fsk:minValue\": \"0.12\"\n                            },\n                            {\n                                \"fsk:id\": \"prev1000\",\n                                \"fsk:unit\": \"Bq/L\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"proportion of servings with >1000 NoV\",\n                                \"fsk:error\": \"0.02\",\n                                \"fsk:variabilitySubject\": \"shape\",\n                                \"fsk:maxValue\": \"70000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Feces\",\n                                \"fsk:name\": \"prev1000\",\n                                \"fsk:unitCategory\": \"Energy content rate\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Geometric 1\",\n                                \"fsk:minValue\": \"0.142\"\n                            },\n                            {\n                                \"fsk:id\": \"alpha\",\n                                \"fsk:unit\": \"month\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"Alpha parameter in dose response model related to probability of infection (shape of beta distribution)\",\n                                \"fsk:error\": \"0.03\",\n                                \"fsk:variabilitySubject\": \"age\",\n                                \"fsk:maxValue\": \"80000.0\",\n                                \"fsk:source\": \"Expert opinion\",\n                                \"fsk:subject\": \"Carcass skin\",\n                                \"fsk:name\": \"alpha\",\n                                \"fsk:unitCategory\": \"Time\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Half-normal 1\",\n                                \"fsk:value\": \"0.04\",\n                                \"fsk:minValue\": \"0.01\"\n                            },\n                            {\n                                \"fsk:id\": \"beta\",\n                                \"fsk:unit\": \"Inertia\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"Beta parameter in dose response model related to probability of infection (scale of beta distribution)\",\n                                \"fsk:error\": \"0.4\",\n                                \"fsk:variabilitySubject\": \"concentration\",\n                                \"fsk:maxValue\": \"90000.0\",\n                                \"fsk:source\": \"Estimate\",\n                                \"fsk:subject\": \"Product\",\n                                \"fsk:name\": \"beta\",\n                                \"fsk:unitCategory\": \"Energy content\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Negative Binomial 1\",\n                                \"fsk:value\": \"0.055\",\n                                \"fsk:minValue\": \"0.002\"\n                            },\n                            {\n                                \"fsk:id\": \"eta\",\n                                \"fsk:unit\": \"kcal/portion\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"Eta parameter in dose response model related to probability of illnes (scale parameter for gamma distribution)\",\n                                \"fsk:error\": \"0.5\",\n                                \"fsk:variabilitySubject\": \"difficulty\",\n                                \"fsk:maxValue\": \"100000.0\",\n                                \"fsk:source\": \"Assumption\",\n                                \"fsk:subject\": \"Package\",\n                                \"fsk:name\": \"eta\",\n                                \"fsk:unitCategory\": \"Other\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Arcsine 2\",\n                                \"fsk:value\": \"0.00255\",\n                                \"fsk:minValue\": \"0.01\"\n                            },\n                            {\n                                \"fsk:id\": \"r\",\n                                \"fsk:unit\": \"dimensionless\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"R parameter in dose response model related to probability of illness (shape parameter for gamma distribution)\",\n                                \"fsk:error\": \"0.05\",\n                                \"fsk:variabilitySubject\": \"species\",\n                                \"fsk:maxValue\": \"110000.0\",\n                                \"fsk:source\": \"Not applicable \",\n                                \"fsk:subject\": \"Belly\",\n                                \"fsk:name\": \"r\",\n                                \"fsk:unitCategory\": \"Dimensionless\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Multivariate Gaussian 2\",\n                                \"fsk:value\": \"0.086\",\n                                \"fsk:minValue\": \"0.1\"\n                            }\n                        ],\n                        \"fsk:qualityMeasures\": [\n                            {\n                                \"sse\": 0,\n                                \"aic\": 0,\n                                \"rmse\": 0.3,\n                                \"bic\": 1,\n                                \"mse\": 0.2,\n                                \"rsquared\": 0.9\n                            }\n                        ],\n                        \"fsk:fittingProcedure\": \"Maximum likelihood estimation (MLE)\"\n                    },\n                    \"fsk:scope\": {\n                        \"fsk:hazard\": [\n                            {\n                                \"fsk:noObservedAdverseAffectLevel\": \"10 mg\",\n                                \"fsk:acuteReferenceDose\": \"80 mg\",\n                                \"fsk:acceptableOperatorsExposureLevel\": \"50 mg\",\n                                \"fsk:unit\": \"CFU\",\n                                \"fsk:type\": \"Organic contaminants\",\n                                \"fsk:acceptableDailyIntake\": \"20 mg\",\n                                \"fsk:maximumResidueLimit\": \"0.01 mg/kg\",\n                                \"fsk:description\": \"novovirus is described as nast and hard to get rid of\",\n                                \"fsk:lowestObservedAdverseAffectLevel\": \"40 mg\",\n                                \"fsk:name\": \"norovirus (Norwalk-like virus)\",\n                                \"fsk:sourceOfContamination\": \"sewage\",\n                                \"fsk:adverseEffect\": \"morbitity\"\n                            },\n                            {\n                                \"fsk:noObservedAdverseAffectLevel\": \"5 mg\",\n                                \"fsk:acuteReferenceDose\": \"100 mg\",\n                                \"fsk:acceptableOperatorsExposureLevel\": \"80 mg\",\n                                \"fsk:unit\": \"Fill\",\n                                \"fsk:type\": \"micro\",\n                                \"fsk:acceptableDailyIntake\": \"30 mg\",\n                                \"fsk:maximumResidueLimit\": \"0.11 mg/kg\",\n                                \"fsk:description\": \"we dont know how that got into the tomatoes but it is there\",\n                                \"fsk:lowestObservedAdverseAffectLevel\": \"50 mg\",\n                                \"fsk:name\": \"Salmonella Daarle\",\n                                \"fsk:sourceOfContamination\": \"air\",\n                                \"fsk:adverseEffect\": \"mortality\"\n                            },\n                            {\n                                \"fsk:noObservedAdverseAffectLevel\": \"1 mg\",\n                                \"fsk:acceptableOperatorsExposureLevel\": \"120 mg\",\n                                \"fsk:unit\": \"fg/mL\",\n                                \"fsk:description\": \"tastes great but bad for your beach bod\",\n                                \"fsk:acuteReferenceDose\": \"140 mg\",\n                                \"fsk:type\": \"Food additives\",\n                                \"fsk:acceptableDailyIntake\": \"90 mg\",\n                                \"fsk:benchmarkDose\": \"123.12\",\n                                \"fsk:maximumResidueLimit\": \"0.25 - 0.4 mg/kg\",\n                                \"fsk:lowestObservedAdverseAffectLevel\": \"100 mg\",\n                                \"fsk:name\": \"Monoammonium glutamate\",\n                                \"fsk:sourceOfContamination\": \"rodents\",\n                                \"fsk:adverseEffect\": \"obesity\"\n                            }\n                        ],\n                        \"fsk:product\": [\n                            {\n                                \"fsk:expiryDate\": \"2011-12-01\",\n                                \"fsk:unit\": \"g\",\n                                \"fsk:productionDate\": \"2011-10-30\",\n                                \"fsk:description\": \"fresh german lettuce\",\n                                \"fsk:originCountry\": \"Germany\",\n                                \"fsk:name\": \"Lettuce\",\n                                \"fsk:originArea\": \"Aachen, Kreisfreie Stadt\",\n                                \"fsk:fisheriesArea\": \"Arctic Sea\"\n                            },\n                            {\n                                \"fsk:expiryDate\": \"2013-02-01\",\n                                \"fsk:unit\": \"g\",\n                                \"fsk:productionDate\": \"2012-12-03\",\n                                \"fsk:description\": \"not so fresh\",\n                                \"fsk:originCountry\": \"Spain\",\n                                \"fsk:name\": \"Tomatoes\",\n                                \"fsk:originArea\": \"Lazio\",\n                                \"fsk:fisheriesArea\": \"Mediterranean and Black Sea\"\n                            },\n                            {\n                                \"fsk:expiryDate\": \"2014-05-01\",\n                                \"fsk:unit\": \"g\",\n                                \"fsk:productionDate\": \"2013-05-15\",\n                                \"fsk:description\": \"pretty much any processed meat product imaginable\",\n                                \"fsk:originCountry\": \"United Kingdom\",\n                                \"fsk:name\": \"Meat, preparations of meat, offals, blood, animal fats; fresh, chilled or frozen, salted, in brine, dried or smoked or processed as flours or meals; other processed products such as sausages and food preparations based on these\",\n                                \"fsk:originArea\": \"East Anglia\",\n                                \"fsk:fisheriesArea\": \"Atlantic Ocean\"\n                            }\n                        ],\n                        \"fsk:generalComment\": \"(General Comment) The Scope of this model is universal\",\n                        \"fsk:temporalInformation\": \"s1990 - 2000\"\n                    },\n                    \"fsk:generalInformation\": {\n                        \"fsk:name\": \"Predictive Toymodel\",\n                        \"fsk:identifier\": \"Toy_Model_predictive_01\",\n                        \"fsk:creationDate\": \"2021-05-01\",\n                        \"fsk:rights\": \"Academic Free License 3.0\",\n                        \"fsk:reference\": [\n                            {\n                                \"fsk:title\": \"Quantitative Risk Assessment of Norovirus Transmission in Food Establishments: Evaluating the Impact of Intervention Strategies and Food Employee Behavior on the Risk Associated with Norovirus in Foods\",\n                                \"fsk:isReferenceDescription\": true,\n                                \"fsk:doi\": \"doi\"\n                            },\n                            {\n                                \"fsk:title\": \"Norwalk virus: How infectious is it?\",\n                                \"fsk:isReferenceDescription\": true,\n                                \"fsk:doi\": \"doi\"\n                            },\n                            {\n                                \"fsk:title\": \"Dose Response Models For Infectious Gastroenteritis\",\n                                \"fsk:isReferenceDescription\": true,\n                                \"fsk:doi\": \"doi\"\n                            }\n                        ],\n                        \"fsk:languageWrittenIn\": \"Python\",\n                        \"fsk:description\": \"description of a system using mathematical concepts and language. The process of developing a mathematical model is termed mathematical modeling. Mathematical models are used in the natural sciences (such as physics, biology, earth science, chemistry) and engineering disciplines (such as computer science, electrical engineering), as well as in the social sciences (such as economics, psychology, sociology, political science).\",\n                        \"fsk:url\": \"https://url-for-resource-location.bfr.bund.de\",\n                        \"fsk:source\": \"UNPUBLISHED STUDIES (EXPERIMENTS-OBSERVATIONS)\",\n                        \"fsk:objective\": \"Objective is to test, whether all metadata are displayed correctly\",\n                        \"fsk:author\": [\n                            {\n                                \"fsk:givenName\": \"Steve\",\n                                \"fsk:region\": \"Greater New Yorker Area\",\n                                \"fsk:email\": \"mosley@nyu.org\",\n                                \"fsk:telephone\": \"080 12345566\",\n                                \"fsk:familyName\": \"Mosley\",\n                                \"fsk:country\": \"Saint Vincent and the Grenadines\",\n                                \"fsk:zipCode\": \"12345\",\n                                \"fsk:organization\": \"NYU\",\n                                \"fsk:streetAddress\": \"Berliner Strasse 2\",\n                                \"fsk:title\": \"Prof\"\n                            }\n                        ],\n                        \"fsk:availability\": \"Other\",\n                        \"fsk:software\": \"FSK-Lab\",\n                        \"fsk:creator\": [\n                            {\n                                \"fsk:givenName\": \"Natalia\",\n                                \"fsk:region\": \"Berlin-Brandenburg\",\n                                \"fsk:email\": \"black_widow@marvel.com\",\n                                \"fsk:telephone\": \"030 12345\",\n                                \"fsk:familyName\": \"Romanov\",\n                                \"fsk:country\": \"Russian Federation\",\n                                \"fsk:zipCode\": \"14123\",\n                                \"fsk:organization\": \"SHIELD\",\n                                \"fsk:streetAddress\": \"Nahmitzer Damm 40\",\n                                \"fsk:title\": \"Dr.\"\n                            },\n                            {\n                                \"fsk:givenName\": \"Peter\",\n                                \"fsk:region\": \"Brandenburg\",\n                                \"fsk:email\": \"peter.parker@parker.com\",\n                                \"fsk:telephone\": \"03301 1369158\",\n                                \"fsk:familyName\": \"Parker\",\n                                \"fsk:country\": \"United States\",\n                                \"fsk:zipCode\": \"16515\",\n                                \"fsk:organization\": \"Parker Industries\",\n                                \"fsk:streetAddress\": \"Am Kleinen Wannsee 16\",\n                                \"fsk:title\": \"Mr.\"\n                            }\n                        ],\n                        \"fsk:format\": \".fskx\",\n                        \"fsk:status\": \"Uncurated\",\n                        \"fsk:language\": \"German\"\n                    }\n                }\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "captureFSKLabEvent6",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2021-03-03T11:30:47.0Z\",\n    \"format\": \"application/ld+json\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:collecting\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2017\",\n                    \"urn:epc:id:sgtin:0614141.107346.2018\"\n                ],\n                \"eventTime\": \"2021-07-07T14:53:11.38767+02:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.07346.1234\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ],\n                \"fsk:model\": {\n                    \"fsk:dataBackground\": {\n                        \"fsk:assay\": [\n                            {\n                                \"fsk:detectionLimit\": \"30-300\",\n                                \"fsk:description\": \"spectroscopic analytical procedure used to measure the concentration of protein in a solution. It is subjective, i.e., dependent on the amino acid composition of the measured protein\",\n                                \"fsk:name\": \"Bradford protein assay\",\n                                \"fsk:quantificationLimit\": \"5000 - 8000\",\n                                \"fsk:contaminationRange\": \"500-4000\"\n                            },\n                            {\n                                \"fsk:description\": \"ELISA is a popular format of \\\"wet-lab\\\" type analytic biochemistry assay that uses a solid-phase enzyme immunoassay (EIA) to detect the presence of a substance, usually an antigen, in a liquid sample or wet sample.\",\n                                \"fsk:name\": \"ELISA\",\n                                \"fsk:contaminationRange\": \"200-800\"\n                            },\n                            {\n                                \"fsk:description\": \"standard method used to determine virus concentration in terms of infectious dose. Viral plaque assays determine the number of plaque forming units (pfu) in a virus sample, which is one measure of virus quantity.\",\n                                \"fsk:name\": \"Plaque-Assay\",\n                                \"fsk:contaminationRange\": \"0,5 - 400\"\n                            }\n                        ],\n                        \"fsk:study\": {\n                            \"fsk:protocolURI\": \"https://url-for-study-protocol-location.bfr.bund.de\",\n                            \"fsk:protocolParametersName\": \"Parameter 1\",\n                            \"fsk:protocolType\": \"Extraction Protocol\",\n                            \"fsk:description\": \"This Study will show, wether the FSK Lab will correctly read and run a generic and fully annotated model\",\n                            \"fsk:assayTechnologyType\": \"QPCR\",\n                            \"fsk:protocolComponentsType\": \"hardware\",\n                            \"fsk:title\": \"Assessment of integrity of metadata in FKS Lab and associated services\",\n                            \"fsk:assayMeasurementType\": \"It works or it doesn't\",\n                            \"fsk:protocolDescription\": \"The protocol is definitly not made up\",\n                            \"fsk:accreditationProcedureForTheAssayTechnology\": \"Internally validated\",\n                            \"fsk:assayTechnologyPlatform\": \"Orbital Platform\",\n                            \"fsk:protocolVersion\": \"version 1.0\",\n                            \"fsk:identifier\": \"Study_Generic_Sheet_1\",\n                            \"fsk:protocolName\": \"Extraction Protocol Of FSK\",\n                            \"fsk:designType\": \"Trial and Error\",\n                            \"fsk:protocolComponentsName\": \"windows pc\"\n                        },\n                        \"fsk:laboratory\": [\n                            {\n                                \"fsk:accreditation\": [\n                                    \"accredited\"\n                                ],\n                                \"fsk:name\": \"National High Magnetic Field Laboratory\",\n                                \"fsk:country\": \"United States\"\n                            },\n                            {\n                                \"fsk:accreditation\": [\n                                    \"accredited\"\n                                ],\n                                \"fsk:name\": \"Everest Medical Laboratory\",\n                                \"fsk:country\": \"India\"\n                            },\n                            {\n                                \"fsk:accreditation\": [\n                                    \"accredited\"\n                                ],\n                                \"fsk:name\": \"RimeTimeLab\",\n                                \"fsk:country\": \"Germany\"\n                            }\n                        ]\n                    },\n                    \"fsk:modelType\": \"PredictiveModel\",\n                    \"fsk:modelMath\": {\n                        \"fsk:parameter\": [\n                            {\n                                \"fsk:id\": \"Dose_matrix\",\n                                \"fsk:unit\": \"kGy/h\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"matrix with GEC NoV for each serving (rows=servings; columns = number of different employee-teams that prepare food)\",\n                                \"fsk:error\": \"0.5\",\n                                \"fsk:variabilitySubject\": \"days\",\n                                \"fsk:maxValue\": \"10000.0\",\n                                \"fsk:source\": \"Article\",\n                                \"fsk:subject\": \"Animal\",\n                                \"fsk:name\": \"Dose_matrix\",\n                                \"fsk:unitCategory\": \"Energy Content Rate\",\n                                \"fsk:dataType\": \"FILE\",\n                                \"fsk:distribution\": \"Bernoulli 1\",\n                                \"fsk:value\": \"as.matrix(read.table(file =\\\"Dose_matrix.csv\\\",sep=\\\",\\\", header = TRUE, row.names=1))\",\n                                \"fsk:minValue\": \"1.0\"\n                            },\n                            {\n                                \"fsk:id\": \"nInf\",\n                                \"fsk:unit\": \"PFU/25g\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"number of infected individuals, mean over stores (2000 servings per store)\",\n                                \"fsk:error\": \"0.4\",\n                                \"fsk:variabilitySubject\": \"hours\",\n                                \"fsk:maxValue\": \"20000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Batch of animals\",\n                                \"fsk:name\": \"nInf\",\n                                \"fsk:unitCategory\": \"Number Content (count/mass)\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Log-Logistic 2\",\n                                \"fsk:minValue\": \"0.1\"\n                            },\n                            {\n                                \"fsk:id\": \"nIll\",\n                                \"fsk:unit\": \"mg\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"number of ill individuals, mean over stores (2000 servings per store)\",\n                                \"fsk:error\": \"0.3\",\n                                \"fsk:variabilitySubject\": \"size\",\n                                \"fsk:maxValue\": \"30000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Batch of products\",\n                                \"fsk:name\": \"nIll\",\n                                \"fsk:unitCategory\": \"Mass\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Half Cauchy 1\",\n                                \"fsk:minValue\": \"0.3\"\n                            },\n                            {\n                                \"fsk:id\": \"meanPos\",\n                                \"fsk:unit\": \"month\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"mean number of NoV particles over positive servings\",\n                                \"fsk:error\": \"0.2\",\n                                \"fsk:variabilitySubject\": \"height\",\n                                \"fsk:maxValue\": \"40000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Other\",\n                                \"fsk:name\": \"meanPos\",\n                                \"fsk:unitCategory\": \"Time\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Generalized Poisson 3\",\n                                \"fsk:minValue\": \"0.5\"\n                            },\n                            {\n                                \"fsk:id\": \"prev18\",\n                                \"fsk:unit\": \"g/daily portion\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"proportion of servings with >18 NoV\",\n                                \"fsk:error\": \"0.1\",\n                                \"fsk:variabilitySubject\": \"weight\",\n                                \"fsk:maxValue\": \"50000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Other\",\n                                \"fsk:name\": \"prev18\",\n                                \"fsk:unitCategory\": \"Mass\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Binomial 1\",\n                                \"fsk:minValue\": \"0.2\"\n                            },\n                            {\n                                \"fsk:id\": \"prev100\",\n                                \"fsk:unit\": \"objects/g\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"proportion of servings with >100 NoV\",\n                                \"fsk:error\": \"0.01\",\n                                \"fsk:variabilitySubject\": \"color\",\n                                \"fsk:maxValue\": \"60000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Feces\",\n                                \"fsk:name\": \"prev100\",\n                                \"fsk:unitCategory\": \"Number Content (count/mass)\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Discrete distribution\",\n                                \"fsk:minValue\": \"0.12\"\n                            },\n                            {\n                                \"fsk:id\": \"prev1000\",\n                                \"fsk:unit\": \"Bq/L\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"proportion of servings with >1000 NoV\",\n                                \"fsk:error\": \"0.02\",\n                                \"fsk:variabilitySubject\": \"shape\",\n                                \"fsk:maxValue\": \"70000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Feces\",\n                                \"fsk:name\": \"prev1000\",\n                                \"fsk:unitCategory\": \"Energy content rate\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Geometric 1\",\n                                \"fsk:minValue\": \"0.142\"\n                            },\n                            {\n                                \"fsk:id\": \"alpha\",\n                                \"fsk:unit\": \"month\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"Alpha parameter in dose response model related to probability of infection (shape of beta distribution)\",\n                                \"fsk:error\": \"0.03\",\n                                \"fsk:variabilitySubject\": \"age\",\n                                \"fsk:maxValue\": \"80000.0\",\n                                \"fsk:source\": \"Expert opinion\",\n                                \"fsk:subject\": \"Carcass skin\",\n                                \"fsk:name\": \"alpha\",\n                                \"fsk:unitCategory\": \"Time\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Half-normal 1\",\n                                \"fsk:value\": \"0.04\",\n                                \"fsk:minValue\": \"0.01\"\n                            },\n                            {\n                                \"fsk:id\": \"beta\",\n                                \"fsk:unit\": \"Inertia\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"Beta parameter in dose response model related to probability of infection (scale of beta distribution)\",\n                                \"fsk:error\": \"0.4\",\n                                \"fsk:variabilitySubject\": \"concentration\",\n                                \"fsk:maxValue\": \"90000.0\",\n                                \"fsk:source\": \"Estimate\",\n                                \"fsk:subject\": \"Product\",\n                                \"fsk:name\": \"beta\",\n                                \"fsk:unitCategory\": \"Energy content\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Negative Binomial 1\",\n                                \"fsk:value\": \"0.055\",\n                                \"fsk:minValue\": \"0.002\"\n                            },\n                            {\n                                \"fsk:id\": \"eta\",\n                                \"fsk:unit\": \"kcal/portion\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"Eta parameter in dose response model related to probability of illnes (scale parameter for gamma distribution)\",\n                                \"fsk:error\": \"0.5\",\n                                \"fsk:variabilitySubject\": \"difficulty\",\n                                \"fsk:maxValue\": \"100000.0\",\n                                \"fsk:source\": \"Assumption\",\n                                \"fsk:subject\": \"Package\",\n                                \"fsk:name\": \"eta\",\n                                \"fsk:unitCategory\": \"Other\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Arcsine 2\",\n                                \"fsk:value\": \"0.00255\",\n                                \"fsk:minValue\": \"0.01\"\n                            },\n                            {\n                                \"fsk:id\": \"r\",\n                                \"fsk:unit\": \"dimensionless\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"R parameter in dose response model related to probability of illness (shape parameter for gamma distribution)\",\n                                \"fsk:error\": \"0.05\",\n                                \"fsk:variabilitySubject\": \"species\",\n                                \"fsk:maxValue\": \"110000.0\",\n                                \"fsk:source\": \"Not applicable \",\n                                \"fsk:subject\": \"Belly\",\n                                \"fsk:name\": \"r\",\n                                \"fsk:unitCategory\": \"Dimensionless\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Multivariate Gaussian 2\",\n                                \"fsk:value\": \"0.086\",\n                                \"fsk:minValue\": \"0.1\"\n                            }\n                        ],\n                        \"fsk:qualityMeasures\": [\n                            {\n                                \"sse\": 0,\n                                \"aic\": 0,\n                                \"rmse\": 0.3,\n                                \"bic\": 1,\n                                \"mse\": 0.2,\n                                \"rsquared\": 0.9\n                            }\n                        ],\n                        \"fsk:fittingProcedure\": \"Maximum likelihood estimation (MLE)\"\n                    },\n                    \"fsk:scope\": {\n                        \"fsk:hazard\": [\n                            {\n                                \"fsk:noObservedAdverseAffectLevel\": \"10 mg\",\n                                \"fsk:acuteReferenceDose\": \"80 mg\",\n                                \"fsk:acceptableOperatorsExposureLevel\": \"50 mg\",\n                                \"fsk:unit\": \"CFU\",\n                                \"fsk:type\": \"Organic contaminants\",\n                                \"fsk:acceptableDailyIntake\": \"20 mg\",\n                                \"fsk:maximumResidueLimit\": \"0.01 mg/kg\",\n                                \"fsk:description\": \"novovirus is described as nast and hard to get rid of\",\n                                \"fsk:lowestObservedAdverseAffectLevel\": \"40 mg\",\n                                \"fsk:name\": \"norovirus (Norwalk-like virus)\",\n                                \"fsk:sourceOfContamination\": \"sewage\",\n                                \"fsk:adverseEffect\": \"morbitity\"\n                            },\n                            {\n                                \"fsk:noObservedAdverseAffectLevel\": \"5 mg\",\n                                \"fsk:acuteReferenceDose\": \"100 mg\",\n                                \"fsk:acceptableOperatorsExposureLevel\": \"80 mg\",\n                                \"fsk:unit\": \"Fill\",\n                                \"fsk:type\": \"micro\",\n                                \"fsk:acceptableDailyIntake\": \"30 mg\",\n                                \"fsk:maximumResidueLimit\": \"0.11 mg/kg\",\n                                \"fsk:description\": \"we dont know how that got into the tomatoes but it is there\",\n                                \"fsk:lowestObservedAdverseAffectLevel\": \"50 mg\",\n                                \"fsk:name\": \"Salmonella Daarle\",\n                                \"fsk:sourceOfContamination\": \"air\",\n                                \"fsk:adverseEffect\": \"mortality\"\n                            },\n                            {\n                                \"fsk:noObservedAdverseAffectLevel\": \"1 mg\",\n                                \"fsk:acceptableOperatorsExposureLevel\": \"120 mg\",\n                                \"fsk:unit\": \"fg/mL\",\n                                \"fsk:description\": \"tastes great but bad for your beach bod\",\n                                \"fsk:acuteReferenceDose\": \"140 mg\",\n                                \"fsk:type\": \"Food additives\",\n                                \"fsk:acceptableDailyIntake\": \"90 mg\",\n                                \"fsk:benchmarkDose\": \"123.12\",\n                                \"fsk:maximumResidueLimit\": \"0.25 - 0.4 mg/kg\",\n                                \"fsk:lowestObservedAdverseAffectLevel\": \"100 mg\",\n                                \"fsk:name\": \"Monoammonium glutamate\",\n                                \"fsk:sourceOfContamination\": \"rodents\",\n                                \"fsk:adverseEffect\": \"obesity\"\n                            }\n                        ],\n                        \"fsk:product\": [\n                            {\n                                \"fsk:expiryDate\": \"2011-12-01\",\n                                \"fsk:unit\": \"g\",\n                                \"fsk:productionDate\": \"2011-10-30\",\n                                \"fsk:description\": \"fresh german lettuce\",\n                                \"fsk:originCountry\": \"Germany\",\n                                \"fsk:name\": \"Lettuce\",\n                                \"fsk:originArea\": \"Aachen, Kreisfreie Stadt\",\n                                \"fsk:fisheriesArea\": \"Arctic Sea\"\n                            },\n                            {\n                                \"fsk:expiryDate\": \"2013-02-01\",\n                                \"fsk:unit\": \"g\",\n                                \"fsk:productionDate\": \"2012-12-03\",\n                                \"fsk:description\": \"not so fresh\",\n                                \"fsk:originCountry\": \"Spain\",\n                                \"fsk:name\": \"Tomatoes\",\n                                \"fsk:originArea\": \"Lazio\",\n                                \"fsk:fisheriesArea\": \"Mediterranean and Black Sea\"\n                            },\n                            {\n                                \"fsk:expiryDate\": \"2014-05-01\",\n                                \"fsk:unit\": \"g\",\n                                \"fsk:productionDate\": \"2013-05-15\",\n                                \"fsk:description\": \"pretty much any processed meat product imaginable\",\n                                \"fsk:originCountry\": \"United Kingdom\",\n                                \"fsk:name\": \"Meat, preparations of meat, offals, blood, animal fats; fresh, chilled or frozen, salted, in brine, dried or smoked or processed as flours or meals; other processed products such as sausages and food preparations based on these\",\n                                \"fsk:originArea\": \"East Anglia\",\n                                \"fsk:fisheriesArea\": \"Atlantic Ocean\"\n                            }\n                        ],\n                        \"fsk:generalComment\": \"(General Comment) The Scope of this model is universal\",\n                        \"fsk:temporalInformation\": \"s1990 - 2000\"\n                    },\n                    \"fsk:generalInformation\": {\n                        \"fsk:name\": \"Predictive Toymodel\",\n                        \"fsk:identifier\": \"Toy_Model_predictive_01\",\n                        \"fsk:creationDate\": \"2021-06-01\",\n                        \"fsk:rights\": \"Academic Free License 3.0\",\n                        \"fsk:reference\": [\n                            {\n                                \"fsk:title\": \"Quantitative Risk Assessment of Norovirus Transmission in Food Establishments: Evaluating the Impact of Intervention Strategies and Food Employee Behavior on the Risk Associated with Norovirus in Foods\",\n                                \"fsk:isReferenceDescription\": true,\n                                \"fsk:doi\": \"doi\"\n                            },\n                            {\n                                \"fsk:title\": \"Norwalk virus: How infectious is it?\",\n                                \"fsk:isReferenceDescription\": true,\n                                \"fsk:doi\": \"doi\"\n                            },\n                            {\n                                \"fsk:title\": \"Dose Response Models For Infectious Gastroenteritis\",\n                                \"fsk:isReferenceDescription\": true,\n                                \"fsk:doi\": \"doi\"\n                            }\n                        ],\n                        \"fsk:languageWrittenIn\": \"Python\",\n                        \"fsk:description\": \"description of a system using mathematical concepts and language. The process of developing a mathematical model is termed mathematical modeling. Mathematical models are used in the natural sciences (such as physics, biology, earth science, chemistry) and engineering disciplines (such as computer science, electrical engineering), as well as in the social sciences (such as economics, psychology, sociology, political science).\",\n                        \"fsk:url\": \"https://url-for-resource-location.bfr.bund.de\",\n                        \"fsk:source\": \"UNPUBLISHED STUDIES (EXPERIMENTS-OBSERVATIONS)\",\n                        \"fsk:objective\": \"Objective is to test, whether all metadata are displayed correctly\",\n                        \"fsk:author\": [\n                            {\n                                \"fsk:givenName\": \"Steve\",\n                                \"fsk:region\": \"Greater New Yorker Area\",\n                                \"fsk:email\": \"mosley@nyu.org\",\n                                \"fsk:telephone\": \"080 12345566\",\n                                \"fsk:familyName\": \"Mosley\",\n                                \"fsk:country\": \"Saint Vincent and the Grenadines\",\n                                \"fsk:zipCode\": \"12345\",\n                                \"fsk:organization\": \"NYU\",\n                                \"fsk:streetAddress\": \"Berliner Strasse 2\",\n                                \"fsk:title\": \"Prof\"\n                            }\n                        ],\n                        \"fsk:availability\": \"Other\",\n                        \"fsk:software\": \"FSK-Lab\",\n                        \"fsk:creator\": [\n                            {\n                                \"fsk:givenName\": \"Natalia\",\n                                \"fsk:region\": \"Berlin-Brandenburg\",\n                                \"fsk:email\": \"black_widow@marvel.com\",\n                                \"fsk:telephone\": \"030 12345\",\n                                \"fsk:familyName\": \"Romanov\",\n                                \"fsk:country\": \"Russian Federation\",\n                                \"fsk:zipCode\": \"14123\",\n                                \"fsk:organization\": \"SHIELD\",\n                                \"fsk:streetAddress\": \"Nahmitzer Damm 40\",\n                                \"fsk:title\": \"Dr.\"\n                            },\n                            {\n                                \"fsk:givenName\": \"Peter\",\n                                \"fsk:region\": \"Brandenburg\",\n                                \"fsk:email\": \"peter.parker@parker.com\",\n                                \"fsk:telephone\": \"03301 1369158\",\n                                \"fsk:familyName\": \"Parker\",\n                                \"fsk:country\": \"United States\",\n                                \"fsk:zipCode\": \"16515\",\n                                \"fsk:organization\": \"Parker Industries\",\n                                \"fsk:streetAddress\": \"Am Kleinen Wannsee 16\",\n                                \"fsk:title\": \"Mr.\"\n                            }\n                        ],\n                        \"fsk:format\": \".fskx\",\n                        \"fsk:status\": \"Uncurated\",\n                        \"fsk:language\": \"German\"\n                    }\n                }\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "captureFSKLABSchema",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/home/shalika/Documents/SchemaForUXTesting/FSKModel.json"
+										},
+										{
+											"key": "namespace",
+											"value": "https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json",
+											"type": "text"
+										},
+										{
+											"key": "defaultPrefix",
+											"value": "fsk",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/userExtension/jsonSchema",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"userExtension",
+										"jsonSchema"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ByIlmdUX",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"@context\": {\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        },\n        \"EQ_INNER_fsk:modelType\": [\n            \"PredictiveModel\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orderByUX",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"@context\": {\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        },\n        \"orderBy\": \"fsk:model.fsk:generalInformation.fsk:creationDate\",\n        \"orderDirection\": \"asc\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "byURN",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "GS1-EPC-Format",
+								"value": "Always_EPC_URN",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"queryType\": \"events\",\n    \"query\": {\n        \"MATCH_anyEPCClass\": [\n            \"https://id.gs1.org/01/00614141777778/10/987\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ByBizLocation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "GS1-EPC-Format",
+								"value": "Never_Translate",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"queryType\": \"events\",\n    \"query\": {\n        \"EQ_bizLocation\": [\n            \"urn:epc:id:sgln:0012345.11111.0\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ByUOMValue",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"queryType\": \"events\",\n    \"query\": {\n        \"EQ_value_KEL\": [299.15]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "subscription",
+			"item": [
+				{
+					"name": "capture",
+					"item": [
+						{
+							"name": "captureObjectEvent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\"https://gs1.github.io/EPCIS/epcis-context.jsonld\",{\"example\": \"http://ns.example.com/epcis/\"}],\n  \n  \"id\": \"_:document1\",\n  \"isA\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\":\"2021-07-11T11:30:47.0Z\",\n  \"epcisBody\": {\n   \"eventList\": [\n     {\n\t\t  \"eventID\": \"ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:shipping\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n\t\t  \"epcList\": [\"urn:epc:id:sgtin:0614141.107346.2017\",\"urn:epc:id:sgtin:0614141.107346.2018\"],\n\t\t  \"eventTime\": \"2021-04-03T20:33:31.116000-06:00\",\n\t\t  \"eventTimeZoneOffset\": \"-06:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:0614141.07346.1234\"},\n\t\t  \"bizTransactionList\": [  {\"type\": \"urn:epcglobal:cbv:btt:po\", \"bizTransaction\": \"http://transaction.acme.com/po/12345678\" }  ]\n     },\n\n     {\n\t\t  \"eventID\": \"ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:receiving\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n\t\t  \"epcList\": [\"urn:epc:id:sgtin:0614141.107346.2018\"],\n\t\t  \"eventTime\": \"2021-04-04T20:33:31.116-06:00\",\n\t\t  \"eventTimeZoneOffset\": \"-06:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:0012345.11111.400\"},\n\t\t  \"bizLocation\": {\"id\": \"urn:epc:id:sgln:0012345.11111.0\"},\n\t\t  \"bizTransactionList\": [ \n                   {\"type\": \"urn:epcglobal:cbv:btt:po\", \"bizTransaction\": \"http://transaction.acme.com/po/12345678\" },\n                   {\"type\": \"urn:epcglobal:cbv:btt:desadv\", \"bizTransaction\": \"urn:epcglobal:cbv:bt:0614141073467:1152\" }\n                  ],\n\t\t  \"example:myField\": \"Example of a vendor/user extension\"\n     }\n\n   ]\n  }\n  \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "webhookSubscription",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"callbackUrl\": \"http://localhost:8080/testWebhookSubscription\",\n    \"secret\": \"0435ojtojt02\",\n    \"reportIfEmpty\": true,\n    \"initialRecordTime\": \"2019-07-11T11:30:47.0Z\",\n    \"schedule\": {\n        \"second\": \"0/30\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}} /queries/EventTypeQuery/subscriptions",
+							"host": [
+								"{{url}} "
+							],
+							"path": [
+								"queries",
+								"EventTypeQuery",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "persistEventTypeQuery",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"eventType\": [\n            \"ObjectEvent\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/EventTypeQuery",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"EventTypeQuery"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "getCaptureJobByCaptureID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/capture/4e43d1a0-339b-4bb5-8ac1-16adcf9e7726",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"capture",
+						"4e43d1a0-339b-4bb5-8ac1-16adcf9e7726"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
