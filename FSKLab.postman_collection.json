@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "684f42d1-2ece-4806-86cb-96bf0e5cb4ef",
+		"name": "FSKLab",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Capture",
+			"item": [
+				{
+					"name": "capturePredictiveModel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2021-03-03T11:30:47.0Z\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:collecting\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2017\",\n                    \"urn:epc:id:sgtin:0614141.107346.2018\"\n                ],\n                \"eventTime\": \"2021-03-14T20:33:31.116000-06:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.07346.1234\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ],\n                \"fsk:model\": {\n                    \"fsk:modelType\": \"PredictiveModel\",\n                    \"fsk:generalInformation\": {\n                        \"fsk:name\": \"Milk\",\n                        \"fsk:identifier\": \"Color\",\n                        \"fsk:creationDate\": \"2021-03-03T11:30:47.0Z\",\n                        \"fsk:rights\": \"Given\",\n                        \"fsk:reference\": [\n                            {\n                                \"fsk:isReferenceDescription\": \"true\",\n                                \"fsk:doi\": \"DOI\",\n                                \"fsk:title\": \"Dabur\"\n                            }\n                        ],\n                        \"fsk:languageWrittenIn\": \"R\"\n                    },\n                    \"fsk:scope\": {\n                        \"fsk:product\": [\n                            {\n                                \"fsk:name\": \"food product\",\n                                \"fsk:unit\": \"Child\"\n                            }\n                        ],\n                        \"fsk:hazard\": [\n                            {\n                                \"fsk:name\": \"Sugar\"\n                            }\n                        ]\n                    },\n                    \"fsk:dataBackground\": {\n                        \"fsk:study\": {\n                            \"fsk:title\": \"Title of study\"\n                        }\n                    },\n                    \"fsk:modelMath\": {\n                        \"fsk:parameter\": [\n                            {\n                                \"fsk:id\": \"UFGH456\",\n                                \"fsk:classification\": \"CONSTANT\",\n                                \"fsk:unit\": \"BeeProd\",\n                                \"fsk:name\": \"Queen\",\n                                \"fsk:dataType\": \"INTEGER\"\n                            }\n                        ]\n                    }\n                }\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/capture",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"capture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "captureExposureModel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": 2.0,\n    \"creationDate\": \"2021-03-03T11:30:47.0Z\",\n    \"format\": \"application/ld+json\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:collecting\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2017\",\n                    \"urn:epc:id:sgtin:0614141.107346.2018\"\n                ],\n                \"eventTime\": \"2021-03-10T20:33:31.116000-06:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.07346.1234\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ],\n                \"fsk:model\": {\n                    \"fsk:modelType\": \"ExposureModel\",\n                    \"fsk:generalInformation\": {\n                        \"fsk:name\": \"Mercury\",\n                        \"fsk:identifier\": \"Radiation\",\n                        \"fsk:creationDate\": \"2021-03-03T11:30:47.0Z\",\n                        \"fsk:rights\": \"Given\",\n                        \"fsk:reference\": [\n                            {\n                                \"fsk:isReferenceDescription\": \"true\",\n                                \"fsk:doi\": \"DOI\",\n                                \"fsk:title\": \"UCIL\"\n                            }\n                        ],\n                        \"fsk:languageWrittenIn\": \"MatLab\"\n                    },\n                    \"fsk:scope\": {\n                        \"fsk:product\": [\n                            {\n                                \"fsk:name\": \"food product\",\n                                \"fsk:unit\": \"Everyone\"\n                            }\n                        ],\n                        \"fsk:hazard\": [\n                            {\n                                \"fsk:name\": \"Hg\"\n                            }\n                        ],\n                        \"fsk:populationGroup\": [\n                            {\n                                \"fsk:name\": \"Adult\"\n                            }\n                        ]\n                    },\n                    \"fsk:dataBackground\": {\n                        \"fsk:study\": {\n                            \"fsk:title\": \"Title of study\"\n                        }\n                    },\n                    \"fsk:modelMath\": {\n                        \"fsk:parameter\": [\n                            {\n                                \"fsk:id\": \"UFGH456\",\n                                \"fsk:classification\": \"CONSTANT\",\n                                \"fsk:unit\": \"BeeProd\",\n                                \"fsk:name\": \"Queen\",\n                                \"fsk:dataType\": \"INTEGER\"\n                            }\n                        ],\n                        \"fsk:exposure\": [\n                            {\n                                \"fsk:type\": \"Harmful Radiation\"\n                            }\n                        ]\n                    }\n                }\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/capture",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"capture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "captureSensorEvent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": 2.0,\n    \"creationDate\": \"2021-03-03T11:30:47.0Z\",\n    \"format\": \"application/ld+json\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:4012345.011111.9876\"\n                ],\n                \"eventTime\": \"2019-04-02T15:00:00.000+01:00\",\n                \"eventTimeZoneOffset\": \"+01:00\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:4012345.00005.0\"\n                },\n                \"sensorElementList\": [\n                    {\n                        \"sensorMetaData\": {\n                            \"time\": \"2019-04-02T14:05:00.000+01:00\"\n                        },\n                        \"sensorReport\": [\n                            {\n                                \"type\": \"gs1:Temperature\",\n                                \"value\": 26.0,\n                                \"uom\": \"CEL\"\n                            },\n                            {\n                                \"type\": \"gs1:Humidity\",\n                                \"value\": 12.1,\n                                \"uom\": \"A93\"\n                            },\n                            {\n                                \"type\": \"gs1:Speed\",\n                                \"value\": 160.0,\n                                \"uom\": \"KMH\"\n                            },\n                            {\n                                \"type\": \"gs1:Illuminance\",\n                                \"value\": 800.0,\n                                \"uom\": \"LUX\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/capture",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"capture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "capturePredictiveModel(Bug)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"@context\" : [ \"https://gs1.github.io/EPCIS/epcis-context.jsonld\", {\n    \"fsk\" : \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n  } ],\n  \"id\" : \"_:document1\",\n  \"isA\" : \"EPCISDocument\",\n  \"schemaVersion\" : \"2.0\",\n  \"creationDate\" : \"2021-03-03T11:30:47.0Z\",\n  \"format\" : \"application/ld+json\",\n  \"epcisBody\" : {\n    \"eventList\" : [ {\n      \"isA\" : \"ObjectEvent\",\n      \"action\" : \"OBSERVE\",\n      \"bizStep\" : \"urn:epcglobal:cbv:bizstep:collecting\",\n      \"disposition\" : \"urn:epcglobal:cbv:disp:in_transit\",\n      \"epcList\" : [ \"urn:epc:id:sgtin:0614141.107346.2017\", \"urn:epc:id:sgtin:0614141.107346.2018\" ],\n      \"eventTime\" : \"2021-06-14T14:53:11.38767+02:00\",\n      \"eventTimeZoneOffset\" : \"-06:00\",\n      \"readPoint\" : {\n        \"id\" : \"urn:epc:id:sgln:0614141.07346.1234\"\n      },\n      \"bizTransactionList\" : [ {\n        \"type\" : \"urn:epcglobal:cbv:btt:po\",\n        \"bizTransaction\" : \"http://transaction.acme.com/po/12345678\"\n      } ],\n      \"fsk:model\" : {\n        \"fsk:modelType\" : \"PredictiveModel\",\n        \"fsk:generalInformation\" : {\n          \"fsk:name\" : \"Predictive Toymodel\",\n          \"fsk:source\" : \"UNPUBLISHED STUDIES (EXPERIMENTS-OBSERVATIONS)\",\n          \"fsk:identifier\" : \"Toy_Model_predictive_01\",\n          \"fsk:author\" : [ {\n            \"fsk:title\" : \"Prof\",\n            \"fsk:familyName\" : \"Mosley\",\n            \"fsk:givenName\" : \"Steve\",\n            \"fsk:email\" : \"mosley@nyu.org\",\n            \"fsk:telephone\" : \"080 12345566\",\n            \"fsk:streetAddress\" : \"Berliner Strasse 2\",\n            \"fsk:country\" : \"Saint Vincent and the Grenadines\",\n            \"fsk:zipCode\" : \"12345\",\n            \"fsk:region\" : \"Greater New Yorker Area\",\n            \"fsk:organization\" : \"NYU\"\n          } ],\n          \"fsk:creator\" : [ {\n            \"fsk:title\" : \"Dr.\",\n            \"fsk:familyName\" : \"Romanov\",\n            \"fsk:givenName\" : \"Natalia\",\n            \"fsk:email\" : \"black_widow@marvel.com\",\n            \"fsk:telephone\" : \"030 12345\",\n            \"fsk:streetAddress\" : \"Nahmitzer Damm 40\",\n            \"fsk:country\" : \"Russian Federation\",\n            \"fsk:zipCode\" : \"14123\",\n            \"fsk:region\" : \"Berlin-Brandenburg\",\n            \"fsk:organization\" : \"SHIELD\"\n          }, {\n            \"fsk:title\" : \"Mr.\",\n            \"fsk:familyName\" : \"Parker\",\n            \"fsk:givenName\" : \"Peter\",\n            \"fsk:email\" : \"peter.parker@parker.com\",\n            \"fsk:telephone\" : \"03301 1369158\",\n            \"fsk:streetAddress\" : \"Am Kleinen Wannsee 16\",\n            \"fsk:country\" : \"United States\",\n            \"fsk:zipCode\" : \"16515\",\n            \"fsk:region\" : \"Brandenburg\",\n            \"fsk:organization\" : \"Parker Industries\"\n          } ],\n          \"fsk:rights\" : \"Academic Free License 3.0\",\n          \"fsk:availability\" : \"Other\",\n          \"fsk:url\" : \"https://url-for-resource-location.bfr.bund.de\",\n          \"fsk:format\" : \".fskx\",\n          \"fsk:reference\" : [ {\n            \"fsk:title\" : \"Quantitative Risk Assessment of Norovirus Transmission in Food Establishments: Evaluating the Impact of Intervention Strategies and Food Employee Behavior on the Risk Associated with Norovirus in Foods\"\n          }, {\n            \"fsk:title\" : \"Norwalk virus: How infectious is it?\"\n          }, {\n            \"fsk:title\" : \"Dose Response Models For Infectious Gastroenteritis\"\n          } ],\n          \"fsk:language\" : \"German\",\n          \"fsk:software\" : \"FSK-Lab\",\n          \"fsk:languageWrittenIn\" : \"R 3\",\n          \"fsk:status\" : \"Uncurated\",\n          \"fsk:objective\" : \"Objective is to test, whether all metadata are displayed correctly\",\n          \"fsk:description\" : \"description of a system using mathematical concepts and language. The process of developing a mathematical model is termed mathematical modeling. Mathematical models are used in the natural sciences (such as physics, biology, earth science, chemistry) and engineering disciplines (such as computer science, electrical engineering), as well as in the social sciences (such as economics, psychology, sociology, political science).\"\n        },\n        \"fsk:scope\" : {\n          \"fsk:product\" : [ {\n            \"fsk:name\" : \"Lettuce\",\n            \"fsk:description\" : \"fresh german lettuce\",\n            \"fsk:unit\" : \"g\",\n            \"fsk:originCountry\" : \"Germany\",\n            \"fsk:originArea\" : \"Aachen, Kreisfreie Stadt\",\n            \"fsk:fisheriesArea\" : \"Arctic Sea\",\n            \"fsk:productionDate\" : \"2011-10-30\",\n            \"fsk:expiryDate\" : \"2011-12-01\"\n          }, {\n            \"fsk:name\" : \"Tomatoes\",\n            \"fsk:description\" : \"not so fresh\",\n            \"fsk:unit\" : \"g\",\n            \"fsk:originCountry\" : \"Spain\",\n            \"fsk:originArea\" : \"Lazio\",\n            \"fsk:fisheriesArea\" : \"Mediterranean and Black Sea\",\n            \"fsk:productionDate\" : \"2012-12-03\",\n            \"fsk:expiryDate\" : \"2013-02-01\"\n          }, {\n            \"fsk:name\" : \"Meat, preparations of meat, offals, blood, animal fats; fresh, chilled or frozen, salted, in brine, dried or smoked or processed as flours or meals; other processed products such as sausages and food preparations based on these\",\n            \"fsk:description\" : \"pretty much any processed meat product imaginable\",\n            \"fsk:unit\" : \"g\",\n            \"fsk:originCountry\" : \"United Kingdom\",\n            \"fsk:originArea\" : \"East Anglia\",\n            \"fsk:fisheriesArea\" : \"Atlantic Ocean\",\n            \"fsk:productionDate\" : \"2013-05-15\",\n            \"fsk:expiryDate\" : \"2014-05-01\"\n          } ],\n          \"fsk:hazard\" : [ {\n            \"fsk:type\" : \"Organic contaminants\",\n            \"fsk:name\" : \"norovirus (Norwalk-like virus)\",\n            \"fsk:description\" : \"novovirus is described as nast and hard to get rid of\",\n            \"fsk:unit\" : \"CFU\",\n            \"fsk:adverseEffect\" : \"morbitity\",\n            \"fsk:sourceOfContamination\" : \"sewage\",\n            \"fsk:maximumResidueLimit\" : \"0.01 mg/kg\",\n            \"fsk:noObservedAdverseAffectLevel\" : \"10 mg\",\n            \"fsk:lowestObservedAdverseAffectLevel\" : \"40 mg\",\n            \"fsk:acceptableOperatorsExposureLevel\" : \"50 mg\",\n            \"fsk:acuteReferenceDose\" : \"80 mg\",\n            \"fsk:acceptableDailyIntake\" : \"20 mg\"\n          }, {\n            \"fsk:type\" : \"Microorganisms\",\n            \"fsk:name\" : \"Salmonella Daarle\",\n            \"fsk:description\" : \"we dont know how that got into the tomatoes but it is there\",\n            \"fsk:unit\" : \"Fill\",\n            \"fsk:adverseEffect\" : \"mortality\",\n            \"fsk:sourceOfContamination\" : \"air\",\n            \"fsk:maximumResidueLimit\" : \"0.11 mg/kg\",\n            \"fsk:noObservedAdverseAffectLevel\" : \"5 mg\",\n            \"fsk:lowestObservedAdverseAffectLevel\" : \"50 mg\",\n            \"fsk:acceptableOperatorsExposureLevel\" : \"80 mg\",\n            \"fsk:acuteReferenceDose\" : \"100 mg\",\n            \"fsk:acceptableDailyIntake\" : \"30 mg\"\n          }, {\n            \"fsk:type\" : \"Food additives\",\n            \"fsk:name\" : \"Monoammonium glutamate\",\n            \"fsk:description\" : \"tastes great but bad for your beach bod\",\n            \"fsk:unit\" : \"fg/mL\",\n            \"fsk:adverseEffect\" : \"obesity\",\n            \"fsk:sourceOfContamination\" : \"rodents\",\n            \"fsk:benchmarkDose\" : \"123.12\",\n            \"fsk:maximumResidueLimit\" : \"0.25 - 0.4 mg/kg\",\n            \"fsk:noObservedAdverseAffectLevel\" : \"1 mg\",\n            \"fsk:lowestObservedAdverseAffectLevel\" : \"100 mg\",\n            \"fsk:acceptableOperatorsExposureLevel\" : \"120 mg\",\n            \"fsk:acuteReferenceDose\" : \"140 mg\",\n            \"fsk:acceptableDailyIntake\" : \"90 mg\"\n          } ],\n          \"fsk:generalComment\" : \"(General Comment) The Scope of this model is universal\",\n          \"fsk:temporalInformation\" : \"s1990 - 2000\"\n        },\n        \"fsk:dataBackground\" : {\n          \"fsk:study\" : {\n            \"fsk:identifier\" : \"Study_Generic_Sheet_1\",\n            \"fsk:title\" : \"Assessment of integrity of metadata in FKS Lab and associated services\",\n            \"fsk:description\" : \"This Study will show, wether the FSK Lab will correctly read and run a generic and fully annotated model\",\n            \"fsk:designType\" : \"Trial and Error\",\n            \"fsk:assayMeasurementType\" : \"It works or it doesn't\",\n            \"fsk:assayTechnologyType\" : \"QPCR\",\n            \"fsk:assayTechnologyPlatform\" : \"Orbital Platform\",\n            \"fsk:accreditationProcedureForTheAssayTechnology\" : \"Internally validated\",\n            \"fsk:protocolName\" : \"Extraction Protocol Of FSK\",\n            \"fsk:protocolType\" : \"Extraction Protocol\",\n            \"fsk:protocolDescription\" : \"The protocol is definitly not made up\",\n            \"fsk:protocolURI\" : \"https://url-for-study-protocol-location.bfr.bund.de\",\n            \"fsk:protocolVersion\" : \"version 1.0\",\n            \"fsk:protocolParametersName\" : \"Parameter 1\",\n            \"fsk:protocolComponentsName\" : \"windows pc\",\n            \"fsk:protocolComponentsType\" : \"hardware\"\n          },\n          \"fsk:laboratory\" : [ {\n            \"fsk:name\" : \"National High Magnetic Field Laboratory\",\n            \"fsk:country\" : \"United States\"\n          }, {\n            \"fsk:name\" : \"Everest Medical Laboratory\",\n            \"fsk:country\" : \"India\"\n          }, {\n            \"fsk:name\" : \"RimeTimeLab\",\n            \"fsk:country\" : \"Germany\"\n          } ],\n          \"fsk:assay\" : [ {\n            \"fsk:name\" : \"Bradford protein assay\",\n            \"fsk:description\" : \"spectroscopic analytical procedure used to measure the concentration of protein in a solution. It is subjective, i.e., dependent on the amino acid composition of the measured protein\",\n            \"fsk:detectionLimit\" : \"30-300\",\n            \"fsk:quantificationLimit\" : \"5000 - 8000\",\n            \"fsk:contaminationRange\" : \"500-4000\"\n          }, {\n            \"fsk:name\" : \"ELISA\",\n            \"fsk:description\" : \"ELISA is a popular format of \\\"wet-lab\\\" type analytic biochemistry assay that uses a solid-phase enzyme immunoassay (EIA) to detect the presence of a substance, usually an antigen, in a liquid sample or wet sample.\",\n            \"fsk:contaminationRange\" : \"200-800\"\n          }, {\n            \"fsk:name\" : \"Plaque-Assay\",\n            \"fsk:description\" : \"standard method used to determine virus concentration in terms of infectious dose. Viral plaque assays determine the number of plaque forming units (pfu) in a virus sample, which is one measure of virus quantity.\",\n            \"fsk:contaminationRange\" : \"0,5 - 400\"\n          } ]\n        },\n        \"fsk:modelMath\" : {\n          \"fsk:parameter\" : [ {\n            \"fsk:id\" : \"Dose_matrix\",\n            \"fsk:classification\" : \"INPUT\",\n            \"fsk:name\" : \"Dose_matrix\",\n            \"fsk:description\" : \"matrix with GEC NoV for each serving (rows=servings; columns = number of different employee-teams that prepare food)\",\n            \"fsk:unit\" : \"kGy/h\",\n            \"fsk:unitCategory\" : \"Energy Content Rate\",\n            \"fsk:dataType\" : \"FILE\",\n            \"fsk:source\" : \"Article\",\n            \"fsk:subject\" : \"Animal\",\n            \"fsk:distribution\" : \"Bernoulli 1\",\n            \"fsk:value\" : \"0.2\",\n            \"fsk:variabilitySubject\" : \"days\",\n            \"fsk:minValue\" : \"1.0\",\n            \"fsk:maxValue\" : \"10000.0\",\n            \"fsk:error\" : \"0.5\"\n          }, {\n            \"fsk:id\" : \"nInf\",\n            \"fsk:classification\" : \"OUTPUT\",\n            \"fsk:name\" : \"nInf\",\n            \"fsk:description\" : \"number of infected individuals, mean over stores (2000 servings per store)\",\n            \"fsk:unit\" : \"PFU/25g\",\n            \"fsk:unitCategory\" : \"Number Content (count/mass)\",\n            \"fsk:dataType\" : \"DOUBLE\",\n            \"fsk:source\" : \"Model result\",\n            \"fsk:subject\" : \"Batch of animals\",\n            \"fsk:distribution\" : \"Log-Logistic 2\",\n            \"fsk:variabilitySubject\" : \"hours\",\n            \"fsk:minValue\" : \"0.1\",\n            \"fsk:maxValue\" : \"20000.0\",\n            \"fsk:error\" : \"0.4\"\n          }, {\n            \"fsk:id\" : \"nIll\",\n            \"fsk:classification\" : \"OUTPUT\",\n            \"fsk:name\" : \"nIll\",\n            \"fsk:description\" : \"number of ill individuals, mean over stores (2000 servings per store)\",\n            \"fsk:unit\" : \"mg\",\n            \"fsk:unitCategory\" : \"Mass\",\n            \"fsk:dataType\" : \"DOUBLE\",\n            \"fsk:source\" : \"Model result\",\n            \"fsk:subject\" : \"Batch of products\",\n            \"fsk:distribution\" : \"Half Cauchy 1\",\n            \"fsk:variabilitySubject\" : \"size\",\n            \"fsk:minValue\" : \"0.3\",\n            \"fsk:maxValue\" : \"30000.0\",\n            \"fsk:error\" : \"0.3\"\n          }, {\n            \"fsk:id\" : \"meanPos\",\n            \"fsk:classification\" : \"OUTPUT\",\n            \"fsk:name\" : \"meanPos\",\n            \"fsk:description\" : \"mean number of NoV particles over positive servings\",\n            \"fsk:unit\" : \"month\",\n            \"fsk:unitCategory\" : \"Time\",\n            \"fsk:dataType\" : \"DOUBLE\",\n            \"fsk:source\" : \"Model result\",\n            \"fsk:subject\" : \"Other\",\n            \"fsk:distribution\" : \"Generalized Poisson 3\",\n            \"fsk:variabilitySubject\" : \"height\",\n            \"fsk:minValue\" : \"0.5\",\n            \"fsk:maxValue\" : \"40000.0\",\n            \"fsk:error\" : \"0.2\"\n          }, {\n            \"fsk:id\" : \"prev18\",\n            \"fsk:classification\" : \"OUTPUT\",\n            \"fsk:name\" : \"prev18\",\n            \"fsk:description\" : \"proportion of servings with >18 NoV\",\n            \"fsk:unit\" : \"g/daily portion\",\n            \"fsk:unitCategory\" : \"Mass\",\n            \"fsk:dataType\" : \"DOUBLE\",\n            \"fsk:source\" : \"Model result\",\n            \"fsk:subject\" : \"Other\",\n            \"fsk:distribution\" : \"Binomial 1\",\n            \"fsk:variabilitySubject\" : \"weight\",\n            \"fsk:minValue\" : \"0.2\",\n            \"fsk:maxValue\" : \"50000.0\",\n            \"fsk:error\" : \"0.1\"\n          }, {\n            \"fsk:id\" : \"prev100\",\n            \"fsk:classification\" : \"OUTPUT\",\n            \"fsk:name\" : \"prev100\",\n            \"fsk:description\" : \"proportion of servings with >100 NoV\",\n            \"fsk:unit\" : \"objects/g\",\n            \"fsk:unitCategory\" : \"Number Content (count/mass)\",\n            \"fsk:dataType\" : \"DOUBLE\",\n            \"fsk:source\" : \"Model result\",\n            \"fsk:subject\" : \"Feces\",\n            \"fsk:distribution\" : \"Discrete distribution\",\n            \"fsk:variabilitySubject\" : \"color\",\n            \"fsk:minValue\" : \"0.12\",\n            \"fsk:maxValue\" : \"60000.0\",\n            \"fsk:error\" : \"0.01\"\n          }, {\n            \"fsk:id\" : \"prev1000\",\n            \"fsk:classification\" : \"OUTPUT\",\n            \"fsk:name\" : \"prev1000\",\n            \"fsk:description\" : \"proportion of servings with >1000 NoV\",\n            \"fsk:unit\" : \"Bq/L\",\n            \"fsk:unitCategory\" : \"Energy content rate\",\n            \"fsk:dataType\" : \"DOUBLE\",\n            \"fsk:source\" : \"Model result\",\n            \"fsk:subject\" : \"Feces\",\n            \"fsk:distribution\" : \"Geometric 1\",\n            \"fsk:variabilitySubject\" : \"shape\",\n            \"fsk:minValue\" : \"0.142\",\n            \"fsk:maxValue\" : \"70000.0\",\n            \"fsk:error\" : \"0.02\"\n          }, {\n            \"fsk:id\" : \"alpha\",\n            \"fsk:classification\" : \"INPUT\",\n            \"fsk:name\" : \"alpha\",\n            \"fsk:description\" : \"Alpha parameter in dose response model related to probability of infection (shape of beta distribution)\",\n            \"fsk:unit\" : \"month\",\n            \"fsk:unitCategory\" : \"Time\",\n            \"fsk:dataType\" : \"DOUBLE\",\n            \"fsk:source\" : \"Expert opinion\",\n            \"fsk:subject\" : \"Carcass skin\",\n            \"fsk:distribution\" : \"Half-normal 1\",\n            \"fsk:value\" : \"0.04\",\n            \"fsk:variabilitySubject\" : \"age\",\n            \"fsk:minValue\" : \"0.01\",\n            \"fsk:maxValue\" : \"80000.0\",\n            \"fsk:error\" : \"0.03\"\n          }, {\n            \"fsk:id\" : \"beta\",\n            \"fsk:classification\" : \"INPUT\",\n            \"fsk:name\" : \"beta\",\n            \"fsk:description\" : \"Beta parameter in dose response model related to probability of infection (scale of beta distribution)\",\n            \"fsk:unit\" : \"Inertia\",\n            \"fsk:unitCategory\" : \"Energy content\",\n            \"fsk:dataType\" : \"DOUBLE\",\n            \"fsk:source\" : \"Estimate\",\n            \"fsk:subject\" : \"Product\",\n            \"fsk:distribution\" : \"Negative Binomial 1\",\n            \"fsk:value\" : \"0.055\",\n            \"fsk:variabilitySubject\" : \"concentration\",\n            \"fsk:minValue\" : \"0.002\",\n            \"fsk:maxValue\" : \"90000.0\",\n            \"fsk:error\" : \"0.4\"\n          }, {\n            \"fsk:id\" : \"eta\",\n            \"fsk:classification\" : \"INPUT\",\n            \"fsk:name\" : \"eta\",\n            \"fsk:description\" : \"Eta parameter in dose response model related to probability of illnes (scale parameter for gamma distribution)\",\n            \"fsk:unit\" : \"kcal/portion\",\n            \"fsk:unitCategory\" : \"Other\",\n            \"fsk:dataType\" : \"DOUBLE\",\n            \"fsk:source\" : \"Assumption\",\n            \"fsk:subject\" : \"Package\",\n            \"fsk:distribution\" : \"Arcsine 2\",\n            \"fsk:value\" : \"0.00255\",\n            \"fsk:variabilitySubject\" : \"difficulty\",\n            \"fsk:minValue\" : \"0.01\",\n            \"fsk:maxValue\" : \"100000.0\",\n            \"fsk:error\" : \"0.5\"\n          }, {\n            \"fsk:id\" : \"r\",\n            \"fsk:classification\" : \"INPUT\",\n            \"fsk:name\" : \"r\",\n            \"fsk:description\" : \"R parameter in dose response model related to probability of illness (shape parameter for gamma distribution)\",\n            \"fsk:unit\" : \"dimensionless\",\n            \"fsk:unitCategory\" : \"Dimensionless\",\n            \"fsk:dataType\" : \"DOUBLE\",\n            \"fsk:source\" : \"Not applicable \",\n            \"fsk:subject\" : \"Belly\",\n            \"fsk:distribution\" : \"Multivariate Gaussian 2\",\n            \"fsk:value\" : \"0.086\",\n            \"fsk:variabilitySubject\" : \"species\",\n            \"fsk:minValue\" : \"0.1\",\n            \"fsk:maxValue\" : \"110000.0\",\n            \"fsk:error\" : \"0.05\"\n          } ],\n          \"fsk:qualityMeasures\" : [ {\n            \"fsk:sse\" : \"0.0\",\n            \"fsk:mse\" : \"0.2\",\n            \"fsk:rmse\" : \"0.3\",\n            \"fsk:rsquared\" : \"0.9\",\n            \"fsk:aic\" : \"0.0\",\n            \"fsk:bic\" : \"1.0\"\n          } ],\n          \"fsk:fittingProcedure\" : \"Maximum likelihood estimation (MLE)\"\n        }\n      }\n    } ]\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/capture",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"capture"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OnDemandQuery",
+			"item": [
+				{
+					"name": "GetEventFromModelType",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"queryType\": \"events\",\n    \"query\": {\n        \"@context\": {\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        },\n        \"EQ_INNER_fsk:modelType\": [\n            \"ExposureModel\",\n            \"PredictiveModel\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEventsFromLanguageWrittenIn",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "GS1-EPC-Format",
+								"value": "Always_EPC_URN",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"queryType\": \"events\",\n    \"query\": {\n        \"@context\": {\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        },\n        \"EQ_INNER_fsk:languageWrittenIn\": [\n            \"R\",\n            \"MatLab\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RangeQueryOnCreationDate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"queryType\": \"events\",\n    \"query\": {\n        \"@context\": {\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        },\n        \"GT_INNER_fsk:creationDate\": \"2020-03-03T11:30:47.0Z\",\n        \"LT_INNER_fsk:creationDate\": \"2021-12-31T11:30:47.0Z\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MatchQueryOnEPC",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"queryType\": \"events\",\n    \"query\": {\n        \"@context\": {\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        },\n        \"MATCH_anyEPC\": [\n            \"urn:epc:id:sgtin:0614141.*\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GT_value_uomQuery",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"queryType\": \"events\",\n    \"query\": {\n        \"GT_value_KEL\": 280,\n        \"LT_value_KEL\": 300\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
