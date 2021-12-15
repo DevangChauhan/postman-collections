@@ -1,0 +1,453 @@
+{
+    "@context": [
+        "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+        {
+            "fsk": "https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json"
+        }
+    ],
+    "id": "_:document1",
+    "isA": "EPCISDocument",
+    "schemaVersion": "2.0",
+    "creationDate": "2021-03-03T11:30:47.0Z",
+    "format": "application/ld+json",
+    "epcisBody": {
+        "eventList": [
+            {
+                "isA": "ObjectEvent",
+                "action": "OBSERVE",
+                "bizStep": "urn:epcglobal:cbv:bizstep:collecting",
+                "disposition": "urn:epcglobal:cbv:disp:in_transit",
+                "epcList": [
+                    "urn:epc:id:sgtin:0614141.107346.2017",
+                    "urn:epc:id:sgtin:0614141.107346.2018"
+                ],
+                "eventTime": "2021-07-06T14:53:11.38767+02:00",
+                "eventTimeZoneOffset": "-06:00",
+                "readPoint": {
+                    "id": "urn:epc:id:sgln:0614141.07346.1234"
+                },
+                "bizTransactionList": [
+                    {
+                        "type": "urn:epcglobal:cbv:btt:po",
+                        "bizTransaction": "http://transaction.acme.com/po/12345678"
+                    }
+                ],
+                "fsk:model": {
+                    "fsk:dataBackground": {
+                        "fsk:assay": [
+                            {
+                                "fsk:detectionLimit": "30-300",
+                                "fsk:description": "spectroscopic analytical procedure used to measure the concentration of protein in a solution. It is subjective, i.e., dependent on the amino acid composition of the measured protein",
+                                "fsk:name": "Bradford protein assay",
+                                "fsk:quantificationLimit": "5000 - 8000",
+                                "fsk:contaminationRange": "500-4000"
+                            },
+                            {
+                                "fsk:description": "ELISA is a popular format of \"wet-lab\" type analytic biochemistry assay that uses a solid-phase enzyme immunoassay (EIA) to detect the presence of a substance, usually an antigen, in a liquid sample or wet sample.",
+                                "fsk:name": "ELISA",
+                                "fsk:contaminationRange": "200-800"
+                            },
+                            {
+                                "fsk:description": "standard method used to determine virus concentration in terms of infectious dose. Viral plaque assays determine the number of plaque forming units (pfu) in a virus sample, which is one measure of virus quantity.",
+                                "fsk:name": "Plaque-Assay",
+                                "fsk:contaminationRange": "0,5 - 400"
+                            }
+                        ],
+                        "fsk:study": {
+                            "fsk:protocolURI": "https://url-for-study-protocol-location.bfr.bund.de",
+                            "fsk:protocolParametersName": "Parameter 1",
+                            "fsk:protocolType": "Extraction Protocol",
+                            "fsk:description": "This Study will show, wether the FSK Lab will correctly read and run a generic and fully annotated model",
+                            "fsk:assayTechnologyType": "QPCR",
+                            "fsk:protocolComponentsType": "hardware",
+                            "fsk:title": "Assessment of integrity of metadata in FKS Lab and associated services",
+                            "fsk:assayMeasurementType": "It works or it doesn't",
+                            "fsk:protocolDescription": "The protocol is definitly not made up",
+                            "fsk:accreditationProcedureForTheAssayTechnology": "Internally validated",
+                            "fsk:assayTechnologyPlatform": "Orbital Platform",
+                            "fsk:protocolVersion": "version 1.0",
+                            "fsk:identifier": "Study_Generic_Sheet_1",
+                            "fsk:protocolName": "Extraction Protocol Of FSK",
+                            "fsk:designType": "Trial and Error",
+                            "fsk:protocolComponentsName": "windows pc"
+                        },
+                        "fsk:laboratory": [
+                            {
+                                "fsk:accreditation": [
+                                    "accredited"
+                                ],
+                                "fsk:name": "National High Magnetic Field Laboratory",
+                                "fsk:country": "United States"
+                            },
+                            {
+                                "fsk:accreditation": [
+                                    "accredited"
+                                ],
+                                "fsk:name": "Everest Medical Laboratory",
+                                "fsk:country": "India"
+                            },
+                            {
+                                "fsk:accreditation": [
+                                    "accredited"
+                                ],
+                                "fsk:name": "RimeTimeLab",
+                                "fsk:country": "Germany"
+                            }
+                        ]
+                    },
+                    "fsk:modelType": "PredictiveModel",
+                    "fsk:modelMath": {
+                        "fsk:parameter": [
+                            {
+                                "fsk:id": "Dose_matrix",
+                                "fsk:unit": "kGy/h",
+                                "fsk:classification": "INPUT",
+                                "fsk:description": "matrix with GEC NoV for each serving (rows=servings; columns = number of different employee-teams that prepare food)",
+                                "fsk:error": "0.5",
+                                "fsk:variabilitySubject": "days",
+                                "fsk:maxValue": "10000.0",
+                                "fsk:source": "Article",
+                                "fsk:subject": "Animal",
+                                "fsk:name": "Dose_matrix",
+                                "fsk:unitCategory": "Energy Content Rate",
+                                "fsk:dataType": "FILE",
+                                "fsk:distribution": "Bernoulli 1",
+                                "fsk:value": "as.matrix(read.table(file =\"Dose_matrix.csv\",sep=\",\", header = TRUE, row.names=1))",
+                                "fsk:minValue": "1.0"
+                            },
+                            {
+                                "fsk:id": "nInf",
+                                "fsk:unit": "PFU/25g",
+                                "fsk:classification": "OUTPUT",
+                                "fsk:description": "number of infected individuals, mean over stores (2000 servings per store)",
+                                "fsk:error": "0.4",
+                                "fsk:variabilitySubject": "hours",
+                                "fsk:maxValue": "20000.0",
+                                "fsk:source": "Model result",
+                                "fsk:subject": "Batch of animals",
+                                "fsk:name": "nInf",
+                                "fsk:unitCategory": "Number Content (count/mass)",
+                                "fsk:dataType": "DOUBLE",
+                                "fsk:distribution": "Log-Logistic 2",
+                                "fsk:minValue": "0.1"
+                            },
+                            {
+                                "fsk:id": "nIll",
+                                "fsk:unit": "mg",
+                                "fsk:classification": "OUTPUT",
+                                "fsk:description": "number of ill individuals, mean over stores (2000 servings per store)",
+                                "fsk:error": "0.3",
+                                "fsk:variabilitySubject": "size",
+                                "fsk:maxValue": "30000.0",
+                                "fsk:source": "Model result",
+                                "fsk:subject": "Batch of products",
+                                "fsk:name": "nIll",
+                                "fsk:unitCategory": "Mass",
+                                "fsk:dataType": "DOUBLE",
+                                "fsk:distribution": "Half Cauchy 1",
+                                "fsk:minValue": "0.3"
+                            },
+                            {
+                                "fsk:id": "meanPos",
+                                "fsk:unit": "month",
+                                "fsk:classification": "OUTPUT",
+                                "fsk:description": "mean number of NoV particles over positive servings",
+                                "fsk:error": "0.2",
+                                "fsk:variabilitySubject": "height",
+                                "fsk:maxValue": "40000.0",
+                                "fsk:source": "Model result",
+                                "fsk:subject": "Other",
+                                "fsk:name": "meanPos",
+                                "fsk:unitCategory": "Time",
+                                "fsk:dataType": "DOUBLE",
+                                "fsk:distribution": "Generalized Poisson 3",
+                                "fsk:minValue": "0.5"
+                            },
+                            {
+                                "fsk:id": "prev18",
+                                "fsk:unit": "g/daily portion",
+                                "fsk:classification": "OUTPUT",
+                                "fsk:description": "proportion of servings with >18 NoV",
+                                "fsk:error": "0.1",
+                                "fsk:variabilitySubject": "weight",
+                                "fsk:maxValue": "50000.0",
+                                "fsk:source": "Model result",
+                                "fsk:subject": "Other",
+                                "fsk:name": "prev18",
+                                "fsk:unitCategory": "Mass",
+                                "fsk:dataType": "DOUBLE",
+                                "fsk:distribution": "Binomial 1",
+                                "fsk:minValue": "0.2"
+                            },
+                            {
+                                "fsk:id": "prev100",
+                                "fsk:unit": "objects/g",
+                                "fsk:classification": "OUTPUT",
+                                "fsk:description": "proportion of servings with >100 NoV",
+                                "fsk:error": "0.01",
+                                "fsk:variabilitySubject": "color",
+                                "fsk:maxValue": "60000.0",
+                                "fsk:source": "Model result",
+                                "fsk:subject": "Feces",
+                                "fsk:name": "prev100",
+                                "fsk:unitCategory": "Number Content (count/mass)",
+                                "fsk:dataType": "DOUBLE",
+                                "fsk:distribution": "Discrete distribution",
+                                "fsk:minValue": "0.12"
+                            },
+                            {
+                                "fsk:id": "prev1000",
+                                "fsk:unit": "Bq/L",
+                                "fsk:classification": "OUTPUT",
+                                "fsk:description": "proportion of servings with >1000 NoV",
+                                "fsk:error": "0.02",
+                                "fsk:variabilitySubject": "shape",
+                                "fsk:maxValue": "70000.0",
+                                "fsk:source": "Model result",
+                                "fsk:subject": "Feces",
+                                "fsk:name": "prev1000",
+                                "fsk:unitCategory": "Energy content rate",
+                                "fsk:dataType": "DOUBLE",
+                                "fsk:distribution": "Geometric 1",
+                                "fsk:minValue": "0.142"
+                            },
+                            {
+                                "fsk:id": "alpha",
+                                "fsk:unit": "month",
+                                "fsk:classification": "INPUT",
+                                "fsk:description": "Alpha parameter in dose response model related to probability of infection (shape of beta distribution)",
+                                "fsk:error": "0.03",
+                                "fsk:variabilitySubject": "age",
+                                "fsk:maxValue": "80000.0",
+                                "fsk:source": "Expert opinion",
+                                "fsk:subject": "Carcass skin",
+                                "fsk:name": "alpha",
+                                "fsk:unitCategory": "Time",
+                                "fsk:dataType": "DOUBLE",
+                                "fsk:distribution": "Half-normal 1",
+                                "fsk:value": "0.04",
+                                "fsk:minValue": "0.01"
+                            },
+                            {
+                                "fsk:id": "beta",
+                                "fsk:unit": "Inertia",
+                                "fsk:classification": "INPUT",
+                                "fsk:description": "Beta parameter in dose response model related to probability of infection (scale of beta distribution)",
+                                "fsk:error": "0.4",
+                                "fsk:variabilitySubject": "concentration",
+                                "fsk:maxValue": "90000.0",
+                                "fsk:source": "Estimate",
+                                "fsk:subject": "Product",
+                                "fsk:name": "beta",
+                                "fsk:unitCategory": "Energy content",
+                                "fsk:dataType": "DOUBLE",
+                                "fsk:distribution": "Negative Binomial 1",
+                                "fsk:value": "0.055",
+                                "fsk:minValue": "0.002"
+                            },
+                            {
+                                "fsk:id": "eta",
+                                "fsk:unit": "kcal/portion",
+                                "fsk:classification": "INPUT",
+                                "fsk:description": "Eta parameter in dose response model related to probability of illnes (scale parameter for gamma distribution)",
+                                "fsk:error": "0.5",
+                                "fsk:variabilitySubject": "difficulty",
+                                "fsk:maxValue": "100000.0",
+                                "fsk:source": "Assumption",
+                                "fsk:subject": "Package",
+                                "fsk:name": "eta",
+                                "fsk:unitCategory": "Other",
+                                "fsk:dataType": "DOUBLE",
+                                "fsk:distribution": "Arcsine 2",
+                                "fsk:value": "0.00255",
+                                "fsk:minValue": "0.01"
+                            },
+                            {
+                                "fsk:id": "r",
+                                "fsk:unit": "dimensionless",
+                                "fsk:classification": "INPUT",
+                                "fsk:description": "R parameter in dose response model related to probability of illness (shape parameter for gamma distribution)",
+                                "fsk:error": "0.05",
+                                "fsk:variabilitySubject": "species",
+                                "fsk:maxValue": "110000.0",
+                                "fsk:source": "Not applicable ",
+                                "fsk:subject": "Belly",
+                                "fsk:name": "r",
+                                "fsk:unitCategory": "Dimensionless",
+                                "fsk:dataType": "DOUBLE",
+                                "fsk:distribution": "Multivariate Gaussian 2",
+                                "fsk:value": "0.086",
+                                "fsk:minValue": "0.1"
+                            }
+                        ],
+                        "fsk:qualityMeasures": [
+                            {
+                                "sse": 0,
+                                "aic": 0,
+                                "rmse": 0.3,
+                                "bic": 1,
+                                "mse": 0.2,
+                                "rsquared": 0.9
+                            }
+                        ],
+                        "fsk:fittingProcedure": "Maximum likelihood estimation (MLE)"
+                    },
+                    "fsk:scope": {
+                        "fsk:hazard": [
+                            {
+                                "fsk:noObservedAdverseAffectLevel": "10 mg",
+                                "fsk:acuteReferenceDose": "80 mg",
+                                "fsk:acceptableOperatorsExposureLevel": "50 mg",
+                                "fsk:unit": "CFU",
+                                "fsk:type": "Organic contaminants",
+                                "fsk:acceptableDailyIntake": "20 mg",
+                                "fsk:maximumResidueLimit": "0.01 mg/kg",
+                                "fsk:description": "novovirus is described as nast and hard to get rid of",
+                                "fsk:lowestObservedAdverseAffectLevel": "40 mg",
+                                "fsk:name": "norovirus (Norwalk-like virus)",
+                                "fsk:sourceOfContamination": "sewage",
+                                "fsk:adverseEffect": "morbitity"
+                            },
+                            {
+                                "fsk:noObservedAdverseAffectLevel": "5 mg",
+                                "fsk:acuteReferenceDose": "100 mg",
+                                "fsk:acceptableOperatorsExposureLevel": "80 mg",
+                                "fsk:unit": "Fill",
+                                "fsk:type": "micro",
+                                "fsk:acceptableDailyIntake": "30 mg",
+                                "fsk:maximumResidueLimit": "0.11 mg/kg",
+                                "fsk:description": "we dont know how that got into the tomatoes but it is there",
+                                "fsk:lowestObservedAdverseAffectLevel": "50 mg",
+                                "fsk:name": "Salmonella Daarle",
+                                "fsk:sourceOfContamination": "air",
+                                "fsk:adverseEffect": "mortality"
+                            },
+                            {
+                                "fsk:noObservedAdverseAffectLevel": "1 mg",
+                                "fsk:acceptableOperatorsExposureLevel": "120 mg",
+                                "fsk:unit": "fg/mL",
+                                "fsk:description": "tastes great but bad for your beach bod",
+                                "fsk:acuteReferenceDose": "140 mg",
+                                "fsk:type": "Food additives",
+                                "fsk:acceptableDailyIntake": "90 mg",
+                                "fsk:benchmarkDose": "123.12",
+                                "fsk:maximumResidueLimit": "0.25 - 0.4 mg/kg",
+                                "fsk:lowestObservedAdverseAffectLevel": "100 mg",
+                                "fsk:name": "Monoammonium glutamate",
+                                "fsk:sourceOfContamination": "rodents",
+                                "fsk:adverseEffect": "obesity"
+                            }
+                        ],
+                        "fsk:product": [
+                            {
+                                "fsk:expiryDate": "2011-12-01",
+                                "fsk:unit": "g",
+                                "fsk:productionDate": "2011-10-30",
+                                "fsk:description": "fresh german lettuce",
+                                "fsk:originCountry": "Germany",
+                                "fsk:name": "Lettuce",
+                                "fsk:originArea": "Aachen, Kreisfreie Stadt",
+                                "fsk:fisheriesArea": "Arctic Sea"
+                            },
+                            {
+                                "fsk:expiryDate": "2013-02-01",
+                                "fsk:unit": "g",
+                                "fsk:productionDate": "2012-12-03",
+                                "fsk:description": "not so fresh",
+                                "fsk:originCountry": "Spain",
+                                "fsk:name": "Tomatoes",
+                                "fsk:originArea": "Lazio",
+                                "fsk:fisheriesArea": "Mediterranean and Black Sea"
+                            },
+                            {
+                                "fsk:expiryDate": "2014-05-01",
+                                "fsk:unit": "g",
+                                "fsk:productionDate": "2013-05-15",
+                                "fsk:description": "pretty much any processed meat product imaginable",
+                                "fsk:originCountry": "United Kingdom",
+                                "fsk:name": "Meat, preparations of meat, offals, blood, animal fats; fresh, chilled or frozen, salted, in brine, dried or smoked or processed as flours or meals; other processed products such as sausages and food preparations based on these",
+                                "fsk:originArea": "East Anglia",
+                                "fsk:fisheriesArea": "Atlantic Ocean"
+                            }
+                        ],
+                        "fsk:generalComment": "(General Comment) The Scope of this model is universal",
+                        "fsk:temporalInformation": "s1990 - 2000"
+                    },
+                    "fsk:generalInformation": {
+                        "fsk:name": "Predictive Toymodel",
+                        "fsk:identifier": "Toy_Model_predictive_01",
+                        "fsk:creationDate": "2021-05-01",
+                        "fsk:rights": "Academic Free License 3.0",
+                        "fsk:reference": [
+                            {
+                                "fsk:title": "Quantitative Risk Assessment of Norovirus Transmission in Food Establishments: Evaluating the Impact of Intervention Strategies and Food Employee Behavior on the Risk Associated with Norovirus in Foods",
+                                "fsk:isReferenceDescription": true,
+                                "fsk:doi": "doi"
+                            },
+                            {
+                                "fsk:title": "Norwalk virus: How infectious is it?",
+                                "fsk:isReferenceDescription": true,
+                                "fsk:doi": "doi"
+                            },
+                            {
+                                "fsk:title": "Dose Response Models For Infectious Gastroenteritis",
+                                "fsk:isReferenceDescription": true,
+                                "fsk:doi": "doi"
+                            }
+                        ],
+                        "fsk:languageWrittenIn": "R 3",
+                        "fsk:description": "description of a system using mathematical concepts and language. The process of developing a mathematical model is termed mathematical modeling. Mathematical models are used in the natural sciences (such as physics, biology, earth science, chemistry) and engineering disciplines (such as computer science, electrical engineering), as well as in the social sciences (such as economics, psychology, sociology, political science).",
+                        "fsk:url": "https://url-for-resource-location.bfr.bund.de",
+                        "fsk:source": "UNPUBLISHED STUDIES (EXPERIMENTS-OBSERVATIONS)",
+                        "fsk:objective": "Objective is to test, whether all metadata are displayed correctly",
+                        "fsk:author": [
+                            {
+                                "fsk:givenName": "Steve",
+                                "fsk:region": "Greater New Yorker Area",
+                                "fsk:email": "mosley@nyu.org",
+                                "fsk:telephone": "080 12345566",
+                                "fsk:familyName": "Mosley",
+                                "fsk:country": "Saint Vincent and the Grenadines",
+                                "fsk:zipCode": "12345",
+                                "fsk:organization": "NYU",
+                                "fsk:streetAddress": "Berliner Strasse 2",
+                                "fsk:title": "Prof"
+                            }
+                        ],
+                        "fsk:availability": "Other",
+                        "fsk:software": "FSK-Lab",
+                        "fsk:creator": [
+                            {
+                                "fsk:givenName": "Natalia",
+                                "fsk:region": "Berlin-Brandenburg",
+                                "fsk:email": "black_widow@marvel.com",
+                                "fsk:telephone": "030 12345",
+                                "fsk:familyName": "Romanov",
+                                "fsk:country": "Russian Federation",
+                                "fsk:zipCode": "14123",
+                                "fsk:organization": "SHIELD",
+                                "fsk:streetAddress": "Nahmitzer Damm 40",
+                                "fsk:title": "Dr."
+                            },
+                            {
+                                "fsk:givenName": "Peter",
+                                "fsk:region": "Brandenburg",
+                                "fsk:email": "peter.parker@parker.com",
+                                "fsk:telephone": "03301 1369158",
+                                "fsk:familyName": "Parker",
+                                "fsk:country": "United States",
+                                "fsk:zipCode": "16515",
+                                "fsk:organization": "Parker Industries",
+                                "fsk:streetAddress": "Am Kleinen Wannsee 16",
+                                "fsk:title": "Mr."
+                            }
+                        ],
+                        "fsk:format": ".fskx",
+                        "fsk:status": "Uncurated",
+                        "fsk:language": "German"
+                    }
+                }
+            }
+        ]
+    }
+}

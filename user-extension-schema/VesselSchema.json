@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Vessel Catch Information",
+  "type": "object",
+  "properties": {
+    "unloadingPort": {
+      "type": "string"
+    },
+    "unloadingDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "vesselCatchInformation": {
+      "type": "object",
+      "properties": {
+        "vesselID": {
+          "type": "string"
+        },
+        "vesselName": {
+          "type": "string"
+        },
+        "vesselOwner": {
+          "type": "string"
+        },
+        "vesselFlagState": {
+          "type": "string"
+        },
+        "haul": {
+          "type": "string"
+        },
+        "catchMethod": {
+          "type": "string"
+        },
+        "catchArea": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

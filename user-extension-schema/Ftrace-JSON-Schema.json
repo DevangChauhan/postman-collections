@@ -1,0 +1,310 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ftrace",
+  "properties": {
+    "preStageDetails": {
+      "type": "object",
+      "properties": {
+        "agricultureDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/agricultureDetails"
+          }
+        },
+        "bestBeforeDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "storageStateCode": {
+          "type": "string",
+          "enum": [
+            "PREVIOUSLY_FROZEN",
+            "NOT_PREVIOUSLY_FROZEN"
+          ]
+        },
+        "dateOfFirstFreezing": {
+          "type": "string",
+          "format": "date"
+        },
+        "useByDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "catchMethod": {
+          "type": "string"
+        },
+        "catchArea": {
+          "type": "string"
+        },
+        "countryOfOrigin": {
+          "type": "string"
+        },
+        "preservingPeriodStart": {
+          "type": "string",
+          "format": "date"
+        },
+        "preservingPeriodEnd": {
+          "type": "string",
+          "format": "date"
+        },
+        "listOfFarms": {
+          "type": "object",
+          "properties": {
+            "address": {
+              "$ref": "#/definitions/address"
+            },
+            "farm": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "farmIdentType": {
+                  "type": "string",
+                  "enum": [
+                    "GLN"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "event": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            }
+          }
+        },
+        "descendentId": {
+          "type": "integer"
+        },
+        "eventSequence": {
+          "type": "object",
+          "properties": {
+            "index": {
+              "$ref": "#/definitions/index"
+            },
+            "predecessor": {
+              "$ref": "#/definitions/index"
+            },
+            "successor": {
+              "$ref": "#/definitions/index"
+            }
+          }
+        },
+        "fTRACETrackingCode": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer"
+        },
+        "eventPeriodEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "certificationCode": {
+          "type": "string"
+        },
+        "lotNumber": {
+          "type": "string"
+        },
+        "dataProvider": {
+          "type": "string"
+        },
+        "eventProfile": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "agricultureDetails": {
+      "type": "object",
+      "properties": {
+        "farmIdentificationNumber": {
+          "$ref": "#/definitions/farmIdentificationNumber"
+        },
+        "address": {
+          "$ref": "#/definitions/address"
+        },
+        "proportionPercentOfLot": {
+          "type": "number",
+          "minimum": 0.01,
+          "maximum": 100
+        },
+        "proportionRankingOfLot": {
+          "type": "boolean",
+          "minimum": 1
+        },
+        "countriesOfBirth": {
+          "$ref": "#/definitions/countriesOfBirth"
+        },
+        "animalIdentifications": {
+          "$ref": "#/definitions/animalIdentifications"
+        },
+        "numberOfAnimals": {
+          "type": "integer"
+        }
+      }
+    },
+    "farmIdentificationNumber": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "farmIdentType": {
+          "type": "string",
+          "enum": [
+            "GLN",
+            "GGO",
+            "GEO",
+            "VVVO",
+            "OTHER",
+            "PrintNumber"
+          ]
+        }
+      }
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 125
+        },
+        "streetAddressOne": {
+          "type": "string",
+          "maxLength": 125
+        },
+        "streetAddressTwo": {
+          "type": "string",
+          "maxLength": 125
+        },
+        "postalCode": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20
+        },
+        "city": {
+          "type": "string",
+          "maxLength": 125
+        },
+        "countyCode": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "type": "string",
+          "maxLength": 125
+        },
+        "countryCode": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "postalCode",
+        "countryCode"
+      ]
+    },
+    "countriesOfBirth": {
+      "type": "object",
+      "properties": {
+        "countryCode": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "animalIdentifications": {
+      "type": "object",
+      "properties": {
+        "animal": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/animal"
+          }
+        }
+      }
+    },
+    "animal": {
+      "type": "object",
+      "properties": {
+        "animalID": {
+          "type": "string",
+          "maxLength": 125
+        },
+        "crossBreedIndicator": {
+          "type": "boolean"
+        },
+        "breedCode": {
+          "type": "string",
+          "maxLength": 125
+        },
+        "dateOfBirth": {
+          "type": "integer",
+          "format": "utc-millisec"
+        },
+        "placeOfBirth": {
+          "$ref": "#/definitions/placeOfBirth"
+        },
+        "father": {
+          "$ref": "#/definitions/father"
+        },
+        "mother": {
+          "$ref": "#/definitions/mother"
+        }
+      },
+      "required": [
+        "animalID",
+        "dateOfBirth",
+        "placeOfBirth"
+      ]
+    },
+    "placeOfBirth": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "farmIdentType": {
+          "type": "string",
+          "enum": ["VVVO","GLN"]
+        }
+      }
+    },
+    "father": {
+      "type": "object",
+      "properties": {
+        "animalID": {
+          "type": "string"
+        },
+        "breedOfFatherCode": {
+          "type": "string",
+          "maxLength": 125
+        }
+      }
+    },
+    "mother": {
+      "type": "object",
+      "properties": {
+        "animalID": {
+          "type": "string"
+        },
+        "breedOfMotherCode": {
+          "type": "string",
+          "maxLength": 125
+        }
+      }
+    },
+    "index": {
+      "type": "integer"
+    }
+  }
+}

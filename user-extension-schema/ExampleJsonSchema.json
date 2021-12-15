@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Example",
+  "additionalProperties": false,
+  "properties": {
+    "myField": {
+      "type": "string"
+    },
+    "furtherSensorData": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "measure1": {
+            "type": "string"
+          },
+          "measure2": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "someFurtherMetaData": {
+      "type": "string"
+    },
+    "cv": {
+      "type": "string"
+    }
+  }
+}
