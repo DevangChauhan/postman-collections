@@ -1,0 +1,3023 @@
+{
+	"info": {
+		"_postman_id": "6b1ccd8c-5221-484e-8649-3ca53b55fcc2",
+		"name": "OpenEPCIS quarkus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AnonymousEventsQuery",
+			"item": [
+				{
+					"name": "CaptureEvents",
+					"item": [
+						{
+							"name": "captureEvents",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\"https://gs1.github.io/EPCIS/epcis-context.jsonld\",{\"example\": \"http://ns.example.com/epcis/\"}],\n  \n  \"id\": \"_:document1\",\n  \"isA\": \"EPCISDocument\",\n  \"schemaVersion\":\"2.0\",\n  \"creationDate\":\"2005-07-11T11:30:47.0Z\",\n  \"epcisBody\": {\n  \"eventList\": [\n     {\n\t\t  \"id\": \"_:event4\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n\t\t  \"epcList\": [],\n\t\t  \"eventTime\": \"2020-04-02T15:00:00.000+01:00\",\n\t\t  \"eventTimeZoneOffset\": \"+01:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:4012345.00005.0\"},\n\t\t  \"quantityList\": [{\"epcClass\":\"urn:epc:class:lgtin:234567890.1123.8888\",\"quantity\":150,\"uom\":\"KGM\"}],\n\t\t  \"sensorElementList\": [\n\t\t   {\n\t\t    \"sensorMetaData\" : {\"time\":\"2019-04-02T14:55:00.000+01:00\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"value\" : 26.0, \"uom\": \"CEL\", \"deviceID\":\"urn:epc:id:giai:4000001.111\", \"deviceMetaData\":\"https://id.gs1.org/8004/4000001111\", \"rawData\":\"https://example.org/8004/401234599999\" },\n\t\t\t { \"type\": \"gs1:MT-Humidity\" , \"value\" : 12.1 , \"uom\": \"A93\", \"deviceID\":\"urn:epc:id:giai:4000001.222\", \"deviceMetaData\":\"https://id.gs1.org/8004/4000001222\", \"rawData\":\"https://example.org/8004/401234599999\"},\n\t\t\t { \"type\": \"gs1:MT-Speed\" , \"value\" : 160 , \"uom\": \"KMH\", \"deviceID\":\"urn:epc:id:giai:4000001.333\", \"deviceMetaData\":\"https://id.gs1.org/8004/4000001333\", \"rawData\":\"https://example.org/8004/401234599999\"},\n\t\t\t { \"type\": \"gs1:MT-Illuminance\" , \"value\" : 800 , \"uom\": \"LUX\", \"deviceID\":\"urn:epc:id:giai:4000001.444\", \"deviceMetaData\":\"https://id.gs1.org/8004/4000001444\", \"rawData\":\"https://example.org/8004/401234599999\"}\n\t\t     ]\n\t\t    }\t    \n\t\t  ]\n\t\t  \n     },\n     {\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"eventTime\": \"2013-06-08T14:58:56.591Z\",\n\t\t  \"eventTimeZoneOffset\": \"+02:00\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:receiving\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:0614141.00777.0\"},\n\t\t  \"bizLocation\": {\"id\": \"urn:epc:id:sgln:0614141.00888.0\"},\n\t\t  \"quantityList\": [\n\t\t  \t{\"epcClass\":\"urn:epc:class:lgtin:4012345.012345.889977\",\"quantity\":200,\"uom\":\"KGM\"}\n\t\t  ],\n\t\t  \"sourceList\": [\n\t\t  \t{\"type\":\"urn:epcglobal:cbv:sdt:possessing_party\",\"source\":\"urn:epc:id:sgln:4012345.00001.0\"},\n\t\t  \t{\"type\":\"urn:epcglobal:cbv:sdt:location\",\"source\":\"urn:epc:id:sgln:4012345.00225.0\"}\n\t\t  ],\n\t\t  \"destinationList\": [\n\t\t  \t{\"type\":\"urn:epcglobal:cbv:sdt:owning_party\",\"destination\":\"urn:epc:id:sgln:0614141.00001.0\"},\n\t\t  \t{\"type\":\"urn:epcglobal:cbv:sdt:location\",\"destination\":\"urn:epc:id:sgln:0614141.00777.0\"}\n\t\t  ],\n\t\t  \"example:myField\":\"testUX\"\n     },\n     {\n\t\t  \"id\": \"_:event8\",\n\t\t  \"isA\": \"AggregationEvent\",\n\t\t  \"action\": \"ADD\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:packing\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n\t\t  \"parentID\": \"urn:epc:id:sscc:4012345.0111111111\",\n\t\t  \"childQuantityList\": [{\"epcClass\":\"urn:epc:class:lgtin:4012345.011111.5678\",\"quantity\":52,\"uom\":\"KGM\"}],\n\t\t  \"eventTime\": \"2019-10-07T15:30:00.000+01:00\",\n\t\t  \"eventTimeZoneOffset\": \"+01:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:4012345.00025.0\"},\n\t\t  \"sensorElementList\": [\n\t\t   {\n\t\t    \"sensorMetaData\" : {\"time\":\"2019-07-19T14:00:00.000+01:00\", \"deviceID\":\"urn:epc:id:giai:4000001.111\", \"deviceMetaData\":\"https://id.gs1.org/8004/4000001111\", \"rawData\":\"https://example.org/8004/401234599999\", \"dataProcessingMethod\":\"https://example.com/253/4012345000054987\", \"bizRules\":\"https://example.org/253/4012345000054987\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Humidity\", \"value\":12.1, \"uom\":\"A93\"},\n\t\t\t { \"type\": \"gs1:MT-Molar_concentration\" , \"chemicalSubstance\":\"https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N\", \"value\":0.18, \"uom\":\"C35\"},\n\t\t\t { \"type\": \"gs1:MT-Molar_concentration\" , \"microorganism\":\"https://www.ncbi.nlm.nih.gov/taxonomy/1126011\", \"value\":0.05, \"uom\":\"C35\"}\n\t\t     ]\n\t\t    },\n\n\t\t   { \n\t\t    \"sensorMetaData\" : {\"startTime\":\"2019-04-01T15:00:00.000+01:00\", \"endTime\":\"2019-04-02T14:59:59.999+01:00\", \"example:someFurtherMetaData\":\"someText\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\":\"gs1:MT-TemperatureKLV\", \"minValue\":12.4, \"maxValue\":13.8, \"meanValue\":13.2, \"sDev\":0.41, \"uom\":\"CEL\", \"percRank\":50, \"percValue\":12.7, \"example:cv\":\"123\"}\n\t\t     ],\n\t\t     \"example:furtherSensorData\": [\n\t\t\t \t{\"example:measure1\":\"123.5\"},\n\t\t\t \t{\"example:measure2\":\"0.987\"}\n\t\t\t ]\n\t\t    },\n\n\t\t   {\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\":\"gs1:MT-Temperature\", \"time\":\"2019-07-19T14:00:00.000+01:00\", \"deviceID\":\"urn:epc:id:giai:4000001.111\", \"deviceMetaData\":\"https://id.gs1.org/8004/4000001111\", \"rawData\":\"https://example3.org/8004/401234599999\", \"dataProcessingMethod\":\"https://example.com/253/4012345000054987\", \"bizRules\":\"https://example.org/253/4012345000054987\"}\n\t\t     ]\n\t\t    }\n\t\t    \t    \n\t\t  ]\n\t\t  \n     }\n   ]\n  }\n  \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "QueryRequests",
+					"item": [
+						{
+							"name": "GET",
+							"item": [
+								{
+									"name": "getEventsByEQ_fieldname",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											},
+											{
+												"key": "GS1-EPCIS-extensions",
+												"value": "example=http://json-schema.org/draft-07/schema#",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/queries/SimpleEventQuery/events?perPage=20&EQ_example:myField=testUX",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"queries",
+												"SimpleEventQuery",
+												"events"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "20"
+												},
+												{
+													"key": "EQ_example:myField",
+													"value": "testUX"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getEventsByEQ_disposition",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/queries/SimpleEventQuery/events?perPage=20&EQ_disposition=in_progress",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"queries",
+												"SimpleEventQuery",
+												"events"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "20"
+												},
+												{
+													"key": "EQ_disposition",
+													"value": "in_progress"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getEventsByEQ_bizLocation",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/queries/SimpleEventQuery/events?perPage=20&EQ_bizLocation=urn:epc:id:sgln:0614141.00888.0",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"queries",
+												"SimpleEventQuery",
+												"events"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "20"
+												},
+												{
+													"key": "EQ_bizLocation",
+													"value": "urn:epc:id:sgln:0614141.00888.0"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getEventsByEQ_INNER_SENSORELEMENT_fieldname",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											},
+											{
+												"key": "GS1-EPCIS-extensions",
+												"value": "example=http://ns.example.com/epcis/",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/queries/SimpleEventQuery/events?perPage=20&EQ_INNER_SENSORELEMENT_example:measure2=0.987",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"queries",
+												"SimpleEventQuery",
+												"events"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "20"
+												},
+												{
+													"key": "EQ_INNER_SENSORELEMENT_example:measure2",
+													"value": "0.987"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "POST",
+							"item": [
+								{
+									"name": "getEventByType",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"query\": {\n        \"eventType\": [\n            \"ObjectEvent\",\n            \"AggregationEvent\"\n        ]\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"queries",
+												"SimpleEventQuery"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "20"
+												},
+												{
+													"key": "",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getEventsBetweenCertainEventTime",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"query\": {\n        \"GE_eventTime\": \"2021-03-05T14:30:00.000Z\",\n        \"LT_eventTime\": \"2021-12-21T14:30:00.000Z\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"queries",
+												"SimpleEventQuery"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "20"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "MATCH_anyEPCClass",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"query\": {\n        \"MATCH_anyEPCClass\": [\n            \"urn:epc:class:lgtin:4012345.012345.998877\"\n        ]\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"queries",
+												"SimpleEventQuery"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "20"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getEventsByAnyOperator_quantity_uom",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"query\": {\n        \"GE_quantity_KGM\": 100,\n        \"LT_quantity_KGM\": 250\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"queries",
+												"SimpleEventQuery"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "20"
+												},
+												{
+													"key": null,
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "queryBySensorElementRelatedFields",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"query\": {\n        \"GE_percRank\": 10,\n        \"LT_percRank\": 60,\n        \"EQ_dataProcessingMethod\": [\n            \"https://example.com/gdti/4012345000054987\"\n        ],\n        \"EQ_chemicalSubstance\": [\n            \"https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N\"\n        ],\n        \"EQ_type\": [\n            \"gs1:Temperature\"\n        ],\n        \"GT_value_C35\": 0.01\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"queries",
+												"SimpleEventQuery"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "20"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "queryBySensorReportUXFields",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											},
+											{
+												"key": "GS1-EPCIS-extensions",
+												"value": "moreFields=http://ns.moreFields.com/epcis/",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"query\": {\n        \"@context\": {\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        },\n        \"EQ_INNER_fsk:generatorLanguage\": [\n            \"r\"\n        ]\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"queries",
+												"SimpleEventQuery"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "20"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getIlmdExtension",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"query\": {\n        \"@context\": {\n            \"ns1\": \"http://ns.ftrace.com/epcis\",\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        },\n        \"orderBy\" : \"fsk:model.fsk:generalInformation.fsk:creationDate\",\n       \n            \"EQ_INNER_fsk:value\":[\"0.04\"]\n    \n    }\n    \n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"queries",
+												"SimpleEventQuery"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "20"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "NamedEventQuery",
+			"item": [
+				{
+					"name": "PersistQuery",
+					"item": [
+						{
+							"name": "persistEventTimeRange",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"query\": {\n        \"GE_eventTime\": \"2005-09-01T02:33:31.116Z\",\n        \"LT_eventTime\": \"2020-12-19T02:33:31.116Z\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/queries/EventTimeRange",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"queries",
+										"EventTimeRange"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "persistEventTypeQuery",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"query\": {\n        \"eventType\": [\"ObjectEvent\"]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/queries/EventTypeQuery",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"queries",
+										"EventTypeQuery"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GETIlmdExtension",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"query\": {\n        \"@context\": {\n            \"ns1\": \"http://ns.ftrace.com/epcis\"\n        },\n        \"EQ_INNER_ILMD_ns1:city\": [\"B\"],\n            \"EXISTS_INNER_ILMD_ns1:city\" : 1 \n    \n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/queries/GetIlmdExtension",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"queries",
+										"GetIlmdExtension"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GetNamedQuery",
+					"item": [
+						{
+							"name": "getNamedQuery",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/queries/EventTimeRange",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"queries",
+										"EventTimeRange"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GetEventsFromNamedQuery",
+					"item": [
+						{
+							"name": "getEventsFromNamedQuery",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/queries/EventTypeQuery/events",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"queries",
+										"EventTypeQuery",
+										"events"
+									],
+									"query": [
+										{
+											"key": "perPage",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DeleteNamedQuery",
+					"item": [
+						{
+							"name": "deleteQuery",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/queries/EventTimeRange",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"queries",
+										"EventTimeRange"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SubscribeToNamedQuery",
+					"item": [
+						{
+							"name": "webhookSubscription",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"callbackUrl\": \"http://localhost:8080/testWebhookSubscription\",\n    \"secret\": \"0435ojtojt02\",\n    \"reportIfEmpty\": true,\n    \"schedule\": {\n        \"second\": \"0/30\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}} /queries/GetIlmdExtension/subscriptions",
+									"host": [
+										"{{url}} "
+									],
+									"path": [
+										"queries",
+										"GetIlmdExtension",
+										"subscriptions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GetSubscriptions",
+					"item": [
+						{
+							"name": "checkIfSubscriptionIsActive",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/queries/GetIlmdExtension/subscriptions/7cec849f-72f7-4a9d-bc86-080d3c5b7c98",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"queries",
+										"GetIlmdExtension",
+										"subscriptions",
+										"7cec849f-72f7-4a9d-bc86-080d3c5b7c98"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllSubscription",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/queries/EventTimeRange/subscriptions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"queries",
+										"EventTimeRange",
+										"subscriptions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DeleteSubscription",
+					"item": [
+						{
+							"name": "deleteSubscription",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/queries/EventTypeQuery/subscriptions/d2dc4b9c-78bc-4ece-aa93-2e1ceda283b3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"queries",
+										"EventTypeQuery",
+										"subscriptions",
+										"d2dc4b9c-78bc-4ece-aa93-2e1ceda283b3"
+									],
+									"query": [
+										{
+											"key": "/queries/EventTimeRange/subscriptions/764c045d-c9a7-4cc9-8caa-5c7bca8c2547",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "SensorElementRelatedQuery",
+			"item": [
+				{
+					"name": "CaptureEvents",
+					"item": [
+						{
+							"name": "captureEventscontaining sensorElement",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{token}}"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\"https://gs1.github.io/EPCIS/epcis-context.jsonld\",{\"example\": \"http://ns.example.com/epcis/\"}],\n  \n  \"id\": \"_:document1\",\n  \"isA\": \"EPCISDocument\",\n  \"schemaVersion\":\"2.0\",\n  \"creationDate\":\"2005-07-11T11:30:47.0Z\",\n  \"epcisBody\": {\n  \"eventList\": [\n     {\n\t\t  \"id\": \"_:event8\",\n\t\t  \"isA\": \"AggregationEvent\",\n\t\t  \"action\": \"ADD\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:packing\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n\t\t  \"parentID\": \"urn:epc:id:sscc:4012345.0111111111\",\n\t\t  \"childQuantityList\": [{\"epcClass\":\"urn:epc:class:lgtin:4012345.011111.1234\",\"quantity\":52,\"uom\":\"KGM\"}],\n\t\t  \"eventTime\": \"2019-10-07T15:30:00.000+01:00\",\n\t\t  \"eventTimeZoneOffset\": \"+01:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:4012345.00005.0\"},\n\t\t  \"sensorElementList\": [\n\t\t   {\n\t\t    \"sensorMetaData\" : {\"time\":\"2019-07-19T14:00:00.000+01:00\", \"deviceID\":\"urn:epc:id:giai:4000001.111\", \"deviceMetaData\":\"https://id.gs1.org/8004/4000001111\", \"rawData\":\"https://example.org/8004/401234599999\", \"dataProcessingMethod\":\"https://example.com/253/4012345000054987\", \"bizRules\":\"https://example.org/253/4012345000054987\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Humidity\", \"value\":12.1, \"uom\":\"A93\"},\n\t\t\t { \"type\": \"gs1:MT-Molar_concentration\" , \"chemicalSubstance\":\"urn:epcglobal:cbv:inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N\", \"value\":0.18, \"uom\":\"C35\"},\n\t\t\t { \"type\": \"gs1:MT-Molar_concentration\" , \"microorganism\":\"https://www.ncbi.nlm.nih.gov/taxonomy/1126011\", \"value\":0.05, \"uom\":\"C35\"}\n\t\t     ]\n\t\t    },\n\n\t\t   { \n\t\t    \"sensorMetaData\" : {\"startTime\":\"2019-04-01T15:00:00.000+01:00\", \"endTime\":\"2019-04-02T14:59:59.999+01:00\", \"example:someFurtherMetaData\":\"someText\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\":\"gs1:MT-Temperature\", \"minValue\":12.4, \"maxValue\":13.8, \"meanValue\":13.2, \"sDev\":0.41, \"uom\":\"CEL\", \"percRank\":50, \"percValue\":12.7, \"example:cv\":\"123\"}\n\t\t     ],\n\t\t     \"example:furtherSensorData\": [\n\t\t\t \t{\"example:measure1\":\"123.5\"},\n\t\t\t \t{\"example:measure2\":\"0.987\"}\n\t\t\t ]\n\t\t    },\n\n\t\t   {\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\":\"gs1:MT-Temperature\", \"uom\":\"CEL\", \"time\":\"2019-07-19T14:00:00.000+01:00\", \"deviceID\":\"urn:epc:id:giai:4000001.111\", \"deviceMetaData\":\"https://id.gs1.org/8004/4000001111\", \"rawData\":\"https://example.org/8004/401234599999\", \"dataProcessingMethod\":\"https://example.com/253/4012345000054987\", \"bizRules\":\"https://example.org/253/4012345000054987\"}\n\t\t     ]\n\t\t    }\n\t\t    \t    \n\t\t  ]\n\t\t  \n     },\n     {\n\t\t  \"id\": \"_:event7\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n\t\t  \"epcList\": [\"urn:epc:id:sgtin:4012345.011111.9876\"],\n\t\t  \"eventTime\": \"2019-10-07T16:00:00.000+01:00\",\n\t\t  \"eventTimeZoneOffset\": \"+01:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:4012345.00005.0\"},\n\t\t  \"sensorElementList\": [\n\t\t   {\n\t\t    \"sensorMetaData\" : {\"time\":\"2019-07-19T14:00:00.000+01:00\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"value\":26.0, \"uom\":\"CEL\", \"deviceID\":\"urn:epc:id:giai:4000001.111\"}\n\t\t     ]\n\t\t    }\t    \n\t\t  ]\n\t\t  \n     },\n     {\n\t\t  \"id\": \"_:event6\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n\t\t  \"epcList\": [\"urn:epc:id:sgtin:4012345.011111.9876\"],\n\t\t  \"eventTime\": \"2019-10-07T15:00:00.000+01:00\",\n\t\t  \"eventTimeZoneOffset\": \"+01:00\",\n\t\t \"readPoint\": {\"id\": \"urn:epc:id:sgln:4012345.00005.0\"},\n\t\t  \"quantityList\": [{\"epcClass\":\"urn:epc:class:lgtin:234567890.1123.9999\",\"quantity\":150,\"uom\":\"KGM\"}],\n\t\t  \"sensorElementList\": [\n\t\t   {\n\t\t    \"sensorMetaData\" : {\"startTime\":\"2019-04-01T15:00:00.000+01:00\", \"endTime\":\"2019-04-02T14:59:59.999+01:00\", \"example:someFurtherMetaData\":\"someText\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"minValue\":12.4, \"maxValue\":13.8, \"meanValue\":13.2, \"sDev\":0.41, \"uom\":\"CEL\", \"percRank\":50, \"percValue\":12.7, \"example:cv\":\"123\"}\n\t\t     ],\n\t\t     \"example:furtherSensorData\": [\n\t\t\t \t{\"example:measure1\":\"123.5\"},\n\t\t\t \t{\"example:measure2\":\"0.987\"}\n\t\t\t ]\n\t\t    }\t    \n\t\t  ]\n\t\t  \n     },\n     {\n\t\t  \"id\": \"_:event5\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n\t\t  \"epcList\": [\"urn:epc:id:sgtin:4012345.011111.9876\"],\n\t\t  \"eventTime\": \"2019-04-02T15:00:00.000+01:00\",\n\t\t  \"eventTimeZoneOffset\": \"+01:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:4012345.00005.0\"},\n\t\t  \"sensorElementList\": [\n\t\t   {\n\t\t    \"sensorMetaData\" : {\"deviceID\":\"urn:epc:id:giai:4000001.111\", \"deviceMetaData\":\"https://id.gs1.org/8004/4000001111\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"time\":\"2019-04-02T14:05:00.000+01:00\", \"value\" : 26.0, \"uom\": \"CEL\"},\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"time\":\"2019-04-02T14:15:00.000+01:00\", \"value\" : 26.1, \"uom\": \"CEL\"},\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"time\":\"2019-04-02T14:25:00.000+01:00\", \"value\" : 26.2, \"uom\": \"CEL\"},\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"time\":\"2019-04-02T14:35:00.000+01:00\", \"value\" : 26.3, \"uom\": \"CEL\"},\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"time\":\"2019-04-02T14:45:00.000+01:00\", \"value\" : 26.4, \"uom\": \"CEL\"},\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"time\":\"2019-04-02T14:55:00.000+01:00\", \"value\" : 26.5, \"uom\": \"CEL\"}\n\t\t     ]\n\t\t    }\t    \n\t\t  ]\n\t\t  \n     },\n     {\n\t\t  \"id\": \"_:event4\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n\t\t  \"epcList\": [],\n\t\t  \"eventTime\": \"2019-04-02T15:00:00.000+01:00\",\n\t\t  \"eventTimeZoneOffset\": \"+01:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:4012345.00005.0\"},\n\t\t  \"quantityList\": [{\"epcClass\":\"urn:epc:class:lgtin:234567890.1123.9999\",\"quantity\":150,\"uom\":\"KGM\"}],\n\t\t  \"sensorElementList\": [\n\t\t   {\n\t\t    \"sensorMetaData\" : {\"time\":\"2019-04-02T14:55:00.000+01:00\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"value\" : 26.0, \"uom\": \"CEL\", \"deviceID\":\"urn:epc:id:giai:4000001.111\", \"deviceMetaData\":\"https://id.gs1.org/8004/4000001111\", \"rawData\":\"https://example.org/8004/401234599999\" },\n\t\t\t { \"type\": \"gs1:MT-Humidity\" , \"value\" : 12.1 , \"uom\": \"A93\", \"deviceID\":\"urn:epc:id:giai:4000001.222\", \"deviceMetaData\":\"https://id.gs1.org/8004/4000001222\", \"rawData\":\"https://example.org/8004/401234599999\"},\n\t\t\t { \"type\": \"gs1:MT-Speed\" , \"value\" : 160 , \"uom\": \"KMH\", \"deviceID\":\"urn:epc:id:giai:4000001.333\", \"deviceMetaData\":\"https://id.gs1.org/8004/4000001333\", \"rawData\":\"https://example.org/8004/401234599999\"},\n\t\t\t { \"type\": \"gs1:MT-Illuminance\" , \"value\" : 800 , \"uom\": \"LUX\", \"deviceID\":\"urn:epc:id:giai:4000001.444\", \"deviceMetaData\":\"https://id.gs1.org/8004/4000001444\", \"rawData\":\"https://example.org/8004/401234599999\"}\n\t\t     ]\n\t\t    }\t    \n\t\t  ]\n\t\t  \n     },\n     {\n\t\t  \"id\": \"_:event3\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n\t\t  \"epcList\": [],\n\t\t  \"eventTime\": \"2019-04-02T15:00:00.000+01:00\",\n\t\t  \"eventTimeZoneOffset\": \"+01:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:4012345.00005.0\"},\n\t\t  \"sensorElementList\": [\n\t\t   {\n\t\t    \"sensorMetaData\" : {\"startTime\":\"2019-04-01T15:00:00.000+01:00\", \"endTime\":\"2019-04-02T14:59:59.999+01:00\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"minValue\" : 12.4, \"maxValue\":13.8, \"uom\": \"CEL\" },\n\t\t\t { \"type\": \"gs1:MT-Humidity\" , \"minValue\" : 69.2 , \"maxValue\":72.5, \"uom\": \"A93\"}\n\t\t     ]\n\t\t    }\t    \n\t\t  ]\n\t\t  \n     },\n     {\n\t\t  \"id\": \"_:event1\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n\t\t  \"eventTime\": \"2019-04-02T15:00:00.000+01:00\",\n\t\t  \"eventTimeZoneOffset\": \"+01:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:4012345.00005.0\"},\n\t\t  \"sensorElementList\": [\n\t\t   {\n\t\t    \"sensorMetaData\" : {\"time\":\"2019-04-02T14:05:00.000+01:00\", \"deviceID\": \"urn:epc:id:giai:4000001.111\", \"deviceMetaData\": \"https://id.gs1.org/8004/4000001111\",\"rawData\":\"https://example.org/8004/401234599999\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"value\" : 26.0, \"uom\": \"CEL\" },\n\t\t\t { \"type\": \"gs1:MT-Humidity\" , \"value\" : 12.1 , \"uom\": \"A93\"},\n\t\t\t { \"type\": \"gs1:MT-Speed\" , \"value\": 160.0, \"uom\":\"KMH\"},\n\t\t\t { \"type\": \"gs1:MT-Illuminance\" , \"value\": 800.0, \"uom\":\"LUX\"}\t\t\t \n\t\t     ]\n\t\t    },\n\t\t    \n\t\t   {\n\t\t    \"sensorMetaData\" : {\"time\":\"2019-04-02T14:35:00.000+01:00\", \"deviceID\": \"urn:epc:id:giai:4000001.111\", \"deviceMetaData\": \"https://id.gs1.org/8004/4000001111\",\"rawData\":\"https://example.org/8004/401234599999\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"value\" : 26.1, \"uom\": \"CEL\" },\n\t\t\t { \"type\": \"gs1:MT-Humidity\" , \"value\" : 12.2 , \"uom\": \"A93\"},\n\t\t\t { \"type\": \"gs1:MT-Speed\" , \"value\": 161.0, \"uom\":\"KMH\"},\n\t\t\t { \"type\": \"gs1:MT-Illuminance\" , \"value\": 801.0, \"uom\":\"LUX\"}\t\t\t \n\t\t     ]\n\t\t    },\n\n\t\t   {\n\t\t    \"sensorMetaData\" : {\"time\":\"2019-04-02T14:55:00.000+01:00\", \"deviceID\": \"urn:epc:id:giai:4000001.111\", \"deviceMetaData\": \"https://id.gs1.org/8004/4000001111\",\"rawData\":\"https://example.org/8004/401234599999\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"value\" : 26.2, \"uom\": \"CEL\" },\n\t\t\t { \"type\": \"gs1:MT-Humidity\" , \"value\" : 12.2 , \"uom\": \"A93\"},\n\t\t\t { \"type\": \"gs1:MT-Speed\" , \"value\": 162.0, \"uom\":\"KMH\"},\n\t\t\t { \"type\": \"gs1:MT-Illuminance\" , \"value\": 802.0, \"uom\":\"LUX\"}\t\t\t \n\t\t     ]\n\t\t    }\t\t    \n\t\t  ]\n\t\t  \n     },\n      {\n\t\t  \"id\": \"_:event1\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:inspecting\",\n\t\t  \"epcList\": [\"urn:epc:id:sgtin:4012345.011111.9876\"],\n\t\t  \"eventTime\": \"2019-04-02T15:00:00.000+01:00\",\n\t\t  \"eventTimeZoneOffset\": \"+01:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:4012345.00005.0\"},\n\t\t  \"sensorElementList\": [\n\t\t   {\n\t            \"isA\":\"epcis:SensorElement\",\n\t\t    \"sensorMetaData\" : {\"time\":\"2019-04-02T14:05:00.000+01:00\", \"deviceID\": \"urn:epc:id:giai:4000001.111\", \"deviceMetaData\": \"https://id.gs1.org/8004/4000001111\",\"rawData\":\"https://example.org/8004/401234599999\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"value\" : 26.0, \"uom\": \"CEL\" },\n\t\t\t { \"type\": \"gs1:MT-Humidity\" , \"value\" : 12.1 , \"uom\": \"A93\"},\n\t\t\t { \"type\": \"gs1:MT-Speed\" , \"value\": 160.0, \"uom\":\"KMH\"},\n\t\t\t { \"type\": \"gs1:MT-Illuminance\" , \"value\": 800.0, \"uom\":\"LUX\"}\t\t\t \n\t\t     ]\n\t\t    },\n\t\t    \n\t\t   {\n\t            \"isA\":\"epcis:SensorElement\",\n\t\t    \"sensorMetaData\" : {\"time\":\"2019-04-02T14:35:00.000+01:00\", \"deviceID\": \"urn:epc:id:giai:4000001.111\", \"deviceMetaData\": \"https://id.gs1.org/8004/4000001111\",\"rawData\":\"https://example.org/8004/401234599999\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"value\" : 26.1, \"uom\": \"CEL\" },\n\t\t\t { \"type\": \"gs1:MT-Humidity\" , \"value\" : 12.2 , \"uom\": \"A93\"},\n\t\t\t { \"type\": \"gs1:MT-Speed\" , \"value\": 161.0, \"uom\":\"KMH\"},\n\t\t\t { \"type\": \"gs1:MT-Illuminance\" , \"value\": 801.0, \"uom\":\"LUX\"}\t\t\t \n\t\t     ]\n\t\t    },\n\n\t\t   {\n\t\t    \"isA\":\"epcis:SensorElement\",\n\t\t    \"sensorMetaData\" : {\"time\":\"2019-04-02T14:55:00.000+01:00\", \"deviceID\": \"urn:epc:id:giai:4000001.111\", \"deviceMetaData\": \"https://id.gs1.org/8004/4000001111\",\"rawData\":\"https://example.org/8004/401234599999\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Temperature\" , \"value\" : 26.2, \"uom\": \"CEL\" },\n\t\t\t { \"type\": \"gs1:MT-Humidity\" , \"value\" : 12.2 , \"uom\": \"A93\"},\n\t\t\t { \"type\": \"gs1:MT-Speed\" , \"value\": 162.0, \"uom\":\"KMH\"},\n\t\t\t { \"type\": \"gs1:MT-Illuminance\" , \"value\": 802.0, \"uom\":\"LUX\"}\t\t\t \n\t\t     ]\n\t\t    }\t\t    \n\t\t  ]\n\t\t  \n     }\n   ]\n  }\n  \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "captureSensorEvents1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"@context\": [\n\t\t\"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n\t\t{\n\t\t\t\"ex\": \"http://ns.example.com/epcis/\"\n\t\t},\n\t\t{\n\t\t\t\"gs1\": \"https://gs1.org/voc/\"\n\t\t}\n\t],\n\t\"id\": \"_:document1\",\n\t\"isA\": \"EPCISDocument\",\n\t\"schemaVersion\": \"2.0\",\n\t\"creationDate\": \"2019-12-22T15:00:00.000+01:00\",\n\t\"epcisBody\": {\n\t\t\"eventList\": [\n\t\t\t{\n\t\t\t\t\"isA\": \"ObjectEvent\",\n\t\t\t\t\"eventTime\": \"2020-12-22T15:00:00+01:00\",\n\t\t\t\t\"eventTimeZoneOffset\": \"+01:00\",\n\t\t\t\t\"epcList\": [\n\t\t\t\t\t\"urn:epc:id:sgtin:4012345.022222.1234\"\n\t\t\t\t],\n\t\t\t\t\"action\": \"OBSERVE\",\n\t\t\t\t\"bizStep\": \"urn:epcglobal:cbv:bizstep:sensor_reporting\",\n\t\t\t\t\"readPoint\": {\n\t\t\t\t\t\"id\": \"urn:epc:id:sgln:4012345.00005.0\"\n\t\t\t\t},\n\t\t\t\t\"sensorElementList\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"sensorReport\": [\n\t\t\t\t\t\t\t{\"type\": \"gs1:AT-Speed\", \"value\": 4.5, \"component\": \"ex:x\", \"ex:feature\": \"ex:product\", \"uom\": \"MTS\", \"microorganism\": \"https://www.ncbi.nlm.nih.gov/taxonomy/112601\", \"booleanValue\": true},\n\t\t\t\t\t\t\t{\"type\": \"gs1:MT-Speed\", \"value\": 12.8, \"component\": \"ex:y\", \"ex:feature\": \"ex:product\", \"uom\": \"MTS\"},\n\t\t\t\t\t\t\t{\"type\": \"gs1:MT-Speed\", \"value\": 0, \"component\": \"ex:z\", \"ex:feature\": \"ex:product\", \"uom\": \"MTS\"}\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t]\n\t}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "QueryRequests",
+					"item": [
+						{
+							"name": "getEventsByEQ_value_uom",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?EQ_value_KEL=299.15",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "EQ_value_KEL",
+											"value": "299.15"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByEQ_type",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?EQ_type=gs1:MT-Temperature",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "LT_time",
+											"value": "299.15",
+											"disabled": true
+										},
+										{
+											"key": "EQ_type",
+											"value": "gs1:MT-Temperature"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "queryTocheckSensorElementExists",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?EQ_deviceID=urn:epc:id:giai:4000001.111",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "EQ_deviceID",
+											"value": "urn:epc:id:giai:4000001.111"
+										},
+										{
+											"key": "EQ_deviceID",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByEQ_deviceID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?EQ_deviceID=urn:epc:id:giai:4000001.111",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "EQ_deviceID",
+											"value": "urn:epc:id:giai:4000001.111"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByTimeRange",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?LT_time=2020-06-08T14:58:56.591Z&GE_time=2013-06-08T14:58:56.591Z",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "LT_time",
+											"value": "2020-06-08T14:58:56.591Z"
+										},
+										{
+											"key": "GE_time",
+											"value": "2013-06-08T14:58:56.591Z"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByEQ_bizRules",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?EQ_bizRules=https://example.org/253/4012345000054987",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "EQ_bizRules",
+											"value": "https://example.org/253/4012345000054987"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByEQ_chemicalSubstance",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?EQ_chemicalSubstance=urn:epcglobal:cbv:inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "EQ_chemicalSubstance",
+											"value": "urn:epcglobal:cbv:inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByEQ_microorganism",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?EQ_microorganism=https://www.ncbi.nlm.nih.gov/taxonomy/1126011",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "EQ_microorganism",
+											"value": "https://www.ncbi.nlm.nih.gov/taxonomy/1126011"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByEQ_dataProcessingMethod",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?EQ_dataProcessingMethod=https://example.com/253/4012345000054987",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "EQ_dataProcessingMethod",
+											"value": "https://example.com/253/4012345000054987"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsBySDev Range",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?GE_sDev=0.20&LT_sDev=0.50",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "GE_sDev",
+											"value": "0.20"
+										},
+										{
+											"key": "LT_sDev",
+											"value": "0.50"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsBypercRank Range",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?GE_percRank=20&LT_percRank=100",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "GE_percRank",
+											"value": "20"
+										},
+										{
+											"key": "LT_percRank",
+											"value": "100"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByEQ_stringValue",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?EQ_stringValue=someSensorOutput",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "EQ_stringValue",
+											"value": "someSensorOutput"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByEQ_booleanValue",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?EQ_booleanValue=true",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "EQ_booleanValue",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByEQ_hexBinaryValue",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?EQ_hexBinaryValue=AF09",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "EQ_hexBinaryValue",
+											"value": "AF09"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByEQ_uriValue",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?EQ_uriValue=urn:epc:id:giai:4000001.111",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "EQ_uriValue",
+											"value": "urn:epc:id:giai:4000001.111"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByStartTimeRange",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?LT_startTime=2020-06-08T14:58:56.591Z&GE_startTime=2018-06-08T14:58:56.591Z",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "LT_startTime",
+											"value": "2020-06-08T14:58:56.591Z"
+										},
+										{
+											"key": "GE_startTime",
+											"value": "2018-06-08T14:58:56.591Z"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByMinValueRange",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?GE_minValue_CEL=2&LT_minValue_CEL=20",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "GE_minValue_CEL",
+											"value": "2"
+										},
+										{
+											"key": "LT_minValue_CEL",
+											"value": "20"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByMaxValue Range",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?GE_maxValue_CEL=10&LT_maxValue_CEL=20",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "GE_maxValue_CEL",
+											"value": "10"
+										},
+										{
+											"key": "LT_maxValue_CEL",
+											"value": "20"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByMeanValueRange",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?GE_meanValue_CEL=10&LT_meanValue_CEL=20",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "GE_meanValue_CEL",
+											"value": "10"
+										},
+										{
+											"key": "LT_meanValue_CEL",
+											"value": "20"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByEndTimeRange",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?GE_endTime=2018-06-08T14:58:56.591Z&LT_endTime=2020-06-08T14:58:56.591Z",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "GE_endTime",
+											"value": "2018-06-08T14:58:56.591Z"
+										},
+										{
+											"key": "LT_endTime",
+											"value": "2020-06-08T14:58:56.591Z"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getEventsByPercValueRange",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/events?GE_percValue=10&LT_percValue=20",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"events"
+									],
+									"query": [
+										{
+											"key": "GE_percValue",
+											"value": "10"
+										},
+										{
+											"key": "LT_percValue",
+											"value": "20"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "CaptureFlow",
+			"item": [
+				{
+					"name": "captureBehaviorRollback",
+					"item": [
+						{
+							"name": "testRollbackFeature",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "GS1-Capture-Error-Behaviour",
+										"value": "proceed",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \n  \"@context\":[\n      \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n      {\n        \n         \"example\":\"http://ns.example.com/epcis\"\n         \n      }\n   ],\n  \n  \"id\": \"_:document1\",\n  \"isA\": \"EPCISDocument\",\n  \"schemaVersion\":\"2.0\",\n  \"creationDate\":\"2005-07-11T11:30:47.0Z\",\n  \"epcisBody\": {\n   \"eventList\": [\n     {\n\t\t  \"eventID\": \"ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"eventTime\": \"2021-02-09T14:58:56.591Z\",\n\t\t  \"eventTimeZoneOffset\": \"+02:00\",\n\t\t  \"action\": \"ADD\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:receiving\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:0614141.00777.01\"},\n\t\t  \"bizLocation\": {\"id\": \"urn:epc:id:sgln:0614141.00888.01\"},\n\t\t  \"quantityList\": [\n\t\t  \t{\"epcClass\":\"urn:epc:class:lgtin:4012345.012345.998876\",\"quantity\":200,\"uom\":\"KGM\"}\n\t\t  ],\n\t\t  \"sourceList\": [\n\t\t  \t{\"type\":\"urn:epcglobal:cbv:sdt:possessing_party\",\"source\":\"urn:epc:id:sgln:4012345.00001.0\"},\n\t\t  \t{\"type\":\"urn:epcglobal:cbv:sdt:location\",\"source\":\"urn:epc:id:sgln:4012345.00225.0\"}\n\t\t  ],\n\t\t  \"destinationList\": [\n\t\t  \t{\"type\":\"urn:epcglobal:cbv:sdt:disowning_party\",\"destination\":\"urn:epc:id:sgln:0614141.00001.0\"},\n\t\t  \t{\"type\":\"urn:epcglobal:cbv:sdt:location\",\"destination\":\"urn:epc:id:sgln:0614141.00777.0\"}\n\t\t  ]\n     }\n\n   ]\n  }\n  \n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "IntegrateXML",
+					"item": [
+						{
+							"name": "captureXML",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<epcis:EPCISDocument\n    xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n    xmlns:example=\"http://ns.example.com/epcis\"\n    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n    creationDate=\"2005-07-11T11:30:47.0Z\"\n    schemaVersion=\"1.2\">\n  <EPCISBody>\n    <EventList>\n      <ObjectEvent>\n        <eventTime>2005-04-03T20:33:31.116-06:00</eventTime>\n        <eventTimeZoneOffset>-06:00</eventTimeZoneOffset>\n        <epcList>\n          <epc>urn:epc:id:sgtin:0614141.107346.2017</epc>\n          <epc>urn:epc:id:sgtin:0614141.107346.2018</epc>\n        </epcList>\n        <action>OBSERVE</action>\n        <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>\n        <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>\n        <readPoint>\n           <id>urn:epc:id:sgln:0614141.07346.1234</id>\n        </readPoint>\n       \n      </ObjectEvent>\n      <ObjectEvent>\n        <eventTime>2005-04-04T20:33:31.116-06:00</eventTime>\n        <eventTimeZoneOffset>-06:00</eventTimeZoneOffset>\n        <epcList>\n          <epc>urn:epc:id:sgtin:0614141.107346.2018</epc>\n        </epcList>\n        <action>OBSERVE</action>\n        <bizStep>urn:epcglobal:cbv:bizstep:receiving</bizStep>\n        <disposition>urn:epcglobal:cbv:disp:in_progress</disposition>\n        <readPoint>\n           <id>urn:epc:id:sgln:0012345.11111.400</id>\n        </readPoint>\n        <bizLocation>\n           <id>urn:epc:id:sgln:0012345.11111.0</id>\n        </bizLocation>\n        \n        <example:myField>Example of a vendor/user extension</example:myField>\n      </ObjectEvent>\n    </EventList>\n  </EPCISBody>\n</epcis:EPCISDocument>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ErrorDeclarationFlow",
+					"item": [
+						{
+							"name": "captureEventWithErrorDeclaration",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\"https://gs1.github.io/EPCIS/epcis-context.jsonld\",{\"example\": \"http://ns.example.com/epcis/\"}],\n  \n  \"id\": \"_:document1\",\n  \"isA\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\":\"2005-07-11T11:30:47.0Z\",\n  \"epcisBody\": {\n   \"eventList\": [\n     {\n\t\t  \"eventID\": \"ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:shipping\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n\t\t  \"epcList\": [\"urn:epc:id:sgtin:0614141.107346.2017\",\"urn:epc:id:sgtin:0614141.107346.2018\"],\n\t\t  \"eventTime\": \"2005-04-03T20:33:31.116000-06:00\",\n\t\t  \"eventTimeZoneOffset\": \"-06:00\",\n\t          \"errorDeclaration\": { \n\t          \t\"declarationTime\" : \"2021-02-01T22:46:31.117000+00:00\",\n\t\t\t\"reason\" : \"urn:epcglobal:cbv:er:incorrect-data\",\n\t\t\t\"correctiveEventIDs\": [\n\t\t\t   \"ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0\",\n\t\t\t   \"urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6\"\n\t\t\t]\n\t\t  },\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:0614141.07346.1234\"},\n\t\t  \"bizTransactionList\": [  {\"type\": \"urn:epcglobal:cbv:btt:po\", \"bizTransaction\": \"http://transaction.acme.com/po/12345678\" }  ]\n     },\n\n     {\n\t\t  \"eventID\": \"ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:receiving\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n\t\t  \"epcList\": [\"urn:epc:id:sgtin:0614141.107346.2018\"],\n\t\t  \"eventTime\": \"2005-04-04T20:33:31.116-06:00\",\n\t\t  \"eventTimeZoneOffset\": \"-06:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:0012345.11111.400\"},\n\t\t  \"bizLocation\": {\"id\": \"urn:epc:id:sgln:0012345.11111.0\"},\n\t\t  \"bizTransactionList\": [ \n                   {\"type\": \"urn:epcglobal:cbv:btt:po\", \"bizTransaction\": \"http://transaction.acme.com/po/12345678\" },\n                   {\"type\": \"urn:epcglobal:cbv:btt:desadv\", \"bizTransaction\": \"urn:epcglobal:cbv:bt:0614141073467:1152\" }\n                  ],\n\t\t  \"example:myField\": \"Example of a vendor/user extension\"\n     }\n\n   ]\n  }\n  \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "captureErroneousEvent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"example\": \"http://ns.example.com/epcis/\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2021-07-11T11:30:47.0Z\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"eventID\": \"ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0\",\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:shipping\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2017\",\n                    \"urn:epc:id:sgtin:0614141.107346.2018\"\n                ],\n                \"eventTime\": \"2021-04-03T20:33:31.116000-06:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.07346.1234\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "captureErrorDeclaration",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"example\": \"http://ns.example.com/epcis/\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2005-07-11T11:30:47.0Z\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"eventID\": \"ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0\",\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:shipping\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2051\",\n                    \"urn:epc:id:sgtin:0614141.107346.2052\"\n                ],\n                \"eventTime\": \"2005-04-03T20:33:31.116000-06:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"errorDeclaration\": {\n                    \"declarationTime\": \"2021-02-01T22:46:31.117000+00:00\",\n                    \"reason\": \"urn:epcglobal:cbv:er:incorrect-data\",\n                    \"correctiveEventIDs\": [\n                        \"ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0\",\n                        \"urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6\"\n                    ]\n                },\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.07346.1234\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ]\n            },\n            {\n                \"eventID\": \"ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0\",\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:receiving\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2052\"\n                ],\n                \"eventTime\": \"2005-04-04T20:33:31.116-06:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0012345.11111.400\"\n                },\n                \"bizLocation\": {\n                    \"id\": \"urn:epc:id:sgln:0012345.11111.0\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    },\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:desadv\",\n                        \"bizTransaction\": \"urn:epcglobal:cbv:bt:0614141073467:1152\"\n                    }\n                ],\n                \"example:myField\": \"Example of a vendor/user extension\"\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GET Capture",
+					"item": [
+						{
+							"name": "getCaptureJobs",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "GS1-Capture-Error-Behaviour",
+										"value": "rollback",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/capture?perPage=30",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									],
+									"query": [
+										{
+											"key": "perPage",
+											"value": "30"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCaptureJobByCaptureID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/capture/5b7dca7a-a773-45ab-8b64-8222d3983234",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture",
+										"5b7dca7a-a773-45ab-8b64-8222d3983234"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST CaptureRequest",
+					"item": [
+						{
+							"name": "captureEvents",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "GS1-Capture-Error-Behaviour",
+										"value": "rollback",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"ft_fish\": \"http://ns.fish.ftrace.com\",\n            \"ft\": \"http://ns.ftrace.com/epcis\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2021-12-14T11:30:47.0Z\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"isA\": \"ObjectEvent\",\n                \"eventTime\": \"2021-05-19T03:00:00+02:00\",\n                \"eventTimeZoneOffset\": \"+02:00\",\n                \"epcList\": [],\n                \"action\": \"ADD\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:commissioning\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:479602638.000.0\",\n                    \"ft:bestBeforeDate\": \"2021-12-19\",\n                    \"ft:storageStateCode\": \"NOT_PREVIOUSLY_FROZEN\",\n                    \"ft_fish:unloadingPort\": \"LKKAL\",\n                    \"ft_fish:unloadingDate\": \"2021-05-16\",\n                    \"ft_fish:vesselCatchInformation\": {\n                        \"ft_fish:vesselName\": \"OSHADI DUWA\",\n                        \"ft_fish:vesselID\": \"OFRP-A-4639-CHW\",\n                        \"ft_fish:catchArea\": \"57\",\n                        \"ft_fish:catchMethod\": \"LL\",\n                        \"ft_fish:vesselOwner\": \"M.E.FERNANDO\",\n                        \"ft_fish:vesselFlagState\": \"LK\"\n                    }\n                },\n                \"bizLocation\": {\n                    \"id\": \"urn:epc:id:sgln:479602638.000.0\"\n                },\n                \"quantityList\": [\n                    {\n                        \"epcClass\": \"urn:epc:class:lgtin:479602638.0024.016616\",\n                        \"quantity\": 29,\n                        \"uom\": \"KGM\"\n                    }\n                ],\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ],\n                \"ft:bestBeforeDate\": \"2021-12-19\",\n                \"ft:storageStateCode\": \"NOT_PREVIOUSLY_FROZEN\",\n                \"ft_fish:unloadingPort\": \"LKKAL\",\n                \"ft_fish:unloadingDate\": \"2021-05-16\",\n                \"ft_fish:vesselCatchInformation\": {\n                    \"ft_fish:vesselName\": \"OSHADI DUWA\",\n                    \"ft_fish:vesselID\": \"OFRP-A-4639-CHW\",\n                    \"ft_fish:catchArea\": \"57\",\n                    \"ft_fish:catchMethod\": \"LL\",\n                    \"ft_fish:vesselOwner\": \"M.E.FERNANDO\",\n                    \"ft_fish:vesselFlagState\": \"LK\"\n                }\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "captureStandardVocabElementInDiffFormat",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\"https://gs1.github.io/EPCIS/epcis-context.jsonld\",{\"example\": \"http://ns.example.com/epcis/\"}],\n  \"id\": \"_:document1\",\n  \"isA\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2005-07-11T11:30:47.0Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n\n        \"isA\": \"AggregationEvent\",\n        \"eventTime\": \"2021-04-08T14:58:56.591Z\",\n        \"eventTimeZoneOffset\": \"+02:00\",\n        \"parentID\": \"urn:epc:id:sscc:0614141.1234567890\",\n        \"childEPCs\": [ \"https://id.gs1.org/01/70614141123451/21/2017\", \"https://id.gs1.org/01/70614141123451/21/2018\" ],\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"urn:epcglobal:cbv:bizstep:receiving\",\n        \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n        \"readPoint\": {\"id\": \"urn:epc:id:sgln:0614141.00777.0\"},\n        \"bizLocation\": {\"id\": \"urn:epc:id:sgln:0614141.00888.0\"},\n        \"childQuantityList\": [\n          { \"epcClass\": \"https://id.gs1.org/01/04012345987652\", \"quantity\": 10 },\n          { \"epcClass\": \"https://id.gs1.org/01/04012345123456/10/998877\", \"quantity\": 200.5, \"uom\": \"KGM\" }\n        ],\n        \"example:myField\": \"Example of a vendor/user extension\"\n      }\n    ]\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "captureExample_9.6.1-ObjectEvent.jsonld",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\"https://gs1.github.io/EPCIS/epcis-context.jsonld\",{\"example\": \"http://ns.example.com/epcis/\"}],\n  \n  \"id\": \"_:document1\",\n  \"isA\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\":\"2021-06-06T11:30:47.0Z\",\n  \"epcisBody\": {\n   \"eventList\": [\n     {\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:shipping\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n\t\t  \"epcList\": [\"urn:epc:id:sgtin:0614141.107346.2017\",\"urn:epc:id:sgtin:0614141.107346.2018\"],\n\t\t  \"eventTime\": \"2021-06-06T20:33:31.116000-06:00\",\n\t\t  \"eventTimeZoneOffset\": \"-06:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:0614141.07346.1234\"},\n\t\t  \"bizTransactionList\": [  {\"type\": \"urn:epcglobal:cbv:btt:po\", \"bizTransaction\": \"http://transaction.acme.com/po/12345678\" }  ]\n     },\n\n     {\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:receiving\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n\t\t  \"epcList\": [\"urn:epc:id:sgtin:0614141.107346.2018\"],\n\t\t  \"eventTime\": \"2005-04-04T20:33:31.116-06:00\",\n\t\t  \"eventTimeZoneOffset\": \"-06:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:0012345.11111.400\"},\n\t\t  \"bizLocation\": {\"id\": \"urn:epc:id:sgln:0012345.11111.0\"},\n\t\t  \"bizTransactionList\": [ \n                   {\"type\": \"urn:epcglobal:cbv:btt:po\", \"bizTransaction\": \"http://transaction.acme.com/po/12345678\" },\n                   {\"type\": \"urn:epcglobal:cbv:btt:desadv\", \"bizTransaction\": \"urn:epcglobal:cbv:bt:0614141073467:1152\" }\n                  ],\n\t\t  \"example:myField\": \"Example of a vendor/user extension\"\n     }\n\n   ]\n  }\n  \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "captureExample_9.6.2-ObjectEvent.jsonld",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\"https://gs1.github.io/EPCIS/epcis-context.jsonld\",{\"example\": \"http://ns.example.com/epcis/\"}],\n  \n  \"id\": \"_:document1\",\n  \"isA\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\":\"2005-07-11T11:30:47.0Z\",\n  \"epcisBody\": {\n   \"eventList\": [\n     {\n\t\t  \"eventID\": \"ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"eventTime\": \"2013-06-08T14:58:56.591Z\",\n\t\t  \"eventTimeZoneOffset\": \"+02:00\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:receiving\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:0614141.00777.0\"},\n\t\t  \"bizLocation\": {\"id\": \"urn:epc:id:sgln:0614141.00888.0\"},\n\t\t  \"quantityList\": [\n\t\t  \t{\"epcClass\":\"urn:epc:class:lgtin:4012345.012345.998877\",\"quantity\":200,\"uom\":\"KGM\"}\n\t\t  ],\n\t\t  \"sourceList\": [\n\t\t  \t{\"type\":\"urn:epcglobal:cbv:sdt:possessing_party\",\"source\":\"urn:epc:id:sgln:4012345.00001.0\"},\n\t\t  \t{\"type\":\"urn:epcglobal:cbv:sdt:location\",\"source\":\"urn:epc:id:sgln:4012345.00225.0\"}\n\t\t  ],\n\t\t  \"destinationList\": [\n\t\t  \t{\"type\":\"urn:epcglobal:cbv:sdt:owning_party\",\"destination\":\"urn:epc:id:sgln:0614141.00001.0\"},\n\t\t  \t{\"type\":\"urn:epcglobal:cbv:sdt:location\",\"destination\":\"urn:epc:id:sgln:0614141.00777.0\"}\n\t\t  ],\n\t\t  \"example:myField\":\"Example of a vendor/user extension\"\n     }\n\n   ]\n  }\n  \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "testCaptureFlowForErrorDeclaration",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "GS1-Capture-Error-Behaviour",
+										"value": "Proceed",
+										"type": "text"
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\"https://gs1.github.io/EPCIS/epcis-context.jsonld\",{\"example\": \"http://ns.example.com/epcis/\"}],\n  \n  \"id\": \"_:document1\",\n  \"isA\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\":\"2005-07-11T11:30:47.0Z\",\n  \"epcisBody\": {\n   \"eventList\": [\n     {\n\t\t  \"eventID\": \"ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0\",\n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:shipping\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n\t\t  \"epcList\": [\"urn:epc:id:sgtin:0614141.107346.2017\",\"urn:epc:id:sgtin:0614141.107346.2018\"],\n\t\t  \"eventTime\": \"2005-04-03T20:33:31.116000-06:00\",\n\t\t  \"eventTimeZoneOffset\": \"-06:00\",\n\t          \"errorDeclaration\": { \n\t          \t\"declarationTime\" : \"2021-02-01T22:46:31.117000+00:00\",\n\t\t\t\"reason\" : \"urn:epcglobal:cbv:er:incorrect-data\",\n\t\t\t\"correctiveEventIDs\": [\n\t\t\t   \"ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0\",\n\t\t\t   \"urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6\"\n\t\t\t]\n\t\t  },\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:0614141.07346.1234\"},\n\t\t  \"bizTransactionList\": [  {\"type\": \"urn:epcglobal:cbv:btt:po\", \"bizTransaction\": \"http://transaction.acme.com/po/12345678\" }  ]\n     },\n\n     {\n\t\t  \n\t\t  \"isA\": \"ObjectEvent\",\n\t\t  \"action\": \"OBSERVE\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:receiving\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n\t\t  \"epcList\": [\"urn:epc:id:sgtin:0614141.107346.2018\"],\n\t\t  \"eventTime\": \"2021-04-04T20:33:31.116-06:00\",\n\t\t  \"eventTimeZoneOffset\": \"-06:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:0012345.11111.400\"},\n\t\t  \"bizLocation\": {\"id\": \"urn:epc:id:sgln:0012345.11111.0\"},\n\t\t  \"bizTransactionList\": [ \n                   {\"type\": \"urn:epcglobal:cbv:btt:po\", \"bizTransaction\": \"http://transaction.acme.com/po/12345678\" },\n                   {\"type\": \"urn:epcglobal:cbv:btt:desadv\", \"bizTransaction\": \"urn:epcglobal:cbv:bt:0614141073467:1152\" }\n                  ],\n\t\t  \"example:myField\": \"Example of a vendor/user extension\"\n     }\n\n   ]\n  }\n  \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "captureEventInXML",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<epcis:epcisDocumentType schemaVersion=\"1.1\" creationDate=\"2021-05-18T10:58:53.433+02:00\"\n  xsi:schemaLocation=\"urn:epcglobal:epcis:xsd:1 EPCglobal-epcis-1_1.xsd\" xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:epcglobal=\"urn:epcglobal:xsd:1\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n  <EPCISBody>\n    <EventList>\n      <ObjectEvent>\n        <eventTime>2021-05-18T10:54:00.000+02:00</eventTime>\n        <eventTimeZoneOffset>+02:00</eventTimeZoneOffset>\n        <epcList/>\n        <action>OBSERVE</action>\n        <bizStep>urn:epcglobal:cbv:bizstep:departing</bizStep>\n        <readPoint>\n          <id>urn:epc:id:sgln:8713279.00027.0</id>\n        </readPoint>\n        <bizLocation>\n          <id>urn:epc:id:sgln:8713279.00027.0</id>\n        </bizLocation>\n        <extension>\n          <quantityList>\n            <quantityElement>\n              <epcClass>urn:epc:class:lgtin:8713279.037004.367210517</epcClass>\n              <quantity>1</quantity>\n            </quantityElement>\n          </quantityList>\n          <sourceList>\n            <source type=\"urn:epcglobal:cbv:sdt:possessing_party\">urn:epc:id:sgln:8713279.00027.0</source>\n          </sourceList>\n          <destinationList>\n            <destination type=\"urn:epcglobal:cbv:sdt:possessing_party\">urn:epc:id:sgln:4025567.00000.0</destination>\n          </destinationList>\n        </extension>\n      </ObjectEvent>\n    </EventList>\n  </EPCISBody>\n</epcis:epcisDocumentType>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "captureBareEvent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"@context\": \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n    \"isA\": \"ObjectEvent\",\n    \"action\": \"OBSERVE\",\n    \"bizStep\": \"inspecting\",\n    \"eventTime\": \"2021-05-05T15:00:00.000+01:00\",\n    \"eventTimeZoneOffset\": \"+01:00\",\n    \"readPoint\": {\n        \"id\": \"urn:epc:id:sgln:4012345.00005.0\"\n    },\n    \"epcList\": [\n        \"urn:epc:id:sgtin:4012345.011111.9876\"\n    ],\n    \"sensorElementList\": [\n        {\n            \"sensorMetadata\": {\n                \"time\": \"2019-04-02T14:05:00.000+01:00\",\n                \"deviceID\": \"urn:epc:id:giai:4000001.111\",\n                \"deviceMetadata\": \"https://id.gs1.org/8004/4000001111\",\n                \"rawData\": \"https://example.org/8004/401234599999\"\n            },\n            \"sensorReport\": [\n                {\n                    \"type\": \"gs1:MT-Temperature\",\n                    \"value\": 26.0,\n                    \"uom\": \"CEL\"\n                },\n                {\n                    \"type\": \"gs1:MT-Humidity\",\n                    \"value\": 12.1,\n                    \"uom\": \"A93\"\n                },\n                {\n                    \"type\": \"gs1:MT-Speed\",\n                    \"value\": 160.0,\n                    \"uom\": \"KMH\"\n                },\n                {\n                    \"type\": \"gs1:MT-Illuminance\",\n                    \"value\": 800.0,\n                    \"uom\": \"LUX\"\n                }\n            ]\n        },\n        {\n            \"sensorMetadata\": {\n                \"time\": \"2019-04-02T14:35:00.000+01:00\",\n                \"deviceID\": \"urn:epc:id:giai:4000001.111\",\n                \"deviceMetadata\": \"https://id.gs1.org/8004/4000001111\",\n                \"rawData\": \"https://example.org/8004/401234599999\"\n            },\n            \"sensorReport\": [\n                {\n                    \"type\": \"gs1:MT-Temperature\",\n                    \"value\": 26.1,\n                    \"uom\": \"CEL\"\n                },\n                {\n                    \"type\": \"gs1:MT-Humidity\",\n                    \"value\": 12.2,\n                    \"uom\": \"A93\"\n                },\n                {\n                    \"type\": \"gs1:MT-Speed\",\n                    \"value\": 161.0,\n                    \"uom\": \"KMH\"\n                },\n                {\n                    \"type\": \"gs1:MT-Illuminance\",\n                    \"value\": 801.0,\n                    \"uom\": \"LUX\"\n                }\n            ]\n        },\n        {\n            \"sensorMetadata\": {\n                \"time\": \"2019-04-02T14:55:00.000+01:00\",\n                \"deviceID\": \"urn:epc:id:giai:4000001.111\",\n                \"deviceMetadata\": \"https://id.gs1.org/8004/4000001111\",\n                \"rawData\": \"https://example.org/8004/401234599999\"\n            },\n            \"sensorReport\": [\n                {\n                    \"type\": \"gs1:MT-Temperature\",\n                    \"value\": 26.2,\n                    \"uom\": \"CEL\"\n                },\n                {\n                    \"type\": \"gs1:MT-Humidity\",\n                    \"value\": 12.2,\n                    \"uom\": \"A93\"\n                },\n                {\n                    \"type\": \"gs1:MT-Speed\",\n                    \"value\": 162.0,\n                    \"uom\": \"KMH\"\n                },\n                {\n                    \"type\": \"gs1:MT-Illuminance\",\n                    \"value\": 802.0,\n                    \"uom\": \"LUX\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/eventTypes/ObjectEvent/events",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"eventTypes",
+										"ObjectEvent",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "captureEventsWithPrivateURN",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\"https://gs1.github.io/EPCIS/epcis-context.jsonld\",{\"example\": \"http://ns.example.com/epcis/\"}],\n  \n  \"id\": \"_:document1\",\n  \"isA\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\":\"2021-12-14T11:30:47.0Z\",\n  \"epcisBody\": {\n  \"eventList\": [\n     {\n\t\t  \"eventID\": \"ni:///sha-256;18454584ed96fbb533e4a69b01eefd1bff3edd1e80ef8598957111f4477a0a64?ver=CBV2.0\",\n\t\t  \"isA\": \"AggregationEvent\",\n\t\t  \"action\": \"ADD\",\n\t\t  \"bizStep\": \"urn:epcglobal:cbv:bizstep:packing\",\n\t\t  \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n\t\t  \"parentID\": \"urn:epc:id:sscc:4012345.0111111111\",\n\t\t  \"childQuantityList\": [{\"epcClass\":\"urn:epc:class:lgtin:4012345.011111.1234\",\"quantity\":52,\"uom\":\"KGM\"}],\n\t\t  \"eventTime\": \"2019-10-07T15:30:00.000+01:00\",\n\t\t  \"eventTimeZoneOffset\": \"+01:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:4012345.00025.0\"},\n\t\t  \"sensorElementList\": [\n\t\t   {\n\t\t    \"sensorMetadata\" : {\"time\":\"2019-07-19T14:00:00.000+01:00\", \"deviceID\":\"urn:epc:id:giai:4000001.111\", \"deviceMetadata\":\"https://id.gs1.org/8004/4000001111\", \"rawData\":\"https://example.org/8004/401234599999\", \"dataProcessingMethod\":\"https://example.com/gdti/4012345000054987\", \"bizRules\":\"https://example.org/gdti/4012345000054987\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Humidity\", \"value\":12.1, \"uom\":\"A93\"},\n\t\t\t { \"type\": \"gs1:MT-AmountOfSubstancePerUnitVolume\" , \"chemicalSubstance\":\"https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N\", \"value\":0.18, \"uom\":\"C35\"},\n\t\t\t { \"type\": \"gs1:MT-AmountOfSubstancePerUnitVolume\" , \"microorganism\":\"https://www.ncbi.nlm.nih.gov/taxonomy/1126011\", \"value\":0.05, \"uom\":\"C35\"}\n\t\t     ]\n\t\t    },\n\n\t\t   { \n\t\t    \"sensorMetadata\" : {\"startTime\":\"2019-04-01T15:00:00.000+01:00\", \"endTime\":\"2019-04-02T14:59:59.999+01:00\", \"example:someFurtherMetaData\":\"someText\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\":\"gs1:MT-Temperature\", \"minValue\":12.4, \"maxValue\":13.8, \"meanValue\":13.2, \"sDev\":0.41, \"uom\":\"CEL\", \"percRank\":50, \"percValue\":12.7, \"example:cv\":\"123\"},\n\t\t\t { \"type\":\"example:someSensorProperty\", \"stringValue\":\"someSensorOutput\"}\n\t\t     ],\n\t\t     \"example:furtherSensorData\": [\n\t\t\t \t{\"example:measure1\":\"123.5\"},\n\t\t\t \t{\"example:measure2\":\"0.987\"}\n\t\t\t ]\n\t\t    },\n\n\t\t   {\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\":\"gs1:MT-Temperature\", \"time\":\"2019-07-19T14:00:00.000+01:00\", \"deviceID\":\"urn:epc:id:giai:4000001.111\", \"deviceMetadata\":\"https://id.gs1.org/8004/4000001111\", \"rawData\":\"https://example.org/8004/401234599999\", \"dataProcessingMethod\":\"https://example.com/gdti/4012345000054987\", \"bizRules\":\"https://example.org/gdti/4012345000054987\"},\n\t\t\t { \"type\":\"example:someSensorProperty\", \"stringValue\":\"someSensorOutput\"}\n\t\t     ]\n\t\t    }\n\t\t    \t    \n\t\t  ]\n\t\t  \n     }\n   ]\n  }\n  \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "captureEventsWithSingleTermCBV",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\"https://gs1.github.io/EPCIS/epcis-context.jsonld\",{\"example\": \"http://ns.example.com/epcis/\"}],\n  \n  \"id\": \"_:document1\",\n  \"isA\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\":\"2005-07-11T11:30:47.0Z\",\n  \"epcisBody\": {\n  \"eventList\": [\n     {\n\t\t  \"eventID\": \"ni:///sha-256;18454584ed96fbb533e4a69b01eefd1bff3edd1e80ef8598957111f4477a0a64?ver=CBV2.0\",\n\t\t  \"isA\": \"AggregationEvent\",\n\t\t  \"action\": \"ADD\",\n\t\t  \"bizStep\": \"packing\",\n\t\t  \"disposition\": \"in_progress\",\n\t\t  \"parentID\": \"urn:epc:id:sscc:4012345.0111111111\",\n\t\t  \"childQuantityList\": [{\"epcClass\":\"urn:epc:class:lgtin:4012345.011111.1234\",\"quantity\":52,\"uom\":\"KGM\"}],\n\t\t  \"eventTime\": \"2019-10-07T15:30:00.000+01:00\",\n\t\t  \"eventTimeZoneOffset\": \"+01:00\",\n\t\t  \"readPoint\": {\"id\": \"urn:epc:id:sgln:4012345.00025.0\"},\n\t\t  \"sensorElementList\": [\n\t\t   {\n\t\t    \"sensorMetadata\" : {\"time\":\"2019-07-19T14:00:00.000+01:00\", \"deviceID\":\"urn:epc:id:giai:4000001.111\", \"deviceMetadata\":\"https://id.gs1.org/8004/4000001111\", \"rawData\":\"https://example.org/8004/401234599999\", \"dataProcessingMethod\":\"https://example.com/gdti/4012345000054987\", \"bizRules\":\"https://example.org/gdti/4012345000054987\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\": \"gs1:MT-Humidity\", \"value\":12.1, \"uom\":\"A93\"},\n\t\t\t { \"type\": \"gs1:MT-AmountOfSubstancePerUnitVolume\" , \"chemicalSubstance\":\"https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N\", \"value\":0.18, \"uom\":\"C35\"},\n\t\t\t { \"type\": \"gs1:MT-AmountOfSubstancePerUnitVolume\" , \"microorganism\":\"https://www.ncbi.nlm.nih.gov/taxonomy/1126011\", \"value\":0.05, \"uom\":\"C35\"}\n\t\t     ]\n\t\t    },\n\n\t\t   { \n\t\t    \"sensorMetadata\" : {\"startTime\":\"2019-04-01T15:00:00.000+01:00\", \"endTime\":\"2019-04-02T14:59:59.999+01:00\", \"example:someFurtherMetaData\":\"someText\"},\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\":\"gs1:MT-Temperature\", \"minValue\":12.4, \"maxValue\":13.8, \"meanValue\":13.2, \"sDev\":0.41, \"uom\":\"CEL\", \"percRank\":50, \"percValue\":12.7, \"example:cv\":\"123\"},\n\t\t\t { \"type\":\"example:someSensorProperty\", \"stringValue\":\"someSensorOutput\"}\n\t\t     ],\n\t\t     \"example:furtherSensorData\": [\n\t\t\t \t{\"example:measure1\":\"123.5\"},\n\t\t\t \t{\"example:measure2\":\"0.987\"}\n\t\t\t ]\n\t\t    },\n\n\t\t   {\n\t\t    \"sensorReport\" : [\n\t\t\t { \"type\":\"gs1:MT-Temperature\", \"uom\":\"CEL\", \"time\":\"2019-07-19T14:00:00.000+01:00\", \"deviceID\":\"urn:epc:id:giai:4000001.111\", \"deviceMetadata\":\"https://id.gs1.org/8004/4000001111\", \"rawData\":\"https://example.org/8004/401234599999\", \"dataProcessingMethod\":\"https://example.com/gdti/4012345000054987\", \"bizRules\":\"https://example.org/gdti/4012345000054987\"},\n\t\t\t { \"type\":\"example:someSensorProperty\", \"stringValue\":\"someSensorOutput\"}\n\t\t     ]\n\t\t    }\n\t\t    \t    \n\t\t  ]\n\t\t  \n     }\n   ]\n  }\n  \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "EventTypesEndpoint",
+			"item": [
+				{
+					"name": "getEventsFromAction",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/events/eventTypes/ObjectEvent/events?EQ_action=OBSERVE",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								"eventTypes",
+								"ObjectEvent",
+								"events"
+							],
+							"query": [
+								{
+									"key": "EQ_action",
+									"value": "OBSERVE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEventTypes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/events/eventTypes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								"eventTypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEventFromEventID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/events/eventTypes/ObjectEvent/events/urn:uuid:3c49ab92-d7c9-4c3f-bac0-b1c4de0edaa3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								"eventTypes",
+								"ObjectEvent",
+								"events",
+								"urn:uuid:3c49ab92-d7c9-4c3f-bac0-b1c4de0edaa3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orderByUserExtension",
+			"item": [
+				{
+					"name": "captureEvents",
+					"item": [
+						{
+							"name": "captureSameExtensionFieldAtDiffLevel",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"ns1\": \"http://ns.ftrace.com/epcis\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2005-08-11T11:30:47.0Z\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"ADD\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:shipping\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2017\",\n                    \"urn:epc:id:sgtin:0614141.107346.2018\"\n                ],\n                \"eventTime\": \"2021-06-17T20:33:31.116000-06:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.07346.1234\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ],\n                \"ilmd\": {\n                    \"ns1:preStageDetails\": {\n                        \"ns1:agricultureDetails\": [\n                            {\n                                \"ns1:city\": \"Bistupur\",\n                                \"ns1:farmIdentificationNumber\": {\n                                    \"ns1:farmIdentType\": \"VVVO\",\n                                    \"ns1:value\": \"276055540160000\"\n                                },\n                                \"ns1:address\": {\n                                    \"ns1:postalCode\": \"48712\",\n                                    \"ns1:city\": \"B\",\n                                    \"ns1:countyCode\": \"Borken\",\n                                    \"ns1:state\": \"5\",\n                                    \"ns1:countryCode\": \"DE\"\n                                },\n                                \"ns1:proportionPercentOfLot\": 9.95,\n                                \"ns1:proportionRankingOfLot\": false\n                            },\n                            {\n                                \"ns1:farmIdentificationNumber\": {\n                                    \"ns1:farmIdentType\": \"VVVO\",\n                                    \"ns1:value\": \"276034590320000\"\n                                },\n                                \"ns1:address\": {\n                                    \"ns1:postalCode\": \"49832\",\n                                    \"ns1:city\": \"B\",\n                                    \"ns1:countyCode\": \"Emsland\",\n                                    \"ns1:state\": \"3\",\n                                    \"ns1:countryCode\": \"DE\"\n                                },\n                                \"ns1:proportionPercentOfLot\": 2.79,\n                                \"ns1:proportionRankingOfLot\": true\n                            }\n                        ]\n                    }\n                }\n            },\n            {\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"ADD\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:shipping\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2017\",\n                    \"urn:epc:id:sgtin:0614141.107346.2018\"\n                ],\n                \"eventTime\": \"2021-06-18T20:33:31.116000-06:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.07346.1234\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ],\n                \"ilmd\": {\n                    \"ns1:preStageDetails\": {\n                        \"ns1:agricultureDetails\": [\n                            {\n                                \"ns1:city\": \"Ghatsila\",\n                                \"ns1:farmIdentificationNumber\": {\n                                    \"ns1:farmIdentType\": \"VVVO\",\n                                    \"ns1:value\": \"276055540160000\"\n                                },\n                                \"ns1:address\": {\n                                    \"ns1:postalCode\": \"48712\",\n                                    \"ns1:city\": \"A\",\n                                    \"ns1:countyCode\": \"Borken\",\n                                    \"ns1:state\": \"5\",\n                                    \"ns1:countryCode\": \"DE\"\n                                },\n                                \"ns1:proportionPercentOfLot\": 9.95,\n                                \"ns1:proportionRankingOfLot\": false\n                            },\n                            {\n                                \"ns1:farmIdentificationNumber\": {\n                                    \"ns1:farmIdentType\": \"VVVO\",\n                                    \"ns1:value\": \"276034590320000\"\n                                },\n                                \"ns1:address\": {\n                                    \"ns1:postalCode\": \"49832\",\n                                    \"ns1:city\": \"A\",\n                                    \"ns1:countyCode\": \"Emsland\",\n                                    \"ns1:state\": \"3\",\n                                    \"ns1:countryCode\": \"DE\"\n                                },\n                                \"ns1:proportionPercentOfLot\": 2.79,\n                                \"ns1:proportionRankingOfLot\": true\n                            }\n                        ]\n                    }\n                }\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "orderByUserExtensionTypeObject",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"@context\": {\n            \"ns1\": \"http://ns.ftrace.com/epcis\"\n        },\n        \"EQ_INNER_ILMD_ns1:city\": [\"Kadma\",\"Moubhandar\",\"Bistupur\",\"Ghasila\",\"A\",\"B\"],\n            \"EXISTS_INNER_ILMD_ns1:city\" : 1 ,\n            \"orderBy\" : \"ilmd.ns1:preStageDetails.ns1:agricultureDetails.ns1:address.ns1:city\"\n    \n    }\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orderByUserExtension",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"@context\": {\n            \"ns1\": \"http://ns.ftrace.com/epcis\"\n        },\n        \"EQ_INNER_ILMD_ns1:city\": [\"Kadma\"],\n            \"EXISTS_INNER_ILMD_ns1:city\" : 1 ,\n            \"orderBy\" : \"ilmd.ns1:preStageDetails\"\n    \n    }\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orderByLegacyField",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"@context\": {\n            \"ns1\": \"http://ns.ftrace.com/epcis\"\n        },\n        \"EQ_INNER_ILMD_ns1:city\": [\"Kadma\"],\n            \"EXISTS_INNER_ILMD_ns1:city\" : 1 ,\n            \"orderBy\" : \"recordTime\"\n    \n    }\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery?perPage=20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DigitalLink",
+			"item": [
+				{
+					"name": "captureEvents",
+					"item": [
+						{
+							"name": "captureEventWithDL",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "GS1-Capture-Error-Behaviour",
+										"value": "proceed",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"example\": \"http://ns.example.com/epcis/\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": 2.0,\n    \"creationDate\": \"2005-07-11T11:30:47.0Z\",\n    \"format\": \"application/ld+json\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"isA\": \"ObjectEvent\",\n                \"eventTime\": \"2021-04-01T01:58:56.591Z\",\n                \"eventTimeZoneOffset\": \"+02:00\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:receiving\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_progress\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.00777.0\"\n                },\n                \"bizLocation\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.00888.0\"\n                },\n                \"quantityList\": [\n                    {\n                        \"epcClass\": \"https://id.gs1.org/01/70614141123451/10/998877\",\n                        \"quantity\": 500,\n                        \"uom\": \"KGM\"\n                    }\n                ],\n                \"sourceList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:sdt:possessing_party\",\n                        \"source\": \"urn:epc:id:sgln:4012345.00001.0\"\n                    },\n                    {\n                        \"type\": \"urn:epcglobal:cbv:sdt:location\",\n                        \"source\": \"urn:epc:id:sgln:4012345.00225.0\"\n                    }\n                ],\n                \"destinationList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:sdt:owning_party\",\n                        \"destination\": \"urn:epc:id:sgln:0614141.00001.0\"\n                    },\n                    {\n                        \"type\": \"urn:epcglobal:cbv:sdt:location\",\n                        \"destination\": \"urn:epc:id:sgln:0614141.00777.0\"\n                    }\n                ],\n                \"example:myField\": \"Example of a vendor/user extension\"\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "AQshowingDL",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "GS1-EPC-Format",
+								"value": "Always_Digital_Link",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"MATCH_epcClass\": [\n            \"https://id.gs1.org/01/04012345987652\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/SimpleEventQuery",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"SimpleEventQuery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateGetEventsByEPCInDL",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "GS1-EPC-Format",
+								"value": "Always_EPC_URN",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"queryType\": \"events\",\n    \"query\": {\n        \"MATCH_anyEPCClass\": [\n            \"https://id.gs1.org/01/70614141123451/10/998877\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/GetEventsByEPCClassInDL",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"GetEventsByEPCClassInDL"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateGetEventsByEPCInURN",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "GS1-EPC-Format",
+								"value": "Always_EPC_URN",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"MATCH_anyEPCClass\": [\n            \"urn:epc:id:lgtin:7061414.1123451.*\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/queries/GetEventsByEPCClassInURN",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"GetEventsByEPCClassInURN"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEventsByQN:GetEventsByEPCInDL",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "GS1-EPC-Format",
+								"value": "No_Preference",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/queries/GetEventsByEPCClassInDL/events",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"queries",
+								"GetEventsByEPCClassInDL",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEventsByQN:GetEventsByEPCInURN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "userExtensionSchema",
+			"item": [
+				{
+					"name": "captureUserExtension",
+					"item": [
+						{
+							"name": "captureUserExtensionAtParentLevel",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"ft_fish\": \"http://ns.fish.ftrace.com\",\n            \"ft\": \"http://ns.ftrace.com/epcis10\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": 2.0,\n    \"creationDate\": \"2021-05-11T11:30:47.0Z\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"isA\": \"ObjectEvent\",\n                \"eventTime\": \"2021-05-17T03:00:00+02:00\",\n                \"eventTimeZoneOffset\": \"+02:00\",\n                \"epcList\": [],\n                \"action\": \"ADD\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:commissioning\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:479602638.000.0\"\n                },\n                \"bizLocation\": {\n                    \"id\": \"urn:epc:id:sgln:479602638.000.0\"\n                },\n                \"quantityList\": [\n                    {\n                        \"epcClass\": \"urn:epc:class:lgtin:479602638.0024.016616\",\n                        \"quantity\": 29,\n                        \"uom\": \"KGM\"\n                    }\n                ],\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ]\n            },\n            {\n                \"isA\": \"ObjectEvent\",\n                \"eventTime\": \"2021-05-17T03:00:00+02:00\",\n                \"eventTimeZoneOffset\": \"+02:00\",\n                \"epcList\": [],\n                \"action\": \"ADD\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:commissioning\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:479602638.000.0\"\n                },\n                \"bizLocation\": {\n                    \"id\": \"urn:epc:id:sgln:479602638.000.0\"\n                },\n                \"quantityList\": [\n                    {\n                        \"epcClass\": \"urn:epc:class:lgtin:479602638.0024.016616\",\n                        \"quantity\": 29,\n                        \"uom\": \"KGM\"\n                    }\n                ],\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ],\n                \"ft:bestBeforeDate\": \"notDate\",\n                \"ft:storageStateCode\": \"NOT_PREVIOUSLY_FROZEN\",\n                \"ft_fish:unloadingPort\": \"LKKAL\",\n                \"ft_fish:unloadingDate\": \"2021-05-17\",\n                \"ft_fish:vesselCatchInformation\": {\n                    \"ft_fish:vesselName\": \"OSHADI DUWA\",\n                    \"ft_fish:vesselID\": \"OFRP-A-4639-CHW\",\n                    \"ft_fish:catchArea\": \"57\",\n                    \"ft_fish:catchMethod\": 54,\n                    \"ft_fish:vesselOwner\": \"M.E.FERNANDO\",\n                    \"ft_fish:vesselFlagState\": \"LK\"\n                }\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "captureAgricultureEvent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"ns1\": \"http://ns.ftrace.com/epcis\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2005-08-11T11:30:47.0Z\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"ADD\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:shipping\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2017\",\n                    \"urn:epc:id:sgtin:0614141.107346.2018\"\n                ],\n                \"eventTime\": \"2021-06-14T20:33:31.116000-06:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.07346.1234\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ],\n                \"ilmd\": {\n                    \"ns1:preStageDetails\": {\n                        \"ns1:agricultureDetails\": [\n                            {\n                                \"ns1:farmIdentificationNumber\": {\n                                    \"ns1:farmIdentType\": \"VVVO\",\n                                    \"ns1:value\": \"276055540160000\"\n                                },\n                                \"ns1:address\": {\n                                    \"ns1:postalCode\": \"48712\",\n                                    \"ns1:city\": \"Kadma\",\n                                    \"ns1:countyCode\": \"Borken\",\n                                    \"ns1:state\": \"5\",\n                                    \"ns1:countryCode\": \"DE\"\n                                },\n                                \"ns1:proportionPercentOfLot\": 9.95,\n                                \"ns1:proportionRankingOfLot\": false\n                            },\n                            {\n                                \"ns1:farmIdentificationNumber\": {\n                                    \"ns1:farmIdentType\": \"VVVO\",\n                                    \"ns1:value\": \"276034590320000\"\n                                },\n                                \"ns1:address\": {\n                                    \"ns1:postalCode\": \"49832\",\n                                    \"ns1:city\": \"Beesten\",\n                                    \"ns1:countyCode\": \"Emsland\",\n                                    \"ns1:state\": \"3\",\n                                    \"ns1:countryCode\": \"DE\"\n                                },\n                                \"ns1:proportionPercentOfLot\": 2.79,\n                                \"ns1:proportionRankingOfLot\": true\n                            }\n                        ]\n                    }\n                }\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/capture",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"capture"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "postFtFishSchema",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"Vessel Catch Information\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"unloadingPort\": {\n      \"type\": \"string\"\n    },\n    \"unloadingDate\": {\n      \"type\": \"string\",\n      \"format\": \"date\"\n    },\n    \"vesselCatchInformation\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"vesselID\": {\n          \"type\": \"string\"\n        },\n        \"vesselName\": {\n          \"type\": \"string\"\n        },\n        \"vesselOwner\": {\n          \"type\": \"string\"\n        },\n        \"vesselFlagState\": {\n          \"type\": \"string\"\n        },\n        \"haul\": {\n          \"type\": \"string\"\n        },\n        \"catchMethod\": {\n          \"type\": \"string\"\n        },\n        \"catchArea\": {\n          \"type\": \"string\"\n        }\n      }\n    }\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/userExtension/jsonSchema?namespace=http://ns.fish.ftrace.com&defaultPrefix=ft_fish",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userExtension",
+								"jsonSchema"
+							],
+							"query": [
+								{
+									"key": "namespace",
+									"value": "http://ns.fish.ftrace.com"
+								},
+								{
+									"key": "defaultPrefix",
+									"value": "ft_fish"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postExampleJsonSchema",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"Example\",\n  \"additionalProperties\": false,\n  \"properties\": {\n    \"myField\": {\n      \"type\": \"string\"\n    },\n    \"furtherSensorData\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"measure1\": {\n            \"type\": \"string\"\n          },\n          \"measure2\": {\n            \"type\": \"string\"\n          }\n        }\n      }\n    },\n    \"someFurtherMetaData\": {\n      \"type\": \"string\"\n    },\n    \"cv\": {\n      \"type\": \"string\"\n    }\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/userExtension/jsonSchema?namespace=http://ns.example.com/epcis/&defaultPrefix=example",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userExtension",
+								"jsonSchema"
+							],
+							"query": [
+								{
+									"key": "namespace",
+									"value": "http://ns.example.com/epcis/"
+								},
+								{
+									"key": "defaultPrefix",
+									"value": "example"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postFtraceSchema",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"title\": \"Ftrace\",\n  \"properties\": {\n    \"preStageDetails\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"agricultureDetails\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"$ref\": \"#/definitions/agricultureDetails\"\n          }\n        },\n        \"bestBeforeDate\": {\n          \"type\": \"string\",\n          \"format\": \"date\"\n        },\n        \"storageStateCode\": {\n          \"type\": \"string\",\n          \"enum\": [\n            \"PREVIOUSLY_FROZEN\",\n            \"NOT_PREVIOUSLY_FROZEN\"\n          ]\n        },\n        \"dateOfFirstFreezing\": {\n          \"type\": \"string\",\n          \"format\": \"date\"\n        },\n        \"useByDate\": {\n          \"type\": \"string\",\n          \"format\": \"date\"\n        },\n        \"catchMethod\": {\n          \"type\": \"string\"\n        },\n        \"catchArea\": {\n          \"type\": \"string\"\n        },\n        \"countryOfOrigin\": {\n          \"type\": \"string\"\n        },\n        \"preservingPeriodStart\": {\n          \"type\": \"string\",\n          \"format\": \"date\"\n        },\n        \"preservingPeriodEnd\": {\n          \"type\": \"string\",\n          \"format\": \"date\"\n        },\n        \"listOfFarms\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"address\": {\n              \"$ref\": \"#/definitions/address\"\n            },\n            \"farm\": {\n              \"type\": \"object\",\n              \"properties\": {\n                \"value\": {\n                  \"type\": \"string\"\n                },\n                \"farmIdentType\": {\n                  \"type\": \"string\",\n                  \"enum\": [\n                    \"GLN\"\n                  ]\n                }\n              }\n            }\n          }\n        },\n        \"event\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"id\": {\n              \"type\": \"integer\"\n            }\n          }\n        },\n        \"descendentId\": {\n          \"type\": \"integer\"\n        },\n        \"eventSequence\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"index\": {\n              \"$ref\": \"#/definitions/index\"\n            },\n            \"predecessor\": {\n              \"$ref\": \"#/definitions/index\"\n            },\n            \"successor\": {\n              \"$ref\": \"#/definitions/index\"\n            }\n          }\n        },\n        \"fTRACETrackingCode\": {\n          \"type\": \"string\"\n        },\n        \"quantity\": {\n          \"type\": \"integer\"\n        },\n        \"eventPeriodEnd\": {\n          \"type\": \"string\",\n          \"format\": \"date-time\"\n        },\n        \"certificationCode\": {\n          \"type\": \"string\"\n        },\n        \"lotNumber\": {\n          \"type\": \"string\"\n        },\n        \"dataProvider\": {\n          \"type\": \"string\"\n        },\n        \"eventProfile\": {\n          \"type\": \"string\"\n        }\n      }\n    }\n  },\n  \"definitions\": {\n    \"agricultureDetails\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"farmIdentificationNumber\": {\n          \"$ref\": \"#/definitions/farmIdentificationNumber\"\n        },\n        \"address\": {\n          \"$ref\": \"#/definitions/address\"\n        },\n        \"proportionPercentOfLot\": {\n          \"type\": \"number\",\n          \"minimum\": 0.01,\n          \"maximum\": 100\n        },\n        \"proportionRankingOfLot\": {\n          \"type\": \"boolean\",\n          \"minimum\": 1\n        },\n        \"countriesOfBirth\": {\n          \"$ref\": \"#/definitions/countriesOfBirth\"\n        },\n        \"animalIdentifications\": {\n          \"$ref\": \"#/definitions/animalIdentifications\"\n        },\n        \"numberOfAnimals\": {\n          \"type\": \"integer\"\n        }\n      }\n    },\n    \"farmIdentificationNumber\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"value\": {\n          \"type\": \"string\",\n          \"minLength\": 1\n        },\n        \"farmIdentType\": {\n          \"type\": \"string\",\n          \"enum\": [\n            \"GLN\",\n            \"GGO\",\n            \"GEO\",\n            \"VVVO\",\n            \"OTHER\",\n            \"PrintNumber\"\n          ]\n        }\n      }\n    },\n    \"address\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\",\n          \"maxLength\": 125\n        },\n        \"streetAddressOne\": {\n          \"type\": \"string\",\n          \"maxLength\": 125\n        },\n        \"streetAddressTwo\": {\n          \"type\": \"string\",\n          \"maxLength\": 125\n        },\n        \"postalCode\": {\n          \"type\": \"string\",\n          \"minLength\": 1,\n          \"maxLength\": 20\n        },\n        \"city\": {\n          \"type\": \"string\",\n          \"maxLength\": 125\n        },\n        \"countyCode\": {\n          \"type\": \"string\",\n          \"minLength\": 1\n        },\n        \"state\": {\n          \"type\": \"string\",\n          \"maxLength\": 125\n        },\n        \"countryCode\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"postalCode\",\n        \"countryCode\"\n      ]\n    },\n    \"countriesOfBirth\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"countryCode\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"type\": \"string\"\n          }\n        }\n      }\n    },\n    \"animalIdentifications\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"animal\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"$ref\": \"#/definitions/animal\"\n          }\n        }\n      }\n    },\n    \"animal\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"animalID\": {\n          \"type\": \"string\",\n          \"maxLength\": 125\n        },\n        \"crossBreedIndicator\": {\n          \"type\": \"boolean\"\n        },\n        \"breedCode\": {\n          \"type\": \"string\",\n          \"maxLength\": 125\n        },\n        \"dateOfBirth\": {\n          \"type\": \"integer\",\n          \"format\": \"utc-millisec\"\n        },\n        \"placeOfBirth\": {\n          \"$ref\": \"#/definitions/placeOfBirth\"\n        },\n        \"father\": {\n          \"$ref\": \"#/definitions/father\"\n        },\n        \"mother\": {\n          \"$ref\": \"#/definitions/mother\"\n        }\n      },\n      \"required\": [\n        \"animalID\",\n        \"dateOfBirth\",\n        \"placeOfBirth\"\n      ]\n    },\n    \"placeOfBirth\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"value\": {\n          \"type\": \"string\",\n          \"minLength\": 1\n        },\n        \"farmIdentType\": {\n          \"type\": \"string\",\n          \"enum\": [\"VVVO\",\"GLN\"]\n        }\n      }\n    },\n    \"father\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"animalID\": {\n          \"type\": \"string\"\n        },\n        \"breedOfFatherCode\": {\n          \"type\": \"string\",\n          \"maxLength\": 125\n        }\n      }\n    },\n    \"mother\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"animalID\": {\n          \"type\": \"string\"\n        },\n        \"breedOfMotherCode\": {\n          \"type\": \"string\",\n          \"maxLength\": 125\n        }\n      }\n    },\n    \"index\": {\n      \"type\": \"integer\"\n    }\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/userExtension/jsonSchema?namespace=http://ns.ftrace.com/epcis&defaultPrefix=ft",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userExtension",
+								"jsonSchema"
+							],
+							"query": [
+								{
+									"key": "namespace",
+									"value": "http://ns.ftrace.com/epcis"
+								},
+								{
+									"key": "defaultPrefix",
+									"value": "ft"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postFSKLabSchema",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"@context\": [\n        \"https://gs1.github.io/EPCIS/epcis-context.jsonld\",\n        {\n            \"fsk\": \"https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json\"\n        }\n    ],\n    \"id\": \"_:document1\",\n    \"isA\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2021-03-03T11:30:47.0Z\",\n    \"format\": \"application/ld+json\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"isA\": \"ObjectEvent\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"urn:epcglobal:cbv:bizstep:collecting\",\n                \"disposition\": \"urn:epcglobal:cbv:disp:in_transit\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.107346.2017\",\n                    \"urn:epc:id:sgtin:0614141.107346.2018\"\n                ],\n                \"eventTime\": \"2021-07-06T14:53:11.38767+02:00\",\n                \"eventTimeZoneOffset\": \"-06:00\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0614141.07346.1234\"\n                },\n                \"bizTransactionList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:btt:po\",\n                        \"bizTransaction\": \"http://transaction.acme.com/po/12345678\"\n                    }\n                ],\n                \"fsk:model\": {\n                    \"fsk:dataBackground\": {\n                        \"fsk:assay\": [\n                            {\n                                \"fsk:detectionLimit\": \"30-300\",\n                                \"fsk:description\": \"spectroscopic analytical procedure used to measure the concentration of protein in a solution. It is subjective, i.e., dependent on the amino acid composition of the measured protein\",\n                                \"fsk:name\": \"Bradford protein assay\",\n                                \"fsk:quantificationLimit\": \"5000 - 8000\",\n                                \"fsk:contaminationRange\": \"500-4000\"\n                            },\n                            {\n                                \"fsk:description\": \"ELISA is a popular format of \\\"wet-lab\\\" type analytic biochemistry assay that uses a solid-phase enzyme immunoassay (EIA) to detect the presence of a substance, usually an antigen, in a liquid sample or wet sample.\",\n                                \"fsk:name\": \"ELISA\",\n                                \"fsk:contaminationRange\": \"200-800\"\n                            },\n                            {\n                                \"fsk:description\": \"standard method used to determine virus concentration in terms of infectious dose. Viral plaque assays determine the number of plaque forming units (pfu) in a virus sample, which is one measure of virus quantity.\",\n                                \"fsk:name\": \"Plaque-Assay\",\n                                \"fsk:contaminationRange\": \"0,5 - 400\"\n                            }\n                        ],\n                        \"fsk:study\": {\n                            \"fsk:protocolURI\": \"https://url-for-study-protocol-location.bfr.bund.de\",\n                            \"fsk:protocolParametersName\": \"Parameter 1\",\n                            \"fsk:protocolType\": \"Extraction Protocol\",\n                            \"fsk:description\": \"This Study will show, wether the FSK Lab will correctly read and run a generic and fully annotated model\",\n                            \"fsk:assayTechnologyType\": \"QPCR\",\n                            \"fsk:protocolComponentsType\": \"hardware\",\n                            \"fsk:title\": \"Assessment of integrity of metadata in FKS Lab and associated services\",\n                            \"fsk:assayMeasurementType\": \"It works or it doesn't\",\n                            \"fsk:protocolDescription\": \"The protocol is definitly not made up\",\n                            \"fsk:accreditationProcedureForTheAssayTechnology\": \"Internally validated\",\n                            \"fsk:assayTechnologyPlatform\": \"Orbital Platform\",\n                            \"fsk:protocolVersion\": \"version 1.0\",\n                            \"fsk:identifier\": \"Study_Generic_Sheet_1\",\n                            \"fsk:protocolName\": \"Extraction Protocol Of FSK\",\n                            \"fsk:designType\": \"Trial and Error\",\n                            \"fsk:protocolComponentsName\": \"windows pc\"\n                        },\n                        \"fsk:laboratory\": [\n                            {\n                                \"fsk:accreditation\": [\n                                    \"accredited\"\n                                ],\n                                \"fsk:name\": \"National High Magnetic Field Laboratory\",\n                                \"fsk:country\": \"United States\"\n                            },\n                            {\n                                \"fsk:accreditation\": [\n                                    \"accredited\"\n                                ],\n                                \"fsk:name\": \"Everest Medical Laboratory\",\n                                \"fsk:country\": \"India\"\n                            },\n                            {\n                                \"fsk:accreditation\": [\n                                    \"accredited\"\n                                ],\n                                \"fsk:name\": \"RimeTimeLab\",\n                                \"fsk:country\": \"Germany\"\n                            }\n                        ]\n                    },\n                    \"fsk:modelType\": \"PredictiveModel\",\n                    \"fsk:modelMath\": {\n                        \"fsk:parameter\": [\n                            {\n                                \"fsk:id\": \"Dose_matrix\",\n                                \"fsk:unit\": \"kGy/h\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"matrix with GEC NoV for each serving (rows=servings; columns = number of different employee-teams that prepare food)\",\n                                \"fsk:error\": \"0.5\",\n                                \"fsk:variabilitySubject\": \"days\",\n                                \"fsk:maxValue\": \"10000.0\",\n                                \"fsk:source\": \"Article\",\n                                \"fsk:subject\": \"Animal\",\n                                \"fsk:name\": \"Dose_matrix\",\n                                \"fsk:unitCategory\": \"Energy Content Rate\",\n                                \"fsk:dataType\": \"FILE\",\n                                \"fsk:distribution\": \"Bernoulli 1\",\n                                \"fsk:value\": \"as.matrix(read.table(file =\\\"Dose_matrix.csv\\\",sep=\\\",\\\", header = TRUE, row.names=1))\",\n                                \"fsk:minValue\": \"1.0\"\n                            },\n                            {\n                                \"fsk:id\": \"nInf\",\n                                \"fsk:unit\": \"PFU/25g\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"number of infected individuals, mean over stores (2000 servings per store)\",\n                                \"fsk:error\": \"0.4\",\n                                \"fsk:variabilitySubject\": \"hours\",\n                                \"fsk:maxValue\": \"20000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Batch of animals\",\n                                \"fsk:name\": \"nInf\",\n                                \"fsk:unitCategory\": \"Number Content (count/mass)\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Log-Logistic 2\",\n                                \"fsk:minValue\": \"0.1\"\n                            },\n                            {\n                                \"fsk:id\": \"nIll\",\n                                \"fsk:unit\": \"mg\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"number of ill individuals, mean over stores (2000 servings per store)\",\n                                \"fsk:error\": \"0.3\",\n                                \"fsk:variabilitySubject\": \"size\",\n                                \"fsk:maxValue\": \"30000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Batch of products\",\n                                \"fsk:name\": \"nIll\",\n                                \"fsk:unitCategory\": \"Mass\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Half Cauchy 1\",\n                                \"fsk:minValue\": \"0.3\"\n                            },\n                            {\n                                \"fsk:id\": \"meanPos\",\n                                \"fsk:unit\": \"month\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"mean number of NoV particles over positive servings\",\n                                \"fsk:error\": \"0.2\",\n                                \"fsk:variabilitySubject\": \"height\",\n                                \"fsk:maxValue\": \"40000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Other\",\n                                \"fsk:name\": \"meanPos\",\n                                \"fsk:unitCategory\": \"Time\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Generalized Poisson 3\",\n                                \"fsk:minValue\": \"0.5\"\n                            },\n                            {\n                                \"fsk:id\": \"prev18\",\n                                \"fsk:unit\": \"g/daily portion\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"proportion of servings with >18 NoV\",\n                                \"fsk:error\": \"0.1\",\n                                \"fsk:variabilitySubject\": \"weight\",\n                                \"fsk:maxValue\": \"50000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Other\",\n                                \"fsk:name\": \"prev18\",\n                                \"fsk:unitCategory\": \"Mass\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Binomial 1\",\n                                \"fsk:minValue\": \"0.2\"\n                            },\n                            {\n                                \"fsk:id\": \"prev100\",\n                                \"fsk:unit\": \"objects/g\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"proportion of servings with >100 NoV\",\n                                \"fsk:error\": \"0.01\",\n                                \"fsk:variabilitySubject\": \"color\",\n                                \"fsk:maxValue\": \"60000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Feces\",\n                                \"fsk:name\": \"prev100\",\n                                \"fsk:unitCategory\": \"Number Content (count/mass)\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Discrete distribution\",\n                                \"fsk:minValue\": \"0.12\"\n                            },\n                            {\n                                \"fsk:id\": \"prev1000\",\n                                \"fsk:unit\": \"Bq/L\",\n                                \"fsk:classification\": \"OUTPUT\",\n                                \"fsk:description\": \"proportion of servings with >1000 NoV\",\n                                \"fsk:error\": \"0.02\",\n                                \"fsk:variabilitySubject\": \"shape\",\n                                \"fsk:maxValue\": \"70000.0\",\n                                \"fsk:source\": \"Model result\",\n                                \"fsk:subject\": \"Feces\",\n                                \"fsk:name\": \"prev1000\",\n                                \"fsk:unitCategory\": \"Energy content rate\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Geometric 1\",\n                                \"fsk:minValue\": \"0.142\"\n                            },\n                            {\n                                \"fsk:id\": \"alpha\",\n                                \"fsk:unit\": \"month\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"Alpha parameter in dose response model related to probability of infection (shape of beta distribution)\",\n                                \"fsk:error\": \"0.03\",\n                                \"fsk:variabilitySubject\": \"age\",\n                                \"fsk:maxValue\": \"80000.0\",\n                                \"fsk:source\": \"Expert opinion\",\n                                \"fsk:subject\": \"Carcass skin\",\n                                \"fsk:name\": \"alpha\",\n                                \"fsk:unitCategory\": \"Time\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Half-normal 1\",\n                                \"fsk:value\": \"0.04\",\n                                \"fsk:minValue\": \"0.01\"\n                            },\n                            {\n                                \"fsk:id\": \"beta\",\n                                \"fsk:unit\": \"Inertia\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"Beta parameter in dose response model related to probability of infection (scale of beta distribution)\",\n                                \"fsk:error\": \"0.4\",\n                                \"fsk:variabilitySubject\": \"concentration\",\n                                \"fsk:maxValue\": \"90000.0\",\n                                \"fsk:source\": \"Estimate\",\n                                \"fsk:subject\": \"Product\",\n                                \"fsk:name\": \"beta\",\n                                \"fsk:unitCategory\": \"Energy content\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Negative Binomial 1\",\n                                \"fsk:value\": \"0.055\",\n                                \"fsk:minValue\": \"0.002\"\n                            },\n                            {\n                                \"fsk:id\": \"eta\",\n                                \"fsk:unit\": \"kcal/portion\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"Eta parameter in dose response model related to probability of illnes (scale parameter for gamma distribution)\",\n                                \"fsk:error\": \"0.5\",\n                                \"fsk:variabilitySubject\": \"difficulty\",\n                                \"fsk:maxValue\": \"100000.0\",\n                                \"fsk:source\": \"Assumption\",\n                                \"fsk:subject\": \"Package\",\n                                \"fsk:name\": \"eta\",\n                                \"fsk:unitCategory\": \"Other\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Arcsine 2\",\n                                \"fsk:value\": \"0.00255\",\n                                \"fsk:minValue\": \"0.01\"\n                            },\n                            {\n                                \"fsk:id\": \"r\",\n                                \"fsk:unit\": \"dimensionless\",\n                                \"fsk:classification\": \"INPUT\",\n                                \"fsk:description\": \"R parameter in dose response model related to probability of illness (shape parameter for gamma distribution)\",\n                                \"fsk:error\": \"0.05\",\n                                \"fsk:variabilitySubject\": \"species\",\n                                \"fsk:maxValue\": \"110000.0\",\n                                \"fsk:source\": \"Not applicable \",\n                                \"fsk:subject\": \"Belly\",\n                                \"fsk:name\": \"r\",\n                                \"fsk:unitCategory\": \"Dimensionless\",\n                                \"fsk:dataType\": \"DOUBLE\",\n                                \"fsk:distribution\": \"Multivariate Gaussian 2\",\n                                \"fsk:value\": \"0.086\",\n                                \"fsk:minValue\": \"0.1\"\n                            }\n                        ],\n                        \"fsk:qualityMeasures\": [\n                            {\n                                \"sse\": 0,\n                                \"aic\": 0,\n                                \"rmse\": 0.3,\n                                \"bic\": 1,\n                                \"mse\": 0.2,\n                                \"rsquared\": 0.9\n                            }\n                        ],\n                        \"fsk:fittingProcedure\": \"Maximum likelihood estimation (MLE)\"\n                    },\n                    \"fsk:scope\": {\n                        \"fsk:hazard\": [\n                            {\n                                \"fsk:noObservedAdverseAffectLevel\": \"10 mg\",\n                                \"fsk:acuteReferenceDose\": \"80 mg\",\n                                \"fsk:acceptableOperatorsExposureLevel\": \"50 mg\",\n                                \"fsk:unit\": \"CFU\",\n                                \"fsk:type\": \"Organic contaminants\",\n                                \"fsk:acceptableDailyIntake\": \"20 mg\",\n                                \"fsk:maximumResidueLimit\": \"0.01 mg/kg\",\n                                \"fsk:description\": \"novovirus is described as nast and hard to get rid of\",\n                                \"fsk:lowestObservedAdverseAffectLevel\": \"40 mg\",\n                                \"fsk:name\": \"norovirus (Norwalk-like virus)\",\n                                \"fsk:sourceOfContamination\": \"sewage\",\n                                \"fsk:adverseEffect\": \"morbitity\"\n                            },\n                            {\n                                \"fsk:noObservedAdverseAffectLevel\": \"5 mg\",\n                                \"fsk:acuteReferenceDose\": \"100 mg\",\n                                \"fsk:acceptableOperatorsExposureLevel\": \"80 mg\",\n                                \"fsk:unit\": \"Fill\",\n                                \"fsk:type\": \"micro\",\n                                \"fsk:acceptableDailyIntake\": \"30 mg\",\n                                \"fsk:maximumResidueLimit\": \"0.11 mg/kg\",\n                                \"fsk:description\": \"we dont know how that got into the tomatoes but it is there\",\n                                \"fsk:lowestObservedAdverseAffectLevel\": \"50 mg\",\n                                \"fsk:name\": \"Salmonella Daarle\",\n                                \"fsk:sourceOfContamination\": \"air\",\n                                \"fsk:adverseEffect\": \"mortality\"\n                            },\n                            {\n                                \"fsk:noObservedAdverseAffectLevel\": \"1 mg\",\n                                \"fsk:acceptableOperatorsExposureLevel\": \"120 mg\",\n                                \"fsk:unit\": \"fg/mL\",\n                                \"fsk:description\": \"tastes great but bad for your beach bod\",\n                                \"fsk:acuteReferenceDose\": \"140 mg\",\n                                \"fsk:type\": \"Food additives\",\n                                \"fsk:acceptableDailyIntake\": \"90 mg\",\n                                \"fsk:benchmarkDose\": \"123.12\",\n                                \"fsk:maximumResidueLimit\": \"0.25 - 0.4 mg/kg\",\n                                \"fsk:lowestObservedAdverseAffectLevel\": \"100 mg\",\n                                \"fsk:name\": \"Monoammonium glutamate\",\n                                \"fsk:sourceOfContamination\": \"rodents\",\n                                \"fsk:adverseEffect\": \"obesity\"\n                            }\n                        ],\n                        \"fsk:product\": [\n                            {\n                                \"fsk:expiryDate\": \"2011-12-01\",\n                                \"fsk:unit\": \"g\",\n                                \"fsk:productionDate\": \"2011-10-30\",\n                                \"fsk:description\": \"fresh german lettuce\",\n                                \"fsk:originCountry\": \"Germany\",\n                                \"fsk:name\": \"Lettuce\",\n                                \"fsk:originArea\": \"Aachen, Kreisfreie Stadt\",\n                                \"fsk:fisheriesArea\": \"Arctic Sea\"\n                            },\n                            {\n                                \"fsk:expiryDate\": \"2013-02-01\",\n                                \"fsk:unit\": \"g\",\n                                \"fsk:productionDate\": \"2012-12-03\",\n                                \"fsk:description\": \"not so fresh\",\n                                \"fsk:originCountry\": \"Spain\",\n                                \"fsk:name\": \"Tomatoes\",\n                                \"fsk:originArea\": \"Lazio\",\n                                \"fsk:fisheriesArea\": \"Mediterranean and Black Sea\"\n                            },\n                            {\n                                \"fsk:expiryDate\": \"2014-05-01\",\n                                \"fsk:unit\": \"g\",\n                                \"fsk:productionDate\": \"2013-05-15\",\n                                \"fsk:description\": \"pretty much any processed meat product imaginable\",\n                                \"fsk:originCountry\": \"United Kingdom\",\n                                \"fsk:name\": \"Meat, preparations of meat, offals, blood, animal fats; fresh, chilled or frozen, salted, in brine, dried or smoked or processed as flours or meals; other processed products such as sausages and food preparations based on these\",\n                                \"fsk:originArea\": \"East Anglia\",\n                                \"fsk:fisheriesArea\": \"Atlantic Ocean\"\n                            }\n                        ],\n                        \"fsk:generalComment\": \"(General Comment) The Scope of this model is universal\",\n                        \"fsk:temporalInformation\": \"s1990 - 2000\"\n                    },\n                    \"fsk:generalInformation\": {\n                        \"fsk:name\": \"Predictive Toymodel\",\n                        \"fsk:identifier\": \"Toy_Model_predictive_01\",\n                        \"fsk:creationDate\": \"2021-05-01\",\n                        \"fsk:rights\": \"Academic Free License 3.0\",\n                        \"fsk:reference\": [\n                            {\n                                \"fsk:title\": \"Quantitative Risk Assessment of Norovirus Transmission in Food Establishments: Evaluating the Impact of Intervention Strategies and Food Employee Behavior on the Risk Associated with Norovirus in Foods\",\n                                \"fsk:isReferenceDescription\": true,\n                                \"fsk:doi\": \"doi\"\n                            },\n                            {\n                                \"fsk:title\": \"Norwalk virus: How infectious is it?\",\n                                \"fsk:isReferenceDescription\": true,\n                                \"fsk:doi\": \"doi\"\n                            },\n                            {\n                                \"fsk:title\": \"Dose Response Models For Infectious Gastroenteritis\",\n                                \"fsk:isReferenceDescription\": true,\n                                \"fsk:doi\": \"doi\"\n                            }\n                        ],\n                        \"fsk:languageWrittenIn\": \"R 3\",\n                        \"fsk:description\": \"description of a system using mathematical concepts and language. The process of developing a mathematical model is termed mathematical modeling. Mathematical models are used in the natural sciences (such as physics, biology, earth science, chemistry) and engineering disciplines (such as computer science, electrical engineering), as well as in the social sciences (such as economics, psychology, sociology, political science).\",\n                        \"fsk:url\": \"https://url-for-resource-location.bfr.bund.de\",\n                        \"fsk:source\": \"UNPUBLISHED STUDIES (EXPERIMENTS-OBSERVATIONS)\",\n                        \"fsk:objective\": \"Objective is to test, whether all metadata are displayed correctly\",\n                        \"fsk:author\": [\n                            {\n                                \"fsk:givenName\": \"Steve\",\n                                \"fsk:region\": \"Greater New Yorker Area\",\n                                \"fsk:email\": \"mosley@nyu.org\",\n                                \"fsk:telephone\": \"080 12345566\",\n                                \"fsk:familyName\": \"Mosley\",\n                                \"fsk:country\": \"Saint Vincent and the Grenadines\",\n                                \"fsk:zipCode\": \"12345\",\n                                \"fsk:organization\": \"NYU\",\n                                \"fsk:streetAddress\": \"Berliner Strasse 2\",\n                                \"fsk:title\": \"Prof\"\n                            }\n                        ],\n                        \"fsk:availability\": \"Other\",\n                        \"fsk:software\": \"FSK-Lab\",\n                        \"fsk:creator\": [\n                            {\n                                \"fsk:givenName\": \"Natalia\",\n                                \"fsk:region\": \"Berlin-Brandenburg\",\n                                \"fsk:email\": \"black_widow@marvel.com\",\n                                \"fsk:telephone\": \"030 12345\",\n                                \"fsk:familyName\": \"Romanov\",\n                                \"fsk:country\": \"Russian Federation\",\n                                \"fsk:zipCode\": \"14123\",\n                                \"fsk:organization\": \"SHIELD\",\n                                \"fsk:streetAddress\": \"Nahmitzer Damm 40\",\n                                \"fsk:title\": \"Dr.\"\n                            },\n                            {\n                                \"fsk:givenName\": \"Peter\",\n                                \"fsk:region\": \"Brandenburg\",\n                                \"fsk:email\": \"peter.parker@parker.com\",\n                                \"fsk:telephone\": \"03301 1369158\",\n                                \"fsk:familyName\": \"Parker\",\n                                \"fsk:country\": \"United States\",\n                                \"fsk:zipCode\": \"16515\",\n                                \"fsk:organization\": \"Parker Industries\",\n                                \"fsk:streetAddress\": \"Am Kleinen Wannsee 16\",\n                                \"fsk:title\": \"Mr.\"\n                            }\n                        ],\n                        \"fsk:format\": \".fskx\",\n                        \"fsk:status\": \"Uncurated\",\n                        \"fsk:language\": \"German\"\n                    }\n                }\n            }\n        ]\n    }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/userExtension/jsonSchema?namespace=https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json&defaultPrefix=fsk",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userExtension",
+								"jsonSchema"
+							],
+							"query": [
+								{
+									"key": "namespace",
+									"value": "https://foodrisklabs.bfr.bund.de/fsk-lab-schema.json"
+								},
+								{
+									"key": "defaultPrefix",
+									"value": "fsk"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WebsocketQuerySubscription",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "ws://localhost:8080/ws/queries/GetObjectEvent/events?second=0/10&reportIfEmpty=true",
+							"protocol": "ws",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ws",
+								"queries",
+								"GetObjectEvent",
+								"events"
+							],
+							"query": [
+								{
+									"key": "second",
+									"value": "0/10"
+								},
+								{
+									"key": "reportIfEmpty",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EventsFlow",
+			"item": [
+				{
+					"name": "getEventFromEventID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/events/urn:uuid:3c49ab92-d7c9-4c3f-bac0-b1c4de0edaa3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								"urn:uuid:3c49ab92-d7c9-4c3f-bac0-b1c4de0edaa3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
